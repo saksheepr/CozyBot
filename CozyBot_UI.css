@@ -1,0 +1,189 @@
+/* CozyBot Modern UI Design */
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.background {
+    background: url("C:/Users/Arjun Ajithan/Downloads/Pics/1836068.jpg") center/cover fixed no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-family: 'Pacifico', cursive;   /*"CozyBot" has different, custom font*/
+    font-size: 40px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.login-form {
+    padding: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #555;
+    transition: color 0.3s ease-in-out;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 2px solid #3498db;
+    background-color: transparent;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+    transition: border-bottom 0.3s ease-in-out;
+    outline: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #2ecc71;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+label[for="remember-me"] {
+    font-size: 14px;
+    color: #020202;
+}
+
+.forgot-password,
+button {
+    display: block;
+    width: 100%;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #060505;
+}
+
+button {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+a:hover {
+    color: #207dbb;
+}
+
+button {
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+}
+
+.signup-link a {
+    color: #e74c3c;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.not-member {
+    font-size: 16px;
+    color: #060505;
+    margin-right: 10px;
+}
+
+.signup-now:hover {
+    background-color: #27ae60;
+}
