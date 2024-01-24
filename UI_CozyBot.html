@@ -1,38 +1,76 @@
-<!--CozyBot UI Design-->
-
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CozyBot Login</title>
-        <link rel="stylesheet" href="CozyBot_UI.css">
-    </head>
-    <body>
-        <div class="background">
-            <div class="container">
-                <div class="header">
-                    <h1 class="logo">CozyBot</h1>
-                </div>
-                <div class="login-form">
-                    <h2>Login</h2>
-                    <form action="#">
-                        <label for="email">Email:</label>
-                        <input type="email" id='email' name="email" placeholder="Enter Your Email: ">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" placeholder="Enter Your Password">
-                        <div class="checkbox">
-                            <input type="checkbox" id="remember-me">
-                            <label for="remember-me">Remember Me</label>
-                        </div>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-                        <button type="submit">Login Now</button>
-                    </form>
-                </div>
-                <div class="signup-link">
-                    <b class="not-member">Not A Member?</b>
-                    <a href="#"">Signup Now</a>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CozyBot Login</title>
+    <link rel="stylesheet" href="CozyBot_UI.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="C:\Users\Arjun Ajithan\Downloads\CHRIST)\SECOND YEAR\Sem 4 Subjects\DBMS Project\Main\Logo1.png" alt="Your Logo">
+        </div>
+    </header>
+    <div class="background">
+        <div class="container">
+            <div class="header">
+                <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+                <h1 class="logo">COZYBOT</h1>
+            </div>
+            <div class="login-form">
+                <h1><center>LOGIN</center></h1>
+                <form id="loginForm" action="#" onsubmit="return validateForm()">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email">
+                    <div id="emailError" class="error-message"></div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Your Password">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Remember Me</label>
+                    </div>
+                    <div id="rememberError" class="error-message"></div>
+                    <a href="ForgotPassword.html" class="forgot-password">Forgot Password?</a>
+                    <button type="submit">Login Now</button>
+                </form>
+            </div>
+            <script>
+                function validateForm() {
+                    var email = document.getElementById('email').value;
+                    var password = document.getElementById('password').value;
+                    var rememberMe = document.getElementById('remember-me').checked;
+
+                    // Reset error messages
+                    document.getElementById('emailError').innerHTML = '';
+                    document.getElementById('passwordError').innerHTML = '';
+                    document.getElementById('rememberError').innerHTML = '';
+
+                    // Validate email
+                    if (email === '') {
+                        document.getElementById('emailError').innerHTML = 'Please enter your email.';
+                        return false;
+                    }
+
+                    if(password === ''){
+                        document.getElementById('passwordError'.innerHTML) = 'Please enter your password.';
+                        return false;
+                    }
+
+                    // Validate 'Remember Me' checkbox
+                    if (!rememberMe) {
+                        document.getElementById('rememberError').innerHTML = 'Please check the "Remember Me" box.';
+                        return false;
+                    }
+
+                    // If all validations pass, the form will be submitted
+                    return true;
+                }
+            </script>
+            <div class="signup-link">
+                <b class="not-member">Not A Member?</b>
+                <a href="SignUp_CozyBot.html">Signup Now</a>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
