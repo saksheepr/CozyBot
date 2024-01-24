@@ -1,38 +1,93 @@
-<!--Sign Up Registration Form-->
-
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | CozyBot</title>
-    <link rel="stylesheet" href="SignUp_UI.css">
-</head>
-<body>
-    <div class="background">
-        <div class="container">
-            <div class="header">
-                <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-                <h1 class="logo">COZYBOT</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up | CozyBot</title>
+        <link rel="stylesheet" href="SignUp_UI.css">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="C:\Users\Arjun Ajithan\Downloads\CHRIST)\SECOND YEAR\Sem 4 Subjects\DBMS Project\Main\Logo1.png" alt="Your Logo">
             </div>
-            <div class="signup-form">
-                <h2><center>SIGN UP</center></h2>
-                <form action="#">
-                    <label for="fullname">Full Name:</label>
-                    <input type="text" id='fullname' name="fullname" placeholder="Enter Your Full Name">
-                    <label for="email">Email:</label>
-                    <input type="email" id='email' name="email" placeholder="Enter Your Email">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter Your Password">
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Your Password">
-                    <button type="submit">Sign Up Now</button>
-                </form>
-            </div>
-            <div class="signup-link">
-                <b class="not-member">Already A Member?</b>
-                <a href="UI_CozyBot.html">Login Now</a>
+        </header>
+        <div class="background">
+            <div class="container">
+                <div class="header">
+                    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+                    <h1 class="logo">COZYBOT</h1>
+                </div>
+                <div class="signup-form">
+                    <h2><center>SIGN UP</center></h2>
+                    <form id="signupForm" action="#" onsubmit="return validateForm()">
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter Your Full Name">
+                        <div id="fullnameError" class="error-message"></div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email">
+                        <div id="emailError" class="error-message"></div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter Your Password">
+                        <div id="passwordError" class="error-message"></div>
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Your Password">
+                        <div id="confirmPasswordError" class="error-message"></div>
+                        <button type="submit">Sign Up Now</button>
+                    </form>
+                </div>
+                <div class="signup-link">
+                    <b class="not-member">Already A Member?</b>
+                    <a href="UI_CozyBot.html">  Login</a>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+
+        <script>
+            function validateForm() {
+                var fullname = document.getElementById('fullname').value;
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var confirmPassword = document.getElementById('confirm-password').value;
+
+                // Reset error messages
+                document.getElementById('fullnameError').innerHTML = '';
+                document.getElementById('emailError').innerHTML = '';
+                document.getElementById('passwordError').innerHTML = '';
+                document.getElementById('confirmPasswordError').innerHTML = '';
+
+                // Validate Full Name
+                if (fullname === '') {
+                    document.getElementById('fullnameError').innerHTML = 'Please enter your full name.';
+                    return false;
+                }
+
+                // Validate Email
+                if (email === '') {
+                    document.getElementById('emailError').innerHTML = 'Please enter your email.';
+                    return false;
+                }
+
+                // Validate Password
+                if (password === '') {
+                    document.getElementById('passwordError').innerHTML = 'Please enter your password.';
+                    return false;
+                }
+
+                // Validate Confirm Password
+                if (confirmPassword === '') {
+                    document.getElementById('confirmPasswordError').innerHTML = 'Please confirm your password.';
+                    return false;
+                }
+
+                // Validate Password Match
+                if (password !== confirmPassword) {
+                    document.getElementById('confirmPasswordError').innerHTML = 'Passwords do not match.';
+                    return false;
+                }
+
+                // If all validations pass, the form will be submitted
+                return true;
+            }
+        </script>
+    </body>
 </html>
