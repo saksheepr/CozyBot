@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CozyBot</title>
+
+    <style>
+        body, header, nav, section, h1, h2, p, .cta-button, footer {
+    font-family: 'Century';
+        }
+
+        body {
+            font-family:Century;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #F3EEEA, #EBE3D5);
+            color: #333; /* Darken the text color for better readability */
+        }
+
+        header {
+            background-color: #c4b6a5;
+            color: #F3EEEA;
+            text-align: center;
+            padding: 1.5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            max-height: 60px;
+            margin-right: auto; /* Push the logo to the left */
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: rgb(59, 29, 5);
+            text-decoration: none;
+            padding: 1em;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size:16px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #776B5D;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 1.5em;
+            background-color: #F3EEEA;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #2E2E2E; /* Darken the headings for better contrast */
+            text-align: center;
+            font-weight: bold;
+            vertical-align: top;
+        }
+
+        p {
+            color: #555; /* Darken the text color for better readability */
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #F3EEEA;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            width: auto;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #776B5D;
+            color: #F3EEEA;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        /* Contact Form Styles */
+        form {
+            max-width: 600px;
+            margin: 2em auto;
+            background-color: #EBE3D5;
+            padding: 1.5em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #2E2E2E;
+        }
+        form label {
+            font-weight: bold;
+      
+            display: block;
+        }
+
+
+        input, textarea {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #B0A695;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #F3EEEA;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Testimonials Styles */
+        .testimonials {
+            max-width: 800px;
+            margin: 2em auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .testimonial {
+            flex: 0 0 100%;
+            background-color: #FFF;
+            border: 1px solid #E0E0E0;
+            padding: 1m;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 1.5em;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #2E2E2E;
+            margin-top: 1em;
+        }
+        nav a:hover {
+            background-color: #5F5347; 
+        }   
+        .cta-button, nav a, input[type="submit"] {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover, nav a:hover, input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+
+        footer .social-icons {
+            margin-top: 20px;
+        }
+
+        footer .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            transition: transform 0.2s ease;
+        }
+
+        footer .social-icons a:hover {
+            transform: scale(1.2);
+        }
+        .info-content {
+        display: none;
+        margin-top: 10px;
+           }
+          
+
+        .infographic-item h3:hover {
+            background-color: #e4c07e; /* Change to your desired color */
+            color: #fff; /* Change to your desired text color */
+            cursor: pointer;
+        }
+
+
+       </style>
+</head>
+<body>
+
+    <header>
+        <img src="cozybotlogo.png" alt="CozyBot Logo">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+            <a href="#signin" class="sign-in-button">Sign In</a>
+        </nav>
+    </header>
+
+    <section id="home" style="text-align: center;">
+        <div class="hero-container">
+          <h1 style="font-size: 3rem; margin-bottom: 15px;">Welcome to CozyBot</h1>
+          <h2 style="font-size: 2rem; color: #776B5D;">Re-designing your home the Smart way</h2>
+        </div>
+      
+        <p style="margin-bottom: 20px;">Discover the power of CozyBot, your trusted companion in automating tasks and simplifying workflows. Join us on a journey to enhance productivity and reclaim your time.</p>
+      
+        <p>From managing daily tasks to streamlining repetitive processes, CozyBot is designed to make your life easier. Experience the future of automation and unlock your full potential—let's get started!</p>
+      
+        <a href="#contact" class="cta-button" style="padding: 10px 20px; background-color: #007BFF; color: #fff; border-radius: 5px; text-decoration: none;">Get Started</a>
+      </section>
+      
+
+    <section id="about" style="text-align: center;">
+        <h2>About Us</h2>
+        <p>CozyBot is a team of passionate individuals dedicated to revolutionizing how work gets done. Our mission is to provide intelligent automation solutions that empower businesses and individuals.</p>
+    
+        <p>With a focus on simplicity, innovation, and user satisfaction, CozyBot aims to be the go-to platform for all your automation needs. Learn more about the people behind CozyBot and our commitment to excellence.</p>
+    </section>
+    
+
+    <section id="features" style="text-align: center;">
+        <h2>Features</h2>
+        <p>Explore the features that set CozyBot apart. From advanced task automation to seamless integration with your favorite apps, CozyBot is packed with functionalities to enhance your productivity.</p>
+
+        <p>Key features include customizable workflows, real-time collaboration, and adaptive learning algorithms. CozyBot evolves with your needs, making it the ideal solution for businesses and individuals seeking efficiency.</p>
+        <a href="#contact" class="cta-button">Explore our Catalog</a>
+    </section>
+
+    <section id="capabilities" style="text-align: center;">
+        <h2>CozyBot's Capabilities</h2>
+        <div id="interactive-infographic">
+            <div id="automation" class="infographic-item" onmouseover="showInfo('automation')" onmouseout="hideInfo()">
+                <h3>Task Automation</h3>
+                <p>Effortlessly automate repetitive tasks and streamline workflows.</p>
+                <div id="automation-info" class="info-content"><img src="automate.jpg" width="130px" height="100px"></div>
+            </div>
+            <div id="collaboration" class="infographic-item" onmouseover="showInfo('collaboration')" onmouseout="hideInfo()">
+                <h3>Real-time Collaboration</h3>
+                <p>Facilitate seamless collaboration with real-time communication and updates.</p>
+                <div id="collaboration-info" class="info-content"><img src="collab.jpg"  width="130px" height="100px"></div>
+            </div>
+            <div id="learning" class="infographic-item" onmouseover="showInfo('learning')" onmouseout="hideInfo()">
+                <h3>Adaptive Learning</h3>
+                <p>Utilize adaptive learning algorithms that evolve with your needs.</p>
+                <div id="learning-info" class="info-content"><img src="adaptive.jpg"  width="130px" height="100px"></div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="contact" style="text-align: center;">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <input type="submit" value="Send Message">
+        </form>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p>"CozyBot has transformed the way I work. Its intuitive features and seamless integration make it a must-have for anyone looking to boost productivity."</p>
+                <p class="testimonial-author">John Doe</p>
+            </div>
+
+            <div class="testimonial">
+                <p>"The automation capabilities of CozyBot are unmatched. It has saved me countless hours and allowed me to focus on what truly matters in my business."</p>
+                <p class="testimonial-author">Jane Smith</p>
+            </div>
+        </div>
+    </section>
+
+    
+         <script>
+        // JavaScript for testimonial slideshow
+        const testimonialContainer = document.querySelector('.testimonial-container');
+        const testimonials = document.querySelectorAll('.testimonial');
+        const totalTestimonials = testimonials.length;
+        let currentIndex = 0;
+
+        function showNextTestimonial() {
+            currentIndex = (currentIndex + 1) % totalTestimonials;
+            testimonialContainer.style.transform = `translateX(${-currentIndex * 104}%)`;
+        }
+
+        setInterval(showNextTestimonial, 3000); // Change testimonial every 5 seconds
+
+        function showInfo(capability) {
+        const infoElement = document.getElementById(`${capability}-info`);
+        if (infoElement) {
+            infoElement.style.display = 'block';
+        }
+          }
+
+          function hideInfo() {
+        const infoElements = document.querySelectorAll('.info-content');
+        infoElements.forEach((element) => {
+            element.style.display = 'none';
+        });
+    }
+    </script>
+  
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" target="_blank" title="Visit us on Facebook"><img src="facebook-icon.png" alt="Facebook Icon" width="20"></a>
+            <a href="https://www.instagram.com/" target="_blank" title="Follow us on Twitter"><img src="instagram-icon.png" alt="Instagram Icon" width="20"></a>
+            <a href="https://twitter.com/home" target="_blank" title="Connect on Instagram"><img src="twitter-icon.png" alt="Twitter Icon" width="20"></a>
+        </div>
+        <p>&copy; 2024 CozyBot. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
