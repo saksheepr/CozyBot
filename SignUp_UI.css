@@ -8,11 +8,20 @@ body {
 }
 
 .background {
-    background: url("C:/Users/Arjun Ajithan/Downloads/Pics/Brown-Beige-BG.jpg") center/cover fixed no-repeat;
+    background-image: linear-gradient(to right,#1D084B,#212167,#23438C);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.logo img {
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    height: auto;
+    display: block;
 }
 
 .container {
@@ -166,4 +175,13 @@ a:hover {
 
 .signup-link a {
     color: #e74c3c;
+}
+
+.page-transition {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page-loaded {
+    opacity: 1;
 }
