@@ -1,4 +1,11 @@
-/* CozyBot Modern UI Design */
+/* CozyBot UI Design */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
 
 .header {
     text-align: center;
@@ -9,17 +16,20 @@
     font-size: 36px;
     margin-bottom: 10px;
     color: #333;
+    margin: 0;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+.logo img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    height: auto;
+    display: block;
 }
 
 .background {
-    background: url("C:/Users/Arjun Ajithan/Downloads/Pics/Brown-Beige-BG.jpg") center/cover fixed no-repeat;
+    background-image: linear-gradient(to right,#1D084B,#212167,#23438C);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -35,41 +45,15 @@ body {
     padding: 20px;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-family: 'Pacifico', cursive;   /*"CozyBot" has different, custom font*/
-    font-size: 40px;
+.login-form {
+    padding: 30px;
 }
 
 h1 {
     font-size: 32px;
     margin-bottom: 10px;
     color: #333;
-}
-
-p {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #666;
-}
-
-a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.login-form {
-    padding: 30px;
-}
-
-h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
+    text-align: center;
 }
 
 label {
@@ -77,7 +61,6 @@ label {
     margin-bottom: 8px;
     font-size: 16px;
     color: #555;
-    transition: color 0.3s ease-in-out;
 }
 
 input[type="email"],
@@ -127,6 +110,11 @@ button {
     color: #060505;
 }
 
+.error-message{
+    color: red;
+    margin-top: 5px;
+}
+
 button {
     background-color: #2ecc71;
     color: #fff;
@@ -143,24 +131,13 @@ button:hover {
     background-color: #27ae60;
 }
 
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
 a:hover {
     color: #207dbb;
-}
-
-button {
-    background-color: #2ecc71;
-    color: #fff;
-    padding: 12px 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    margin-top: 15px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-    background-color: #27ae60;
 }
 
 .signup-link {
@@ -173,17 +150,36 @@ button:hover {
     color: #e74c3c;
 }
 
-.signup-link {
-    text-align: center;
-    margin-top: 20px;
-}
-
 .not-member {
     font-size: 16px;
     color: #060505;
     margin-right: 10px;
 }
 
-.signup-now:hover {
-    background-color: #27ae60;
+.home-link {
+    color: #030000; /* Adjust text color as needed */
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Adjust spacing as needed */
+    display: block;
+}
+
+.home-link:hover {
+    text-decoration: wavy;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}
+
+.page-transition {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.page-loaded {
+    opacity: 1;
 }
