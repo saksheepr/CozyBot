@@ -1,0 +1,29 @@
+#nav_shrink{
+    height: 695px;
+    width: 50px;
+    background-image: linear-gradient(to right,#5b5bac,#23438C);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.icon{
+    height:20px
+}
+.options{
+    color: rgba(255, 255, 255, 0.719);
+    width: 80px;
+    display:inline-block;
+    text-align: left;
+}
+#profile_s{
+    height: 35px;
+    width:35px;
+    border-radius: 50%;
+}
+#logout {
+    margin-top: 70px;
+}
