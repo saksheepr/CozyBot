@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Device Scheduler</title>
+        <link rel="stylesheet" href="DevMan.css">
+        <link rel="icon" href="logo_tab.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="logo_tab.ico" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+            <h1>DEVICE SCHEDULING</h1>
+        </header>
+        <main>
+            <section class="home-view">
+                <div class="controls">
+                    <button class="action-btn" onclick="showScheduleForm('Add')">Manage Schedules</button>
+                    <button class="action-btn" onclick="turnOffLamps()">Turn lamps off</button>
+                    <button class="action-btn" onclick="makeBathHot()">Make Bath hot</button>
+                    <button class="action-btn" onclick="recordTV()">Record TV</button>
+                    <button class="action-btn" onclick="waterPlants()">Water Plants</button>
+                    <button class="action-btn" onclick="warmHouse()">Warm House</button>
+                    <button class="action-btn" onclick="airConditioner()">Air Conditioner</button>
+                    <button class="action-btn" onclick="closeDoors()">Close doors</button>
+                </div>
+            </section>
+            <section class="schedule">
+                <h2>Schedule</h2>
+                <div id="device-list" class="device-list"></div>
+                <div class="schedule-buttons">
+                    <button class="add-btn" onclick="showAddDeviceDialog()">Add</button>
+                    <button class="back-btn" onclick="hideScheduleForm()">Back</button>
+                </div>
+            </section>
+            <div id="schedule-dialog" class="dialog">
+                <div class="dialog-content">
+                    <span class="close-btn" onclick="closeScheduleDialog()">&times;</span>
+                    <h2>Add Schedule</h2>
+                    <form id="schedule-form">
+                        <label for="device-name">Device Name:</label>
+                        <input type="text" id="device-name" name="device-name" required><br><br>
+                        <label for="schedule-time">Schedule Time:</label>
+                        <input type="time" id="schedule-time" name="schedule-time" required><br><br>
+                        <button type="submit">Add Schedule</button>
+                    </form>
+                    <h2>Schedules</h2>
+                    <ul id="schedule-list"></ul>
+                </div>
+            </div>                       
+        </main>
+        <footer>
+            <p>CozyBot 2024</p>
+        </footer>
+        <script>
+            // JavaScript functions for button actions
+            function showAddDeviceDialog() {
+                var deviceName = prompt("Enter device name:");
+                var scheduleTime = prompt("Enter schedule time:");
+
+                if (deviceName && scheduleTime) {
+                    // Create a new device item
+                    var deviceList = document.getElementById("device-list");
+                    var deviceItem = document.createElement("div");
+                    deviceItem.classList.add("device-item");
+
+                    // Populate device details
+                    var deviceNameElem = document.createElement("div");
+                    deviceNameElem.classList.add("device-name");
+                    deviceNameElem.textContent = deviceName;
+
+                    var deviceScheduleElem = document.createElement("div");
+                    deviceScheduleElem.classList.add("device-schedule");
+                    deviceScheduleElem.textContent = "Schedule: " + scheduleTime;
+
+                    // Append elements to the device item
+                    deviceItem.appendChild(deviceNameElem);
+                    deviceItem.appendChild(deviceScheduleElem);
+
+                    // Append the device item to the device list
+                    deviceList.appendChild(deviceItem);
+                } else {
+                    alert("Cancelled or invalid input.");
+                }
+            }
+
+            function hideScheduleForm() {
+                alert('Hiding schedule form');
+                // You can customize this function to hide your form or perform other actions.
+            }
+
+            function turnOffLamps() {
+                alert('Turning off lamps');
+                // You can customize this function to perform the "Turn lamps off" action.
+            }
+
+            function makeBathHot() {
+                alert('Making bath hot');
+                // You can customize this function to perform the "Make Bath hot" action.
+            }
+
+            function recordTV() {
+                alert('Recording TV');
+                // You can customize this function to perform the "Record TV" action.
+            }
+
+            function waterPlants() {
+                alert('Watering plants');
+                // You can customize this function to perform the "Water Plants" action.
+            }
+
+            function warmHouse() {
+                alert('Warming house');
+                // You can customize this function to perform the "Warm House" action.
+            }
+
+            function airConditioner() {
+                alert('Turning on Air Conditioner');
+                // You can customize this function to perform the "Air Conditioner" action.
+            }
+
+            function closeDoors() {
+                alert('Closing doors');
+                // You can customize this function to perform the "Close doors" action.
+            }
+
+            function showScheduleDialog() {
+                document.getElementById("schedule-dialog").style.display = "block";
+            }
+
+            function closeScheduleDialog() {
+                document.getElementById("schedule-dialog").style.display = "none";
+            }
+
+            // Function to handle form submission
+            document.getElementById("schedule-form").addEventListener("submit", function(event){
+                event.preventDefault(); // Prevent form submission
+                // Retrieve form inputs
+                var deviceName = document.getElementById("device-name").value;
+                var scheduleTime = document.getElementById("schedule-time").value;
+                // Perform further actions (e.g., adding schedule to list)
+                // Close the dialog box
+                closeScheduleDialog();
+            });
+
+            // Array to store schedules
+            var schedules = [];
+
+            // Function to add a schedule to the list
+            function addScheduleToList(deviceName, scheduleTime) {
+                // Create a new schedule object
+                var schedule = {
+                    deviceName: deviceName,
+                    scheduleTime: scheduleTime
+                };
+                // Add the schedule to the array
+                schedules.push(schedule);
+                // Refresh the schedule list
+                refreshScheduleList();
+            }
+
+            // Function to delete a schedule from the list
+            function deleteSchedule(index) {
+                schedules.splice(index, 1); // Remove the schedule at the specified index
+                refreshScheduleList(); // Refresh the schedule list
+            }
+
+            // Function to refresh the schedule list
+            function refreshScheduleList() {
+                var scheduleList = document.getElementById("schedule-list");
+                // Clear the current list
+                scheduleList.innerHTML = "";
+                // Populate the list with schedules
+                schedules.forEach(function(schedule, index) {
+                    var li = document.createElement("li");
+                    li.textContent = "Device: " + schedule.deviceName + ", Schedule Time: " + schedule.scheduleTime;
+                    // Create a delete button for each schedule
+                    var deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "Delete";
+                    deleteBtn.onclick = function() {
+                        deleteSchedule(index);
+                    };
+                    li.appendChild(deleteBtn);
+                    scheduleList.appendChild(li);
+                });
+            }
+
+            // Function to handle form submission
+            document.getElementById("schedule-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent form submission
+                // Retrieve form inputs
+                var deviceName = document.getElementById("device-name").value;
+                var scheduleTime = document.getElementById("schedule-time").value;
+                // Add schedule to the list
+                addScheduleToList(deviceName, scheduleTime);
+            });
+
+            // Example: Add initial schedules (you can remove this in your actual implementation)
+            addScheduleToList("Device A", "10:00");
+            addScheduleToList("Device B", "12:00");
+            addScheduleToList("Device C", "14:00");
+        </script>
+    </body>
+</html>
