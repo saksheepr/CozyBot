@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog - CozyBot</title>
+    <style>
+        body {
+            font-family: Candara, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1D084B, #212167, #23438C);
+            color: #fff;
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 0.4s ease-in-out forwards; /* Apply the fade-in animation */
+}
+
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: justify;
+        }
+
+        nav li {
+            margin-right: 15px;
+            font-family: Candara;
+            font-weight: bold;
+            color: #94c4f7;
+            transition: margin-right 0.3s;
+        }
+
+        nav a {
+            color: #94c4f7;
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: left;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .section-content {
+            flex: 1;
+            padding: 0 20px;
+            margin-right: 100px;
+        }
+
+        .section-content h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .section-content p {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .section img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: linear-gradient(to right, #1D084B, #212167, #23438C);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+        }
+
+        .social-icons img {
+            width: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="final.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="catalog.html">Our Catalog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#">Sign Up/Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="section">
+            <div class="section-content">
+                <h2>All-Inclusive Lighting Systems</h2>
+                <p>Elevate your space to extraordinary.  
+                    Embrace the ultimate in connected living with our all-inclusive smart lighting system.
+                     Effortlessly control, automate, and personalize every room with a touch, a voice command,
+                      or even your presence. Immerse yourself in a symphony of vibrant colors,
+                       set relaxing schedules for perfect ambiance, and enjoy unparalleled convenience. 
+                       From boosting energy in the morning to creating the perfect movie night mood, 
+                       experience the future of lighting - today. Discover seamless integration with 
+                       leading platforms, voice assistants, and smart home ecosystems.
+                     Transform your ordinary into extraordinary with our all-inclusive smart lighting system.</p>
+            </div>
+            <img src="lighting.jpg" alt="Section 1 Image">
+        </div>
+
+        <div class="section">
+            <img src="sthermostat.png" alt="Section 2 Image">
+            <div class="section-content" style="margin-left: 100px; margin-right: 0px;">
+                <h2>Smart Thermostat Control</h2>
+                <p>
+                    Ditch the thermostat dance and embrace intuitive climate control with 
+                    our comprehensive smart thermostat system. Access precision temperature
+                     management from anywhere, anytime, right through your fingertips. Create
+                      personalized schedules that seamlessly adapt to your routine, ensuring perfect
+                       comfort when you're home and energy savings when you're not. Optimize your
+                        heating and cooling for ultimate efficiency, and enjoy real-time 
+                        insights that empower informed decisions. Elevate your comfort 
+                        experience and breathe easy with smart thermostat control that 
+                        puts you in charge
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-content">
+                <h2>Location-Enabled Security</h2>
+                    <p>
+                        Secure your haven with our innovative location-based security system.
+                         Rest assured knowing your home is protected 24/7, even when you're away.
+                          Define personalized geofences to trigger automatic actions like locking doors, 
+                          adjusting lights, or activating surveillance upon entry or exit. 
+                          Receive real-time alerts for unexpected activity, granting you
+                           remote access and control for complete peace of mind. Experience
+                            the ultimate blend of convenience and security, knowing your home
+                             is always watching over itself, wherever life takes you.
+                    </p>            
+                </div>
+            <img src="security.jpg" alt="Section 1 Image">
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2024 CozyBot. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" target="_blank" title="Visit us on Facebook"><img
+                    src="facebook.png" alt="Facebook Icon"></a>
+            <a href="https://www.instagram.com/" target="_blank" title="Follow us on Instagram"><img
+                    src="insta.png" alt="Instagram Icon"></a>
+            <a href="https://twitter.com/home" target="_blank" title="Connect on Twitter"><img src="twitter.png"
+                    alt="Twitter Icon"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
