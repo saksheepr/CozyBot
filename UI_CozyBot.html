@@ -1,48 +1,48 @@
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | CozyBot</title>
-    <link rel="stylesheet" href="CozyBot_UI.css">
-    <link rel="icon" href="logo_tab.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="logo_tab.ico" type="image/x-icon">
-</head>
-<body class="page-transition">
-    <header>
-        <div class="logo">
-            <img src="Logo1.png" alt="CozyBot_Logo">
-        </div>
-    </header>
-    <div class="background">
-        <div class="container">
-            <div class="login-form">
-                <h1><center>LOGIN</center></h1>
-                <form id="loginForm" action="#" onsubmit="return validateForm()">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter Your Email">
-                    <div id="emailError" class="error-message"></div>
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Enter Your Password">
-                    <div class="checkbox">
-                        <input type="checkbox" id="remember-me">
-                        <label for="remember-me">Remember Me</label>
-                    </div>
-                    <div id="rememberError" class="error-message"></div>
-                    <a href="ForgotPassword.html" class="forgot-password">Forgot Password?</a>
-                    <button type="submit">Login Now</button>
-                </form>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login | CozyBot</title>
+        <link rel="stylesheet" href="CozyBot_UI.css">
+        <link rel="icon" href="logo_tab.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="logo_tab.ico" type="image/x-icon">
+    </head>
+    <body class="page-transition">
+        <header>
+            <div class="logo">
+                <img src="logo_tab.png" alt="CozyBot_Logo">
             </div>
-            <div class="signup-link">
-                <b class="not-member">-Not A Member?-</b>
-                <a href="SignUp_CozyBot.html">Signup Now</a>
+        </header>
+        <div class="background">
+            <div class="container">
+                <div class="login-form">
+                    <h1><center>LOGIN</center></h1>
+                    <form id="loginForm" action="#" onsubmit="return validateForm()">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email">
+                        <div id="emailError" class="error-message"></div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter Your Password">
+                        <div class="checkbox">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me">Remember Me</label>
+                        </div>
+                        <div id="rememberError" class="error-message"></div>
+                        <a href="ForgotPassword.html" class="forgot-password">Forgot Password?</a>
+                        <button type="submit">Login Now</button>
+                    </form>
+                </div>
+                <div class="signup-link">
+                    <b class="not-member">Not A Member?</b>
+                    <a href="SignUp_CozyBot.html">Signup Now</a>
+                </div>
+                <center><a href="final.html" class="home-link"><b> >HOME< </b></a></center>
             </div>
-            <center><a href="MainPage.html" class="home-link"><b>-HOME-</b></a></center>
         </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.classList.add('page-loaded');
-        });
-    </script>
-</body>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.classList.add('page-loaded');
+            });
+        </script>
+    </body>
 </html>
