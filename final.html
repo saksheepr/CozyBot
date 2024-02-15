@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CozyBot - Re-designing your life the smart way</title>
+    <link rel="icon" href="home.png" type="image/x-icon">
     <style>
         #logo{
             height: 40px;
@@ -49,22 +50,33 @@
         }
 
         nav a {
-            color: #94c4f7;
-            font-size: large;
-            text-decoration: none;
-            padding: 8px 10px; /* Adjusted padding for better spacing */
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+        color: #94c4f7;
+        font-size: large;
+        text-decoration: none;
+        padding: 8px 10px; 
+        border-radius: 5px;
+        position: relative; 
+    }
 
-        nav a:hover {
-            color: #E188FC;
-            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background on hover */
-            transform: translateY(-5px); /* Move elements slightly upwards on hover */
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Add a subtle shadow */
-            border-radius: 5px;
-        }
+    nav a:hover {
+        color: #E188FC;
+    }
 
+    nav a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        border-radius: 50%;
+        background-color: #E188FC; 
+        transition: width 0.3s; 
+    }
+
+    nav a:hover::after {
+        width: 100%; /* Expand the line to full width on hover */
+    }
 
         .content-wrapper {
             display: flex;
@@ -77,10 +89,6 @@
         .text-box {
             width: 400px;
         }
-
-        
-
-
         footer {
             background: linear-gradient(to right, #1D084B, #212167, #23438C);
             color: #fff;
@@ -108,12 +116,7 @@
             font-size:30px;
             color:white;
         }
-        .text-box p{
-            color:grey;
-            font-size: 15px;
-        }
-        .text-box h1,
-        .image-box img {
+        #image{
             opacity: 0; /* Initially hidden */
             animation: fadeIn 1s ease-in-out forwards; /* Apply the fade-in animation */
             }
@@ -163,9 +166,6 @@
             height: 100%;
             object-fit: cover;
         }
-
-
-
     </style>
 </head>
 <body>
@@ -177,7 +177,7 @@
                 <li><a href="aboutus.html">About Us</a></li>
                 <li><a href="catalog.html">Our Catalog</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="UI_CozyBot.html">Sign Up/Login</a></li>
+                <li><a href="Sign_Up.html">Sign Up/Login</a></li>
             </ul>
         </nav>
     </header>
@@ -186,7 +186,7 @@
                 <h1>CozyBot</h1>
                 <h2>Re-designing your home <br>
                     The Smart Way <h2>
-                <button class="button">SIGN UP <img id="signup" src="play.png"></button>
+                <a href="Sign_Up.html"><button class="button">SIGN UP <img id="signup" src="play.png"></button></a>
                 </div>
                 <div id="image">
                     <img src="shome1.png" alt="CozyBot product example">
