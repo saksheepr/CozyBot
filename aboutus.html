@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CozyBot</title>
+    <style>
+        
+        body {
+            font-family: candara;
+            margin: 0px;
+            padding: 0;
+            background: linear-gradient(to right, #1D084B, #212167, #23438C);
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            color: #fff;
+            background: linear-gradient(to right, #1D084B, #212167, #23438C);
+        }
+        h2{
+            font-size: 40px;
+            color: #68aaeb;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            margin-top: 20px; /* Adjusted margin for better spacing */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: justify; /* Move navigation elements to the right */
+        }
+
+        nav li {
+            margin-right: 15px; /* Adjusted margin for better spacing */
+            font-family: Candara;
+            font-weight: bold;
+            color: #94c4f7;
+            transition: margin-right 0.3s;
+        }
+
+        nav a {
+            color:#94c4f7;
+            text-decoration: none;
+            padding: 8px 10px; /* Adjusted padding for better spacing */
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background on hover */
+            transform: translateY(-5px); /* Move elements slightly upwards on hover */
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15); /* Add a subtle shadow */
+            border-radius: 5px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .section-content {
+            flex: 1;
+            text-align: left;
+            padding-right: 20px;
+        }
+
+        .section-content h2 {
+            font-size: 40px;
+            color: #f1f1f1;
+            margin-bottom: 20px;
+        }
+
+        .section-content p {
+            font-size: 18px;
+            color:rgba(233, 231, 231, 0.884);
+            margin-bottom: 20px;
+        }
+
+        .section img {
+            width: 100%;
+            max-width: 400px; /* Adjust the maximum width as needed */
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .section .slider {
+            overflow: hidden;
+            max-width: 400px; /* Adjust the maximum width as needed */
+            margin-right: 20px;
+        }
+
+        .section .slide {
+            display: inline;
+            width: 100%;
+        }
+
+        .section .slide img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+            footer {
+                background: linear-gradient(to right, #1D084B, #212167, #23438C);
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+                width: 100%;
+            }
+        
+
+        .social-icons a {
+            margin-right: 10px;
+        }
+
+        .social-icons img {
+            width: 20px;
+        }
+        .affiliations {
+            text-align: center;
+            background: linear-gradient(to right, #1D084B, #212167, #23438C);
+            padding:0;
+            width:100%;
+            margin-bottom: 15px;
+        }
+
+        .affiliation-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .affiliation-logos img {
+            max-width: 100px; /* Adjust the maximum width as needed */
+            margin: 0 10px;
+        }
+
+        .testimonials {
+            max-width: 800px;
+            margin: 2em auto;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .testimonial {
+            flex: 0 0 100%;
+            background-color: #FFF;
+            border: 1px solid #E0E0E0;
+            padding: 2px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 25px;
+            width: 150%;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+            width: 100%;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #2E2E2E;
+            margin-top: 1em;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="final.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="catalog.html">Our Catalog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="UI_CozyBot.html">Sign Up/Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="section">
+            <div class="section-content">
+                <h2>Our Story</h2>
+                <p>CozyBot was founded in 2020 with a vision to revolutionize home automation. Our journey began with a group of passionate individuals who aimed to bring innovation and convenience into every household. Over the years, we've grown into a dedicated team committed to redefining your home experience.</p>
+            </div>
+            <img src="story.jpg" alt="Our Story Image">
+        </div>
+
+        <div class="section">
+            <div class="section">
+                <div class="slider">
+                    <div class="slide"><img src="adaptive.jpg" alt="Capabilities Image 1"></div>
+                    <div class="slide"><img src="automate.jpg" alt="Capabilities Image 2"></div>
+                    <div class="slide"><img src="collab.jpg" alt="Capabilities Image 3"></div>
+                </div>
+                <div class="section-content" style="text-align: right;">
+                    <h2>CozyBot's Capabilities</h2>
+                    <p>Explore the limitless possibilities with CozyBot. From smart temperature control to automated security systems, CozyBot seamlessly integrates into your lifestyle. Our cutting-edge technology ensures that your home is not just smart but also tailored to your unique preferences and needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-content">
+                <h2>Meet Our Team</h2>
+                <p>At CozyBot, we take pride in our diverse and talented team. From skilled engineers to creative designers, each member contributes to our success. Meet the faces behind CozyBot, working tirelessly to bring you the latest in home automation technology.</p>
+            </div>
+            <img src="team.jpg" alt="Meet Our Team Image">
+        </div>
+
+        <div class="section">
+            <img src="innovate.jpg" alt="Future Innovations Image">
+            <div class="section-content" style="text-align: right;">
+                <h2>Future Innovations</h2>
+                <p>Stay tuned for the future of home automation. CozyBot is dedicated to continuous innovation. Our research and development team is actively working on new features and technologies to enhance your smart home experience. The future is exciting, and CozyBot is at the forefront of it.</p>
+            </div>
+            
+        </div>
+        <section class="affiliations">
+            <h2>Affiliations</h2>
+            <div class="affiliation-logos">
+                <img src="affil.jpg" alt="Organization 1">
+                <img src="affil1.jpg" alt="Organization 2">
+                <img src="affil2.jpg" alt="Organization 3">
+                <img src="affil3.jpg" alt="Organization 4">
+                <img src="affil4.jpg" alt="Organization 5">
+                <img src="affil5.jpg" alt="Organization 6">
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p>"CozyBot has transformed the way I work. Its intuitive features and seamless integration make it a must-have for anyone looking to boost productivity."</p>
+                    <p class="testimonial-author">John Doe</p>
+                </div>
+    
+                <div class="testimonial">
+                    <p>"The automation capabilities of CozyBot are unmatched. It has saved me countless hours and allowed me to focus on what truly matters in my business."</p>
+                    <p class="testimonial-author">Jane Smith</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add more sections as needed -->
+        <footer>
+            <p>&copy; 2024 CozyBot. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank" title="Visit us on Facebook"><img
+                        src="facebook.png" alt="Facebook Icon"></a>
+                <a href="https://www.instagram.com/" target="_blank" title="Follow us on Instagram"><img
+                        src="insta.png" alt="Instagram Icon"></a>
+                <a href="https://twitter.com/home" target="_blank" title="Connect on Twitter"><img src="twitter.png"
+                        alt="Twitter Icon"></a>
+            </div>
+            <script>
+                // JavaScript for testimonial slideshow
+                const testimonialContainer = document.querySelector('.testimonial-container');
+                const testimonials = document.querySelectorAll('.testimonial');
+                const totalTestimonials = testimonials.length;
+                let currentIndex = 0;
+        
+                function showNextTestimonial() {
+                    currentIndex = (currentIndex + 1) % totalTestimonials;
+                    testimonialContainer.style.transform = `translateX(${-currentIndex * 104}%)`;
+                }
+        
+                setInterval(showNextTestimonial, 3000); // Change testimonial every 5 seconds
+                // JS for Capabilities
+                document.addEventListener('DOMContentLoaded', function () {
+                const slider = document.querySelector('.slider');
+                const slides = document.querySelectorAll('.slide');
+                let currentSlide = 0;
+
+                function showSlide(index) {
+                    slides.forEach((slide, i) => {
+                        slide.style.display = i === index ? 'block' : 'none';
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }
+
+                setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+                // Initial setup
+                showSlide(currentSlide);
+    });
+                
+                        
+            </script>
+        </footer>
+</body>
+</html>
