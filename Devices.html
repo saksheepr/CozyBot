@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devices</title>
     <link rel="stylesheet" type="text/css" href="device_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
         <div id="nav_shrink">
@@ -25,8 +26,75 @@
         </div>
 
         <div id="content">
+            <img id="pic" src="devices.png">
             <h1>My Devices</h1>
+            <div class="nav">
+                <div id="buttons">
+                    <button class="button" onclick="openPopup()">Add Device</button>
+                <button class="button">Remove Device</button>
+                </div>
+                <p style="color:#1D084B;">Total No. of Devices : 50</p>
+            </div>
+            <div class="search">
+              <select id="devices">
+                <option value="Bedroom">All Devices</option>
+                <option >Lights</option>
+                <option >Doors</option>
+                <option >Fans</option>
+                <option>Thermostat</option>
+                <option>Ac</option>
+                <option>Plugs</option>
+            </select>
+            <div class="topnav">
+              <div class="search-container">
+                  <input type="text" placeholder="Search.." name="search">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+            <div class="overlay" id="overlay"></div>
+            <div class="popup" id="popup">
+                <!-- Close button -->
+                <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;color:white;background-color: rgb(194, 60, 60);border-radius: 8px;">X</button>
+                <!-- Close button end -->
+                <h2>Add New Device</h2>
+                <form id="deviceForm">
+                  <label for="deviceName">Device Name :</label><br>
+                  <input class="input"type="text" id="deviceName" name="deviceName"><br><br>
+              
+                  <label for="deviceType">Device Type :</label><br>
+                  <select id="deviceType" name="deviceType">
+                    <option value="Type A">Smart Bulb</option>
+                    <option value="Type B">Smart Geyser</option>
+                    <option value="Type C">Smart Door</option>
+                  </select><br><br>
+              
+                  <label>Room :</label><br>
+                  <input type="radio" id="newRoom" name="roomOption" value="New" onclick="showNewRoom()">
+                  <label for="newRoom">Add a New Room</label><br>
+                  <input type="radio" id="existingRoom" name="roomOption" value="Existing" onclick="showExistingRooms()">
+                  <label for="existingRoom">Existing Room</label><br><br>
+              
+                  <div id="existingRoomList" style="display: none;">
+                    <label for="existingRooms">Select Existing Room :</label><br>
+                    <select id="existingRooms" name="existingRooms">
+                      <option value="Living Room">Living Room</option>
+                      <option value="Bedroom">Bedroom</option>
+                      <option value="Kitchen">Kitchen</option>
+                    </select><br><br>
+                  </div>
+              
+                  <div id="newRoomInput" style="display: none;">
+                    <label for="newRoomName">New Room Name :</label><br>
+                    <input class="input"type="text" id="newRoomName" name="newRoomName"style="background-color:white;"><br><br>
+                  </div>
+              
+                  <button class="button">Submit</button>
+                </form>
+              </div>
+              
         </div>
+
         
     <script src="device_script.js"></script>
 </body>

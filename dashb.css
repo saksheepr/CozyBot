@@ -12,7 +12,7 @@ body {
     width: 90vw;
     position:absolute;
     top:0px;
-    left:70px;
+    left:220px;
     background-color:inherit;
 }
 
@@ -101,12 +101,12 @@ body {
     margin: 20px 0; 
 }
 #room {
+    width: 150px;
     position: absolute;
     top: 220px;
     left: 20px;
     z-index: 1;
     border: none;
-    background-color: cornsilk;
     color: #713618;
 }
 h2{
@@ -130,11 +130,6 @@ h3{
 #t{
     position: absolute;
     left:60px;
-    top:350px;
-}
-#t1{
-    position: absolute;
-    left:510px;
     top:350px;
 }
 #Mydevices {
@@ -264,24 +259,29 @@ a:hover {
     align-items: center;
     justify-content: space-between;
 }
-.longbox{
+.heading{
     display: flex;
-    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
-    border-radius: 10px; /* Add border-radius if needed */
-    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
-    width:450px;
-    height:550px;
-    border-radius: 10px;
+    width: 300px;
     position: absolute;
-    top:100px;
-    left:950px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
-
+  .view_energy {
+    display: flex;
+    width: 360px;
+    position: absolute;
+    left:510px;
+    top:350px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
 .switch {
     position: relative;
     display: inline-block;
     width: 40px;
-    height: 20px;
+    height: 18px;
   }
   
   .slider {
@@ -299,26 +299,25 @@ a:hover {
   .slider:before {
     position: absolute;
     content: "";
-    height: 20px;
-    width: 20px;
-    left: 2px;
+    height: 18px;
+    width: 18px;
+    left: 1px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 4px rgb(54, 10, 90);
   }
-  
   input:checked + .slider:before {
-    -webkit-transform: translateX(22px);
-    -ms-transform: translateX(22px);
-    transform: translateX(22px);
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
   }
   
   /* Rounded sliders */
@@ -329,3 +328,140 @@ a:hover {
   .slider.round:before {
     border-radius: 50%;
   }
+
+  #t1{
+    display: inline;
+}
+#t2{
+    display: inline-block;
+    position: relative;
+    left: 120px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+#disarm {
+    margin-left: 120px;
+    display: inline;
+}
+.security {
+    position: absolute;
+    top:100px;
+    left:950px;
+    height: 150px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    background-color: aliceblue;
+    border-radius: 10px; /* Add border-radius if needed */
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
+}
+.weather {
+    position: absolute;
+    top:270px;
+    left:950px;
+    height: 220px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: aliceblue;
+    border-radius: 10px; /* Add border-radius if needed */
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
+}
+.member{
+    position: absolute;
+    top:510px;
+    left:950px;
+    height: 150px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    background-color: aliceblue;
+    border-radius: 10px; /* Add border-radius if needed */
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
+}
+#circle {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.mem{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #1D084B;
+    overflow: hidden;
+    border: 1px solid #ccc; 
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929);
+}
+.mem img {
+    width: 100%;
+    height: auto; 
+    display: block;
+}
+#heading{
+    margin-top: 5px;
+}
+#arm1 {
+    height: 100px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#arm2 {
+    height: 100px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.button {
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius:30px;
+    background-color: #23438C;
+}
+  .weather-widget {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top:15px;
+    left:45px;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.weather-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.temperature {
+    font-size: 24px;
+    font-weight: bold;
+}
+.weather-details {
+    position: relative;
+    display: inline;
+    top: 35px;
+    left: 80px;
+}

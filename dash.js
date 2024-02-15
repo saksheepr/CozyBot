@@ -1,13 +1,12 @@
 function openNav(){
+    document.getElementById("nav_shrink").style = "visibility: visible";
+    document.getElementById("nav_expand").style = "visibility: hidden";
+    document.getElementById("content").style.left = "70px";    
+}
+function closeNav(){
     document.getElementById("nav_shrink").style = "visibility: hidden";
     document.getElementById("nav_expand").style = "visibility: visible";
     document.getElementById("content").style.left="220px";
-}
-function closeNav(){
-    document.getElementById("nav_shrink").style = "visibility: visible";
-    document.getElementById("nav_expand").style = "visibility: hidden";
-    document.getElementById("content").style.left = "70px";
-
 }
 function adjustContentWidth() {
     var navWidth = document.getElementById("nav").offsetWidth;

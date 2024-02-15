@@ -20,6 +20,7 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(to right, #1D084B, #212167, #23438C);
+            
         }
 
         header {
@@ -29,6 +30,7 @@
             color: #fff;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(to right, #1D084B, #212167, #23438C);
         }
 
 
@@ -115,13 +117,17 @@
         }
         #image{
             opacity: 0; /* Initially hidden */
-            animation: fadeIn 1s ease-in-out forwards; /* Apply the fade-in animation */
+            animation: fadeIn 1s ease-in-out 0.5s forwards; /* Apply the fade-in animation */
             }
 
             @keyframes fadeIn {
             to {
                 opacity: 1;
             }
+            }
+            .text-box h1 {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.5s forwards; /* Delay the fade-in by 0.5 seconds */
             }
             .text-box h2 {
             opacity: 0;
@@ -150,8 +156,6 @@
     
            
         .button:hover {
-            background-color: #007bff; /* Change background color on hover */
-            color: #fff; /* Change text color on hover */
             transform: scale(1.1); /* Slightly enlarge the button on hover */
             }
         #image{
