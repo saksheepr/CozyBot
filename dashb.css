@@ -185,11 +185,15 @@ a:hover {
     width: 120px;
     height: 100px;
     border-radius: 10px;
-    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
+    background-image: linear-gradient(to right, rgba(29, 8, 75, 0.9), rgba(33, 33, 103, 0.9), rgba(35, 67, 140, 0.9));
     align-items: center;
     flex-wrap: nowrap;
     justify-content: space-around;
 }
+.de:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
+    }
 .rooms_image {
     width: 400px; 
     height: 250px;

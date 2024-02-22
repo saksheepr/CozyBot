@@ -53,6 +53,9 @@
               </div>
             </div>
           </div>
+          
+          <div id="tab"></div>
+
             <div class="overlay" id="overlay"></div>
             <div class="popup" id="popup">
                 <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;color:white;background-color: rgb(194, 60, 60);border-radius: 8px;">X</button>
@@ -63,9 +66,12 @@
               
                   <label for="deviceType">Device Type :</label><br>
                   <select id="deviceType" name="deviceType">
-                    <option value="Type A">Smart Bulb</option>
-                    <option value="Type B">Smart Geyser</option>
-                    <option value="Type C">Smart Door</option>
+                    <option value="Lights">Lights</option>
+                    <option value="Doors">Doors</option>
+                    <option value="Fans">Fans</option>
+                    <option value="Thermostat">Thermostat</option>
+                    <option value="Ac">Ac</option>
+                    <option value="Plugs">Plugs</option>
                   </select><br><br>
               
                   <label>Room :</label><br>

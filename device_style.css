@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #DCF2F1;
+}
 #nav_shrink{
     height: 695px;
     width: 50px;
@@ -79,7 +86,8 @@ h2{
 }
 .button {
     border: none;
-    color: white;
+    color: black;
+    font-weight: bolder;
     padding: 10px 22px;
     text-align: center;
     text-decoration: none;
@@ -88,8 +96,11 @@ h2{
     margin: 4px 2px;
     cursor: pointer;
     border-radius:30px;
-    background-color: #23438C;
+    background: linear-gradient(to right,#7DCFE9,#ADBFFD,#4AE0D3);
 }
+.button:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+    }
 .nav{
     height: 60px;
     width: 700px;
@@ -124,6 +135,38 @@ h2{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
+  #tab {
+    margin-top: 20px;
+    width: 700px;
+    height: 400px;
+    background-color: #DCF2F1;
+    overflow-y: auto; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, 120px); 
+    grid-auto-rows: 120px;
+    gap: 30px; 
+    position: relative;
+    left: 750px;
+    top: 100px;
+  }
+  #dev{
+    color: #D1CBCB;
+  }
+  .devicedetails {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  .icontype{
+    width: 40px;
+  }
 label{
     color:#212167;
 }
