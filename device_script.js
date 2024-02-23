@@ -41,77 +41,60 @@ function showNewRoom() {
 // Function to filter and rearrange device details based on selected device type
 document.getElementById('devices').addEventListener('change', function() {
   var selectedDeviceType = this.value; // Get the selected device type
-
-  // Get all device details divs
-  var deviceDetailsDivs = document.querySelectorAll('.devicedetails');
+  var deviceDetailsDivs = document.querySelectorAll('.devicedetails'); // Get all device details divs
 
   // Loop through all device details divs and update visibility based on selected device type
   deviceDetailsDivs.forEach(function(div) {
-      // Check if the device type matches the selected device type
-      var deviceType = div.getAttribute('data-device-type');
-
-      if (selectedDeviceType === 'All Devices' || deviceType === selectedDeviceType) {
-          // Show the device details if it matches the selected device type or if 'All Devices' is selected
-          div.style.display = 'block';
+      if (selectedDeviceType === 'All Devices') {
+          // Show all device details if 'All Devices' is selected
+          div.style.display = 'flex';
+      } else if (div.dataset.deviceType === selectedDeviceType) {
+          // Show the device details if it matches the selected device type
+          div.style.display = 'flex';
       } else {
           // Hide the device details if it doesn't match the selected device type
           div.style.display = 'none';
       }
   });
-
-  // Rearrange grid layout
-  rearrangeGrid();
 });
 
-// Function to rearrange grid layout
-function rearrangeGrid() {
-  var tabContainer = document.getElementById('tab');
-  var deviceDetailsDivs = tabContainer.querySelectorAll('.devicedetails');
-
-  // Get the visible device details divs
-  var visibleDivs = Array.from(deviceDetailsDivs).filter(function(div) {
-      return div.style.display !== 'none';
-  });
-
-  // Reset the grid layout
-  tabContainer.innerHTML = ''; // Clear the container
-
-  // Append the visible device details divs back to the container in the correct order
-  visibleDivs.forEach(function(div) {
-      tabContainer.appendChild(div);
-  });
+// Function to update the total number of devices
+function updateDeviceCount() {
+  var deviceCount = document.querySelectorAll('.devicedetails').length;
+  document.getElementById('deviceCount').textContent = deviceCount;
 }
 
 // Form submission handling
 document.getElementById('deviceForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Get form values
-    var deviceName = document.getElementById('deviceName').value;
-    var deviceType = document.getElementById('deviceType').value;
-    var deviceDetailsHTML = "<div class='devicedetails' data-device-type='" + deviceType + "'>"; // Start new devicedetails div
-  
+  event.preventDefault();
+
+  // Get form values
+  var deviceName = document.getElementById('deviceName').value;
+  var deviceType = document.getElementById('deviceType').value;
+
+  // Create device details HTML
+  var deviceDetailsHTML = "<div class='devicedetails' data-device-type='" + deviceType + "'>";
   if (deviceType === 'Lights') {
-    deviceDetailsHTML += "<img class='icontype' src='bulb.png' >";
+      deviceDetailsHTML += "<img class='icontype' src='bulb.png' >";
   } else if (deviceType === 'Doors') {
-    deviceDetailsHTML += "<img class='icontype' src='door.png' >";
+      deviceDetailsHTML += "<img class='icontype' src='door.png' >";
   } else if (deviceType === 'Fans') {
-    deviceDetailsHTML += "<img class='icontype' src='fan.png' >";
-  }else if (deviceType === 'Thermostat') {
-    deviceDetailsHTML += "<img class='icontype' src='thermostat.png' >";
-  }else if (deviceType === 'Ac') {
-    deviceDetailsHTML += "<img class='icontype' src='ac.png' >";
-  }else if (deviceType === 'Plugs') {
-    deviceDetailsHTML += "<img class='icontype' src='plug.png' >";
+      deviceDetailsHTML += "<img class='icontype' src='fan.png' >";
+  } else if (deviceType === 'Thermostat') {
+      deviceDetailsHTML += "<img class='icontype' src='thermostat.png' >";
+  } else if (deviceType === 'Ac') {
+      deviceDetailsHTML += "<img class='icontype' src='ac.png' >";
+  } else if (deviceType === 'Plugs') {
+      deviceDetailsHTML += "<img class='icontype' src='plug.png' >";
   }
-  deviceDetailsHTML += "<p id='dev'>" + deviceName + "</p>";
+  deviceDetailsHTML += "<p id='dev'>" + deviceName + "</p></div>";
 
-  deviceDetailsHTML += "</div>"; // End devicedetails div
-
-  // Append new devicedetails div to the tab
+  // Append new device details to the container
   var tabContainer = document.getElementById('tab');
-  var newDeviceDetailsDiv = document.createElement('div');
-  newDeviceDetailsDiv.innerHTML = deviceDetailsHTML;
-  tabContainer.appendChild(newDeviceDetailsDiv);
+  tabContainer.insertAdjacentHTML('beforeend', deviceDetailsHTML);
+
+  // Update the total number of devices
+  updateDeviceCount();
 
   // Clear the form
   document.getElementById('deviceForm').reset();
@@ -123,3 +106,7 @@ document.getElementById('deviceForm').addEventListener('submit', function(event)
   tabContainer.scrollTop = tabContainer.scrollHeight;
 });
 
+// Function to update the total number of devices when the page loads
+window.addEventListener('load', function() {
+  updateDeviceCount();
+});
