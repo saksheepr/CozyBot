@@ -9,26 +9,28 @@
 </head>
 <body>
     <main>
-        <div id="nav_shrink">
-            <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
-            <img id="profile_s" src="profile.png" alt="Profile Picture">
+        <div id="nav_shrink" >
+            <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;" >&#9776;</span>
+            <a href="User_Profile.html">
+                <img id ="profile_s" src="profile.png" alt="Profile Picture">
+            </a>  
             <a href="Dashboard.html">
-                <img class="icon" src="dashboard_icon.png">
+                <img class="icon" src="dashboard_icon.png" >
             </a>
-            <img class="icon" src="energy.png">
+            <img class="icon" src="schedule.png" >
             <a href="Rooms.html">
-                <img class="icon" src="rooms.png">
+                <img class="icon" src="rooms.png" >
             </a>
             <a href="Devices.html">
-                <img class="icon" src="device.png">
+                <img class="icon" src="device.png" >
             </a>
-            <img class="icon" src="members.png">
-            <img class="icon" src="logout.png">
+            <img class="icon" src="members.png" >
+            <img class="icon" src="logout.png" >
         </div>
         <script src="room_script.js"></script>
         <div class="profile-container">
             <div class="avatar-container">
-                <img src="avatar.png" alt="Profile Picture" class="avatar" id="avatar">
+                <img src="avatar.png" class="avatar" id="avatar">
                 <input type="file" accept="image/*" id="avatar-input" style="display: none;">
                 <button onclick="openAvatarDialog()">Change Picture</button>
             </div>

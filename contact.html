@@ -116,26 +116,6 @@
             width: 20px;
         }
         /* Add this CSS to your existing styles or create a new style block */
-        .button {
-            display: inline-block;
-            padding: 12=0px 20px;
-            background: linear-gradient(to right, #9a0505, #ad0404, #e40303);
-            color: #fff;
-            text-decoration: none;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
-            font-family: candara;
-            cursor: pointer;
-            font-size:15px;
-            font-weight:bold;
-        }
-
-        .button:hover {
-            background-color: #007bff; /* Hover background color */
-            color: #fff; /* Hover text color */
-            transform: scale(1.05); /* Zoom in effect on hover */
-        }
 
     </style>
 
@@ -144,14 +124,13 @@
 <body>
 
     <header>
-        
+        <img id="logo" src="home.png" alt="logo">
         <nav>
             <ul>
-                <li><a href="final.html">Home</a></li>
-                <li><a href="aboutus.html">About Us</a></li>
-                <li><a href="catalog.html">Our Catalog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="UI_CozyBot.html">Sign Up/Login</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#aboutus">About Us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="Sign_Up.html">Login</a></li>
             </ul>
         </nav>
     </header>
