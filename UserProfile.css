@@ -2,8 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
-    background-image: linear-gradient(to right,#1D084B,#212167,#23438C);
-    
+    background-color: #DCF2F1;
 }
 
 header {
@@ -20,7 +19,7 @@ main {
 }
 
 .profile-container {
-    background-color: #f9f9f9;
+    background-image: linear-gradient(to right,#5b5bac,#23438C);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -80,4 +79,138 @@ input, textarea {
 
 button i {
     margin-right: 5px;
+}
+
+#nav_shrink{
+    height: 1000px;
+    width: 50px;
+    background-image: linear-gradient(to right,#5b5bac,#23438C);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.icon{
+    height:20px
+}
+.options{
+    color: rgba(255, 255, 255, 0.719);
+    width: 80px;
+    display:inline-block;
+    text-align: left;
+}
+#profile_s{
+    height: 35px;
+    width:35px;
+    border-radius: 50%;
+}
+
+
+
+
+
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Modern font-family */
+    line-height: 1.6; /* Improved readability with proper line-height */
+    letter-spacing: 0.5px; /* Adding slight letter-spacing for better readability */
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2; /* Light background color */
+}
+
+header {
+    background-color: #1D084B; /* Adjust header styles as needed */
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.profile-container {
+    background-color: #fff; /* White background for profile container */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.avatar-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+button {
+    background-color: #1d084b;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #23438C;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fffefe; /* Dark font color for better readability */
+    font-weight: 600; /* Bold font weight for labels */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', Arial, sans-serif; /* Modern font-family */
+    font-size: 16px; /* Standard font size */
+    line-height: 1.6; /* Improved readability with proper line-height */
+    letter-spacing: 0.5px; /* Adding slight letter-spacing for better readability */
+}
+
+button,
+select {
+    appearance: none; /* Remove default button and select styles */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing of textarea */
 }
