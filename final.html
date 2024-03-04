@@ -118,7 +118,7 @@
         }
 
         .text-box h1 {
-            font-size: 80px;
+            font-size: 60px;
             color: #68aaeb;
             background: linear-gradient(to right, #E188FC, #84D5FF, #B6ABFD);
             -webkit-text-fill-color: transparent;
@@ -224,7 +224,6 @@
             flex-wrap: wrap;
             justify-content: space-around;
             margin-bottom: 40px;
-            margin-top: 80px;
         }
 
         .column {
@@ -236,7 +235,7 @@
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            background: linear-gradient(to right,  #23438C, #212167,#1D084B);
+            background: #1D084B;
             border-radius: 10px;
             text-align: center;
             margin-bottom: 20px;
@@ -306,7 +305,13 @@
             #popup .close-button:hover {
             background-color: #ddd;
             }
-            
+        section {
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         #aboutus {
             padding-top: 100px;
         }
@@ -314,11 +319,8 @@
         .testimonials {
             padding: 2em;
             margin-top: 20px;
-            position: relative;
-            top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            position:relative;
+            top:40px;
         }
         .about-us-title {
             font-size: 60px;
@@ -329,7 +331,7 @@
             background-clip: text;
             text-align: center;
             margin-bottom: 20px;
-            margin-top: 0px;   
+            padding-top:20px;   
             position: relative;
             top: 50px;
         }
@@ -351,7 +353,7 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 1em;
-            width: 1000px;
+            width: 100%;
             display: none;
             border-radius: 20px;
         }
@@ -397,43 +399,7 @@
             color: #f1f1f1;
             margin-bottom: 20px;
         }
-        section#contact {
-            padding: 50px 20px;
-            text-align: center;
-            margin-top: -80px;
-        }
-
-        section#contact h2 {
-            font-size: 45px;
-            color: #68aaeb;
-            padding-top: 30px;
-        }
-        form {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        form label {
-            display: block;
-            margin: 10px 0;
-            color: #fff;
-            font-family:candara;
-            font-weight: bold;
-        }
-
-        form input,
-        form textarea {
-            width: 90%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
+        
     
 
     </style>
@@ -448,7 +414,7 @@
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#aboutus">About Us</a></li>
-                <li><a href="#contact">Contact us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
                 <li><a href="Sign_Up.html">Login</a></li>
             </ul>
         </nav>
@@ -456,7 +422,7 @@
     <section id="home">
         <div class="content-wrapper">
             <div class="text-box">  
-                <h1 style="margin-bottom: 0px;">CozyBot</h1>
+                <h1>CozyBot</h1>
                 <h2>Re-designing your home <br> The Smart Way </h2>
                 <a href="Sign_Up.html"><button class="button">SIGN UP <img id="signup" src="play.png"></button></a>
             </div>
@@ -465,10 +431,9 @@
             </div>
         </div>
     </section>
-    
+    <h1 class="about-us-title">About Us</h1>
 
         <section id="aboutus">
-            <h1 class="about-us-title">About Us</h1>
             <div class="four-column-section">
                 <div class="column">
                     <div class="sub-column">
@@ -556,22 +521,6 @@
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form action="#" method="post">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Your Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <input class="button" type="submit" value="Send Message">
-        </form>
-    </section>
-
     <footer>
         <p>&copy; 2024 CozyBot. All rights reserved.</p>
         <div class="social-icons">
@@ -609,9 +558,12 @@
     setInterval(changeImage, 2000); // Change image every 5 seconds
     images[0].classList.add('active');
 
-    document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('nav a');
+    // navbar
+
     const sections = document.querySelectorAll('section');
+
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('nav a');
 
     // Function to highlight the active section in the navbar
     function highlightNavbarItem() {
@@ -633,44 +585,6 @@
 
     // Add scroll event listener to highlight the active section in the navbar
     window.addEventListener('scroll', highlightNavbarItem);
-
-    // Add click event listeners to the navigation links to remove 'active' class from all links
-    // and add 'active' class to the clicked link
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-});
-
-    document.addEventListener('DOMContentLoaded', function () {
-            const form = document.querySelector('form');
-
-            form.addEventListener('submit', function (event) {
-                // Validate Name
-                const nameInput = document.getElementById('name');
-                const nameValue = nameInput.value.trim();
-                const nameRegex = /^[a-zA-Z\s]+$/;
-
-                if (!nameRegex.test(nameValue)) {
-                    alert('Please enter a valid name.');
-                    event.preventDefault();
-                    return;
-                }
-
-                // Validate Email
-                const emailInput = document.getElementById('email');
-                const emailValue = emailInput.value.trim();
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                if (!emailRegex.test(emailValue)) {
-                    alert('Please enter a valid email address.');
-                    event.preventDefault();
-                    return;
-                }
-            });
-        });
 
    
 </script>
