@@ -1,9 +1,12 @@
 <?php
 
-$host="localhost";
-$user="root";
-$password="";
-$dbname="cozybot";
+// Start the session
+session_start();
+
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "cozybot";
 
 $conn = new mysqli($host, $user, $password, $dbname);
 
@@ -26,7 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["signup"])) {
     $sql = "INSERT INTO User (FirstName, LastName, PhoneNo, Email, Username, Password) VALUES ('$firstName', '$lastName', '$phone', '$email', '$username', '$password')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "User registered successfully!";
+        $_SESSION['userid']=$row["UserID"];
+        $_SESSION['username'] = $username; // Set the session variable
+        $_SESSION['firstname'] = $firstName; 
+        header("Location: Dashboard.php");
+        exit;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -42,8 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+
         if (password_verify($loginPassword, $row["Password"])) {
-            echo "Login successful!";
+            $_SESSION['userid']=$row["UserID"];
+            $_SESSION['username'] = $loginUsername; // Set the session variable
+            $_SESSION['firstname'] = $row["FirstName"]; 
+            header("Location: Dashboard.php");
+            exit;
         } else {
             echo "Incorrect password!";
         }
@@ -54,4 +66,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
 // Close the database connection
 $conn->close();
-?>

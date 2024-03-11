@@ -13,13 +13,12 @@ if ($conn->connect_error) {
 
 // sql to create table
 $sql = "CREATE TABLE User (
-    UserID INT PRIMARY KEY,
+    UserID INT PRIMARY KEY auto_increment,
     Username VARCHAR(255) UNIQUE NOT NULL,
     Password VARCHAR(255) NOT NULL,
     FirstName VARCHAR(255) NOT NULL,
     LastName VARCHAR(255) NOT NULL,
     Email VARCHAR(255) UNIQUE NOT NULL,
-    Role ENUM('user','admin'),
     PhoneNo VARCHAR(20) UNIQUE NOT NULL,
     CreatedOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     LastLogin TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
