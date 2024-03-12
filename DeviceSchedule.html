@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Device Scheduling</title>
+        <link rel="stylesheet" href="ScheduleCSS.css">
+        <link rel="icon" href="home.png" type="image/x-icon">
+    </head>
+    <body>
+        <div id="nav_shrink" style="display:none">
+            <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;" onclick="closeNav()" >&#9776;</span>
+            <img id ="profile_s" src="profile.png" alt="Profile Picture">
+            <a href="Dashboard.html">
+                <img class="icon" src="dashboard_icon.png" >
+            </a>
+            <a href="DeviceSchedule.html">
+                <img class="icon" src="schedule.png" >
+            </a>
+            <a href="Rooms.html">
+                <img class="icon" src="rooms.png" >
+            </a>
+            <a href="Devices.html">
+                <img class="icon" src="device.png" >
+            </a>
+            <img class="icon" src="members.png" >
+            <img class="icon" src="logout.png" >
+        </div>
+        <div id="nav_expand" >
+            <span class="icon" id="expand" style="font-size:30px;cursor:pointer;color: navy;display: inline;" onclick="openNav()">&#9776;</span>
+            <div id="profile">
+                <img src="profile.png" alt="Profile Picture">
+            </div>
+            <div id="nav">
+                <div class="menuitems" id="dasboard">
+                    <a href="Dashboard.html">
+                        <img class="icon" src="dashboard_icon.png" >
+                    </a>
+                    <a href="Dashboard.html">
+                        <p class="options">Dashboard</p>
+                    </a>
+                </div>
+                <div class="menuitems" id="schedule">
+                    <a href="DeviceSchedule.html">
+                        <img class="icon" src="schedule.png" >
+                    </a>
+                    <a href="DeviceSchedule.html">
+                        <p class="options">Scheduling</p>
+                    </a> 
+                </div>
+                <div class="menuitems" id="rooms">
+                    <a href="Rooms.html">
+                        <img class="icon" src="rooms.png" >
+                    </a>
+                    <a href="Rooms.html">
+                        <p class="options">Rooms</p>
+                    </a> 
+                </div>
+                <div class="menuitems" id="devices">
+                    <a href="Devices.html">
+                        <img class="icon" src="device.png" >
+                    </a>
+                    <a href="Devices.html">
+                        <p class="options">Devices</p>
+                    </a>
+                </div>
+                <div class="menuitems" id="members">
+                    <img class="icon" src="members.png" >
+                    <p class="options">Members</p>
+                </div>
+                <div class="menuitems" id="logout">
+                    <img class="icon" src="logout.png" >
+                    <p class="options">Logout</p>
+                </div>
+            </div>
+        </div>
+        <div id="content" >
+            <h2>DEVICE SCHEDULING</h2>
+            <h3>Manage Your Device's Timing</h3>
+            <div id="schedule-form">
+                <form id="schedule">
+                    <label for="device-name">Device Name:</label>
+                    <input type="text" id="device-name" name="device-name" required>
+                    <label for="start-time">Start Time:</label>
+                    <input type="time" id="start-time" name="start-time" required>
+                    <label for="end-time">End Time:</label>
+                    <input type="time" id="end-time" name="end-time" required>
+                    <button type="submit">Add Schedule</button>
+                </form>
+                <div id="schedule-list">
+                    <!-- Scheduled timings will be displayed here -->
+                </div>
+            </div>
+            <script src="ScheduleFunctions.js"></script>
+    </body>
+</html>
