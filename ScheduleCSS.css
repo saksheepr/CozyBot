@@ -194,24 +194,3 @@ h2, h3 {
   padding: 5px;
   border-bottom: 1px solid #ccc;
 }
-
-.dialog-box {
-  background-color: #ffffff;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.dialog-box p {
-  margin: 5px 0;
-}
-
-.dialog-box .edit-btn {
-  background-color: #23438C;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
