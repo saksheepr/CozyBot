@@ -6,7 +6,6 @@ $user = "root";
 $password = "";
 $dbname = "cozybot";
 
-// Establish connection to the database
 $conn = new mysqli($host, $user, $password, $dbname);
 
 // Check connection
@@ -14,44 +13,57 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$current_userid = $_SESSION['userid'];
-
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the submitted values from the form
-    $deviceName = $_POST["deviceName"];
-    $deviceType = $_POST["deviceType"];
-    $existingRoomName = $_POST["existingRoom"];
-
-    // Prepare and execute statement to retrieve roomid of the existing room
-    $stmt_get_roomid = $conn->prepare("SELECT RoomID FROM Room WHERE RoomName = ? AND UserID = ?");
-    $stmt_get_roomid->bind_param("si", $existingRoomName, $current_userid);
-    $stmt_get_roomid->execute();
-    $result_roomid = $stmt_get_roomid->get_result();
-
-    // Check if roomid was retrieved successfully
-    if ($result_roomid->num_rows > 0) {
-        $row_roomid = $result_roomid->fetch_assoc();
-        $roomid = $row_roomid["RoomID"];
-
-        // Insert into Device table using prepared statement
-        $stmt_device = $conn->prepare("INSERT INTO Device (DeviceName, DeviceType, UserID, RoomID) VALUES (?, ?, ?, ?)");
-        $stmt_device->bind_param("ssii", $deviceName, $deviceType, $current_userid, $roomid);
-
-        if ($stmt_device->execute()) {
-            echo "New record created successfully for Device<br>";
-        } else {
-            echo "Error: " . $conn->error;
-        }
-    } else {
-        echo "Error: Room not found";
-    }
-
-    // Close prepared statements
-    $stmt_get_roomid->close();
-    $stmt_device->close();
+// Check if the user is logged in
+if (!isset($_SESSION['userid'])) {
+    die("User is not logged in.");
 }
 
-// Close connection
+$current_userid = $_SESSION['userid'];
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    header("Location: Dashboard.php");
+    // Get form data
+    $deviceName = $_POST['deviceName'];
+    $deviceType = $_POST['deviceType'];
+    $existingRoom = $_POST['existingRoom'];
+
+    echo $deviceName;
+    echo $deviceType;
+    echo $existingRoom;
+
+    // Prepare and execute query to retrieve RoomID
+    $query = "SELECT RoomID FROM Room WHERE RoomName = ? AND UserID = ?";
+    $stmt = $conn->prepare($query);
+
+    // Bind parameters
+    $stmt->bind_param("si", $existingRoom, $current_userid);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Bind the result variables
+    $stmt->bind_result($roomID);
+
+    // Fetch the result
+    $stmt->fetch();
+
+    // Insert device data into the Device table using prepared statements
+    $insertQuery = "INSERT INTO Device (DeviceName, DeviceType, UserID, RoomID) VALUES (?, ?, ?, ?)";
+    $stmt_insert = $conn->prepare($insertQuery);
+    $stmt_insert->bind_param("ssii", $deviceName, $deviceType, $current_userid, $roomID);
+
+    if ($stmt_insert->execute()) {
+        header("Location: Dashboard.php");
+        exit;
+    } else {
+        echo "Error: " . $stmt_insert->error;
+    }
+
+    // Close the statement
+    $stmt_insert->close();
+}
+
+// Close the database connection
 $conn->close();
 ?>
