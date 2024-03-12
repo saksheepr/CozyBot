@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var scheduleItem = document.createElement("div");
       scheduleItem.classList.add("schedule-item");
       scheduleItem.innerHTML = `
-          <p><strong>Device Name:</strong> ${deviceName}</p>
-          <p><strong>Start Time:</strong> ${startTime}</p>
-          <p><strong>End Time:</strong> ${endTime}</p>
+          <p><strong>Device Name: </strong> ${deviceName}</p>
+          <p><strong>Start Time: </strong> ${startTime}</p>
+          <p><strong>End Time: </strong> ${endTime}</p>
           <button class="edit-btn">Edit</button>
       `;
       
@@ -122,4 +122,71 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
   });
+
+  const taskInput = document.getElementById("task");
+  const priorityInput = document.getElementById("priority");
+  const deadlineInput = document.getElementById("deadline");
+  const addTaskButton = document.getElementById("add-task");
+  const taskList = document.getElementById("task-list");
+  
+  addTaskButton.addEventListener("click", () => {
+      const task = taskInput.value;
+      const priority = priorityInput.value;
+      const deadline = deadlineInput.value;
+      if (task.trim() === "" || deadline === "") {
+          alert("Please select an upcoming date for the deadline.")
+          return; // Don't add task if task or deadline is empty
+      }
+  
+      const selectedDate = new Date(deadline);
+      const currentDate = new Date();
+  
+      if (selectedDate <= currentDate) {
+          alert("Please select an upcoming date for the deadline.");
+          return; // Don't add task if deadline is not in the future
+      }
+  
+  
+      const taskItem = document.createElement("div");
+      taskItem.classList.add("task");
+      taskItem.innerHTML = `
+      <p>${task}</p>
+      <p>Priority: ${priority}</p>
+      <p>Deadline: ${deadline}</p>
+      <button class="mark-done">Mark Done</button>
+    `;
+  
+      taskList.appendChild(taskItem);
+  
+      taskInput.value = "";
+      priorityInput.value = "top";
+      deadlineInput.value = "";
+  });
+  
+  taskList.addEventListener("click", (event) => {
+      if (event.target.classList.contains("mark-done")) {
+          const taskItem = event.target.parentElement;
+          taskItem.style.backgroundColor = "#f2f2f2";
+          event.target.disabled = true;
+      }
+  });
+
+  var editButton = scheduleItem.querySelector(".edit-btn");
+    editButton.addEventListener("click", function () {
+        editSchedule(scheduleItem);
+    });
+
+  function editSchedule(scheduleItem) {
+    var deviceName = scheduleItem.querySelector("p:nth-child(1)").innerText;
+    var startTime = scheduleItem.querySelector("p:nth-child(2)").innerText.split(": ")[1];
+    var endTime = scheduleItem.querySelector("p:nth-child(3)").innerText.split(": ")[1];
+
+    // Fill the form fields with schedule details
+    document.getElementById("device-name").value = deviceName;
+    document.getElementById("start-time").value = startTime;
+    document.getElementById("end-time").value = endTime;
+
+    // Remove the edited schedule item from the list
+    scheduleItem.remove();
+  }
 });
