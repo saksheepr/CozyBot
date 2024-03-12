@@ -132,26 +132,18 @@ h2, h3 {
   margin-bottom: 20px;
 }
 
-#schedule-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.task-form {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 30%; /* Adjust width as needed */
+  margin-bottom: 20px;
 }
 
-#schedule-form label {
-  display: block;
-  margin-bottom: 5px;
-  color: #23438C;
-}
-
-#schedule-form input[type="text"],
-#schedule-form input[type="time"],
-#schedule-form button {
+.task-form input[type="text"],
+.task-form input[type="time"],
+.task-form button {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -159,12 +151,11 @@ h2, h3 {
   border-radius: 5px;
 }
 
-#schedule-form button {
+.task-form button {
   background-color: #23438C;
   color: #fff;
   border: none;
   cursor: pointer;
-  width: 100%;
   padding: 12px 20px;
   border-radius: 5px;
   font-size: 16px;
@@ -174,23 +165,43 @@ h2, h3 {
   transition: background-color 0.3s ease;
 }
 
-#schedule-form button:hover {
+.task-form button:hover {
   background-color: #1A2E4A;
 }
 
-#schedule-list {
-  margin-top: 20px;
-  max-height: 200px;
-  overflow-y: auto;
+.task-list {
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.schedule-item {
+  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
-  width: 100%;
 }
 
-#schedule-list p {
-  margin: 0;
-  padding: 5px;
-  border-bottom: 1px solid #ccc;
+.schedule-item p {
+  margin: 5px 0;
+}
+
+.schedule-item button {
+  background-color: #23438C;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.schedule-item button:hover {
+  background-color: #1A2E4A;
 }
