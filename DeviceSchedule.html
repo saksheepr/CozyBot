@@ -77,16 +77,15 @@
         <div id="content" >
             <h2>DEVICE SCHEDULING</h2>
             <h3>Manage Your Device's Timing</h3>
-            <div id="schedule-form">
-                <form id="schedule">
-                    <label for="device-name">Device Name:</label>
-                    <input type="text" id="device-name" name="device-name" required>
-                    <label for="start-time">Start Time:</label>
-                    <input type="time" id="start-time" name="start-time" required>
-                    <label for="end-time">End Time:</label>
-                    <input type="time" id="end-time" name="end-time" required>
-                    <button type="submit">Add Schedule</button>
-                </form>
+            <div id="schedule-form" class="task-form">
+                <input type="text" id="device-name" placeholder="Enter device name...">
+                <input type="date" id="deadline">
+                <input type="time" id="start-time" required>
+                <input type="time" id="end-time" required>
+                <button type="button" id="add-schedule-btn">Add Schedule</button>
+            </div>
+            <div class="task-list" id="schedule-list">
+                <!-- Scheduled timings will be displayed here -->
             </div>
         </div>
         <script src="ScheduleFunctions.js"></script>
