@@ -13,6 +13,7 @@ elements.forEach(function(element) {
         element.style.height = '20px';
     });
 });
+
 // Function to open the popup
 function openPopup() {
     document.getElementById('overlay').style.display = 'block';
@@ -43,11 +44,11 @@ function fetchRooms() {
 
 function displayRooms(rooms) {
     var tab = document.getElementById("tab");
-    rooms.forEach(function(room, index) { // Change the parameter name to room to represent the entire room object
+    rooms.forEach(function(room) {
         var newRoom = document.createElement("div");
         newRoom.className = "room-container";
         
-        var roomId = room.RoomID; // Get room ID
+        var roomId = room.RoomID;
 
         // Create hidden input field to store room ID
         var roomIdInput = document.createElement("input");
@@ -58,30 +59,54 @@ function displayRooms(rooms) {
         var checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.className = "roomCheckbox";
-        checkbox.value = roomId; // Set checkbox value to room ID
+        checkbox.value = roomId;
         newRoom.appendChild(checkbox);
 
         checkbox.addEventListener('change', function() {
             if (checkbox.checked) {
-                // If checkbox is checked, log the room ID
                 console.log("Room ID:", roomIdInput.value);
             }
         });
         
         var img = document.createElement("img");
-        img.src = "room2.jpg";
         img.className = "room-image";
+
+        // Set the room image source
+        img.onerror = function() {
+            // Fallback if image fails to load
+            img.src = "default_image.jpg"; // Assuming "default_image.jpg" is a placeholder image
+            console.error("Failed to load image for room ID:", roomId);
+        };
+        img.src = room.RoomImage ? room.RoomImage : "default_image.jpg"; // Assuming "default_image.jpg" is a placeholder image
+
         var text = document.createElement("p");
-        text.textContent = room.RoomName; // Access room name from the room object
+        text.textContent = room.RoomName;
         text.className = "room-text";
+
+        var edit = document.createElement("img");
+        edit.src = "edit.png";
+        edit.id = "edit_icon";
+        edit.addEventListener('click', function() {
+            var roomId = room.RoomID;
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.addEventListener('change', function(event) {
+                var file = event.target.files[0];
+                var formData = new FormData();
+                formData.append('roomId', roomId);
+                formData.append('roomImage', file);
+                updateRoomImage(formData);
+            });
+            fileInput.click();
+        });
+
         newRoom.appendChild(img);
         newRoom.appendChild(text);
+        newRoom.appendChild(edit);
         tab.appendChild(newRoom);
     });
 }
-
-
-
 
 document.getElementById('all').style.display = 'none';
 var selectAllCheckbox = document.getElementById('select');
@@ -136,6 +161,7 @@ function removeSelectedRooms() {
 
                             // Refresh room list after successful deletion
                             fetchRooms();
+                            uncheckRoomCheckboxes() 
                         } else {
                             console.error("Failed to remove rooms.");
                             // Optionally, display an error message to the user
@@ -152,3 +178,39 @@ function removeSelectedRooms() {
         alert("Please select at least one room to remove.");
     }
 }
+
+function updateRoomImage(formData) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "update_picture.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var response = xhr.responseText;
+                if (response === "success") {
+                    // Reload the page after successful update
+                    
+                    location.reload();
+                } else {
+                    console.error("Failed to update room image:", response);
+                    // Optionally, display an error message to the user
+                }
+            } else {
+                console.error("Failed to update room image:", xhr.status);
+                // Optionally, display an error message to the user
+            }
+        }
+    };
+    xhr.send(formData);
+}
+
+// Function to uncheck all checkboxes on page reload
+function uncheckRoomCheckboxes() {
+    document.getElementById('select').checked = false;
+    document.getElementById('selectall').style.display = 'none';
+    document.getElementById('all').style.display = 'none';
+    var checkboxes = document.querySelectorAll('.roomCheckbox');
+    checkboxes.forEach(function(checkbox) {
+      checkbox.checked = false;
+    });
+  }
+

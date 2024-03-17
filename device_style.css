@@ -234,3 +234,6 @@ select {
 .hidden {
     display: none;
 }
+.deviceCheckbox{
+    visibility: hidden;
+}

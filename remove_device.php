@@ -13,38 +13,23 @@ if (!isset($_SESSION['userid'])) {
 
 $current_userid = $_SESSION['userid'];
 
-// Check if device ID is provided in the request
-if (!isset($_POST['deviceId'])) {
-    die("Device ID not provided.");
-}
 
-$deviceId = $_POST['deviceId'];
+// Retrieve device IDs from JSON POST data
+$data = json_decode(file_get_contents("php://input"), true);
 
-// Create a database connection
-$conn = new mysqli($host, $user, $password, $dbname);
+    // Connect to the database
+    $conn = new mysqli($host, $user, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Prepare SQL statement to delete the device from the database
-$query = "DELETE FROM Device WHERE DeviceID = ? AND UserID = ?";
-$stmt = $conn->prepare($query);
-
-// Bind parameters
+$stmt = $conn->prepare("DELETE FROM Device WHERE DeviceID = ? AND UserID = ?");
 $stmt->bind_param("ii", $deviceId, $current_userid);
 
-// Execute the statement
-if ($stmt->execute()) {
-    // Device successfully removed
-    echo "Device removed successfully.";
-} else {
-    // Error in removal
-    echo "Error removing device: " . $stmt->error;
+foreach ($data as $deviceId) {
+    $stmt->execute();
 }
-
-// Close the statement and database connection
 $stmt->close();
 $conn->close();
-?>
+
+echo json_encode("success");

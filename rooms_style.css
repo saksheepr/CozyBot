@@ -165,7 +165,7 @@ label {
     font-size: 22px; /* Increased font size for better readability */
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
+    border-radius: 20px;
     padding: 10px;
     z-index: 1; /* Ensure the text is above the image */
 }
@@ -176,4 +176,15 @@ label {
     transform: translateX(-50%);
     z-index: 1;
     visibility: hidden;
+}
+#edit_icon{
+    position: absolute; 
+    top: 5%; 
+    right: 5%;
+    z-index: 1; 
+    height: 20px;
+
+}
+#edit_icon:hover {
+    transform: scale(1.3);
 }

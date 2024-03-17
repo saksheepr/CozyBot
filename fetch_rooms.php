@@ -20,8 +20,8 @@ if (!isset($_SESSION['userid'])) {
 
 $current_userid = $_SESSION['userid'];
 
-// Fetch existing rooms
-$sql = "SELECT RoomID, RoomName FROM Room WHERE UserID = ?";
+// Fetch existing rooms with room ID, room name, and room image
+$sql = "SELECT RoomID, RoomName, RoomImage FROM Room WHERE UserID = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $current_userid);
 $stmt->execute();
@@ -31,7 +31,8 @@ $rooms = array();
 while ($row = $result->fetch_assoc()) {
     $rooms[] = array(
         'RoomID' => $row['RoomID'],
-        'RoomName' => $row['RoomName']
+        'RoomName' => $row['RoomName'],
+        'RoomImage' => $row['RoomImage']
     );
 }
 

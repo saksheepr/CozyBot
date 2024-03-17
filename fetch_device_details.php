@@ -21,7 +21,7 @@ if (!isset($_SESSION['userid'])) {
 $current_userid = $_SESSION['userid'];
 
 // Fetch existing devices from the database
-$query = "SELECT DeviceName, DeviceType FROM Device WHERE UserID = ?";
+$query = "SELECT DeviceId, DeviceName, DeviceType FROM Device WHERE UserID = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $current_userid);
 $stmt->execute();

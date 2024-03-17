@@ -22,7 +22,7 @@ $current_userid = $_SESSION['userid'];
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Devices</title>
-  <link rel="stylesheet" type="text/css" href="device_style.css">
+  <link rel="stylesheet" type="text/css" href="device_style.css?v=<?php echo time(); ?>">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" href="home.png" type="image/x-icon">
 </head>
@@ -35,10 +35,10 @@ $current_userid = $_SESSION['userid'];
       <img class="icon" src="dashboard_icon.png">
     </a>
     <img class="icon" src="energy.png">
-    <a href="Rooms.html">
+    <a href="Rooms.php">
       <img class="icon" src="rooms.png">
     </a>
-    <a href="Devices.html">
+    <a href="Devices.php">
       <img class="icon" src="device.png">
     </a>
     <img class="icon" src="members.png">
@@ -53,7 +53,7 @@ $current_userid = $_SESSION['userid'];
     <div class="nav">
       <div id="buttons">
         <button class="button" onclick="openPopup()">Add Device</button>
-        <button class="button" id="delete">Remove Device</button>
+        <button class="button" id="delete" onclick="removeSelectedDevices()">Remove Room</button>
       </div>
       <p id="totalDevices" style="color:#1D084B;">Total No. of Devices: <span id="deviceCount">0</span></p>
     </div>
@@ -79,7 +79,7 @@ $current_userid = $_SESSION['userid'];
     <p style="display:inline; position: relative; left: 760px; top: 100px;">Click to select for delete</p>
 
     <input type="checkbox" id="selectall" style="position: relative; left: 810px; top: 100px; display: none;">
-    <p id="all" style="display:inline; position: relative; left: 820px; top: 100px; display: none;">Select/Deselect
+    <p id="all" style="display:inline; position: relative; left: 820px; top: 100px;">Select/Deselect
       all</p>
 
     <div id="tab"></div>
@@ -144,7 +144,7 @@ $current_userid = $_SESSION['userid'];
   </div>
 
 
-  <script src="script.js"></script>
+  <script src="script.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>
