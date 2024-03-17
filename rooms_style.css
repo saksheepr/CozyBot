@@ -27,3 +27,8 @@
 #logout {
     margin-top: 70px;
 }
+.room{
+    height: 400px;
+    width: 1000px;
+    border-radius: 8%;
+}

@@ -22,15 +22,10 @@ $current_userid = $_SESSION['userid'];
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    header("Location: Dashboard.php");
     // Get form data
     $deviceName = $_POST['deviceName'];
     $deviceType = $_POST['deviceType'];
     $existingRoom = $_POST['existingRoom'];
-
-    echo $deviceName;
-    echo $deviceType;
-    echo $existingRoom;
 
     // Prepare and execute query to retrieve RoomID
     $query = "SELECT RoomID FROM Room WHERE RoomName = ? AND UserID = ?";
@@ -39,8 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Bind parameters
     $stmt->bind_param("si", $existingRoom, $current_userid);
 
-    // Execute the statement
     $stmt->execute();
+
+    // Store the result set
+    $stmt->store_result();
 
     // Bind the result variables
     $stmt->bind_result($roomID);
@@ -54,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert->bind_param("ssii", $deviceName, $deviceType, $current_userid, $roomID);
 
     if ($stmt_insert->execute()) {
-        header("Location: Dashboard.php");
+        header("Location: Devices.php");
         exit;
     } else {
         echo "Error: " . $stmt_insert->error;

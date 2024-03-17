@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CozyBot - Re-designing your life the smart way</title>
     <link rel="icon" href="home.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         #logo {
             height: 40px;
@@ -101,21 +102,7 @@
             width: 400px;
         }
 
-        footer {
-            background:rgba(0, 0, 112, 0.035);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .social-icons a {
-            margin-right: 10px;
-        }
-
-        .social-icons img {
-            width: 20px;
-            height: auto;
-        }
+               
 
         .text-box h1 {
             font-size: 80px;
@@ -434,7 +421,36 @@
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
         }
-    
+        .footer{
+            display: flex;
+            justify-content: space-around;
+        }
+        .footer-section{
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer{
+            color: white;
+            background: linear-gradient(to right, #23438C,#1D084B, #212167);
+            height: 200px;
+            text-decoration: none;
+        }
+        .social-icons .social-icon{
+            color: white;
+            font-size: 25px;
+        }
+        .social-icons {
+            width: 100px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .footer a {
+            color: white; 
+            text-decoration: none;
+        }
 
     </style>
 
@@ -572,17 +588,35 @@
         </form>
     </section>
 
-    <footer>
-        <p>&copy; 2024 CozyBot. All rights reserved.</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/" target="_blank" title="Visit us on Facebook"><img
-                    src="face.png" alt="Facebook Icon"></a>
-            <a href="https://www.instagram.com/" target="_blank" title="Follow us on Instagram"><img
-                    src="instagram.png" alt="Instagram Icon"></a>
-            <a href="https://twitter.com/home" target="_blank" title="Connect on Twitter"><img src="x.png"
-                    alt="Twitter Icon"></a>
+    <footer class="footer">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: <a href="mailto:saksheepriya2004@gmail.com">cozy_bot@gmail.com</a></p>
+          <p>Phone: +91 78965413204</p>
         </div>
-    </footer>
+        <div class="footer-section">
+          <h3>Address</h3>
+          <a href="https://maps.app.goo.gl/PkYb64D4FGqjMQUU9">
+            <p>SG Palya,</p>
+          </a>
+          <a href="https://maps.app.goo.gl/PkYb64D4FGqjMQUU9">
+            <p>Bangalore, Karnataka</p>
+          </a>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Explore</h3>
+          <p>Terms of Service</p>
+          <p>Privacy Policy</p>
+        </div>
+      </footer>
 </body>
 <script>
     const testimonials = document.querySelectorAll('.testimonial');

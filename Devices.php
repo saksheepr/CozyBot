@@ -10,7 +10,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  die ("Connection failed: " . $conn->connect_error);
 }
 $current_userid = $_SESSION['userid'];
 
@@ -51,7 +51,7 @@ $current_userid = $_SESSION['userid'];
     <div class="nav">
       <div id="buttons">
         <button class="button" onclick="openPopup()">Add Device</button>
-        <button class="button">Remove Device</button>
+        <button class="button" id="delete" >Remove Device</button>
       </div>
       <p id="totalDevices" style="color:#1D084B;">Total No. of Devices: <span id="deviceCount">0</span></p>
     </div>
@@ -73,13 +73,22 @@ $current_userid = $_SESSION['userid'];
       </div>
     </div>
 
+    <input type="checkbox" id="select" style="position: relative; left: 750px; top: 100px;">
+    <p style="display:inline; position: relative; left: 760px; top: 100px;">Click to select for delete</p>
+
+    <input type="checkbox" id="selectall" style="position: relative; left: 810px; top: 100px; display: none;">
+    <p id="all" style="display:inline; position: relative; left: 820px; top: 100px; display: inline;">Select/Deselect
+      all</p>
+
     <div id="tab"></div>
+
 
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
-      <button onclick="closePopup()" style="position: absolute; top: 10px; right: 10px; cursor: pointer;color:white;background-color: rgb(194, 60, 60);border-radius: 8px;">X</button>
+      <button onclick="closePopup()"
+        style="position: absolute; top: 10px; right: 10px; cursor: pointer;color:white;background-color: rgb(194, 60, 60);border-radius: 8px;">X</button>
       <h2>Add New Device</h2>
-      <form action="add_device.php" method="post" id="deviceForm">
+      <form action="device_add.php" method="post" id="deviceForm">
         <label for="deviceName">Device Name :</label><br>
         <input class="input" type="text" id="deviceName" name="deviceName"><br><br>
 
@@ -129,11 +138,11 @@ $current_userid = $_SESSION['userid'];
         <button class="button" type="submit">Submit</button>
       </form>
     </div>
-  
+
   </div>
 
 
-  <script src="device_script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
