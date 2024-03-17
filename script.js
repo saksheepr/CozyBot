@@ -26,18 +26,6 @@ function closePopup() {
   document.getElementById('popup').style.display = 'none';
 }
 
-// Show existing room list and hide new room input
-function showExistingRooms() {
-  document.getElementById('existingRoomList').style.display = 'block';
-  document.getElementById('newRoomInput').style.display = 'none';
-}
-
-// Show new room input and hide existing room list
-function showNewRoom() {
-  document.getElementById('newRoomInput').style.display = 'block';
-  document.getElementById('existingRoomList').style.display = 'none';
-}
-
 document.getElementById('all').style.display = 'none';
 
 // Function to update the total number of devices
@@ -50,76 +38,6 @@ function updateDeviceCount() {
 window.addEventListener('load', function () {
   updateDeviceCount();
 });
-
-// Form submission handling
-document.getElementById('deviceForm').addEventListener('submit', function (event) {
-  // Prevent default form submission
-  event.preventDefault();
-
-  // Get form values
-  var deviceName = document.getElementById('deviceName').value;
-  var deviceType = document.getElementById('deviceType').value;
-
-  // Create device details HTML
-  var deviceDetailsHTML = "<div class='devicedetails' data-device-type='" + deviceType + "'>";
-  if (deviceType === 'Lights') {
-    deviceDetailsHTML += "<img class='icontype' src='bulb.png' >";
-  } else if (deviceType === 'Doors') {
-    deviceDetailsHTML += "<img class='icontype' src='door.png' >";
-  } else if (deviceType === 'Fans') {
-    deviceDetailsHTML += "<img class='icontype' src='fan.png' >";
-  } else if (deviceType === 'Thermostat') {
-    deviceDetailsHTML += "<img class='icontype' src='thermostat.png' >";
-  } else if (deviceType === 'Ac') {
-    deviceDetailsHTML += "<img class='icontype' src='ac.png' >";
-  } else if (deviceType === 'Plugs') {
-    deviceDetailsHTML += "<img class='icontype' src='plug.png' >";
-  }
-  deviceDetailsHTML += "<input type='checkbox' class='deviceCheckbox' name='selectedDevices[]' style='position: absolute; top: 5px; left: 5px; visibility: visible;'>";
-  deviceDetailsHTML += "<p id='dev'>" + deviceName + "</p></div>";
-
-  // Append new device details to the container
-  var tabContainer = document.getElementById('tab');
-  tabContainer.insertAdjacentHTML('beforeend', deviceDetailsHTML);
-
-  // Update the total number of devices
-  updateDeviceCount();
-
-  // Clear the form
-  document.getElementById('deviceForm').reset();
-
-  // Close the popup
-  closePopup();
-
-  // Submit form data via AJAX
-  submitFormData(deviceName, deviceType);
-});
-
-// Function to submit form data via AJAX
-function submitFormData(deviceName, deviceType) {
-  // Create a FormData object from the form
-  var formData = new FormData(document.getElementById('deviceForm'));
-
-  // Append additional data (deviceName and deviceType)
-  formData.append('deviceName', deviceName);
-  formData.append('deviceType', deviceType);
-
-  // Make an AJAX request to submit form data
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200) {
-        // Form submission successful
-        // You can handle any response from the server here
-      } else {
-        // Form submission failed
-        console.error('Form submission failed: ' + xhr.status);
-      }
-    }
-  };
-  xhr.open('POST', 'device_add.php', true);
-  xhr.send(formData);
-}
 
 // Function to fetch device details from the database and display them
 function fetchDeviceDetails() {

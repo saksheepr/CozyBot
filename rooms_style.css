@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw; 
+    overflow: hidden;  
+    background-color: #DCF2F1;
+}
 #nav_shrink{
     height: 695px;
     width: 50px;
@@ -11,7 +18,8 @@
     justify-content: space-around;
 }
 .icon{
-    height:20px
+    height:20px;
+    z-index: 999;
 }
 .options{
     color: rgba(255, 255, 255, 0.719);
@@ -27,8 +35,145 @@
 #logout {
     margin-top: 70px;
 }
+.container {
+    position: relative;
+    width: 1200px;
+    z-index: 1;
+    left:160px;
+    top:0px;
+}
 .room{
     height: 350px;
     width: 1200px;
     border-radius: 50px;
+}
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 70px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+    padding: 10px;
+}
+h2 {
+    font-family: sans-serif;
+    color: #1D084B;
+    text-align: center;
+}
+#buttons {
+    height: 60px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.button {
+    border: none;
+    color: black;
+    font-weight: bolder;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+    position: relative;
+    left:200px;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #DCF2F1;
+    padding: 40px;
+    border: 2px solid navy;
+    border-radius: 20px;
+    z-index: 1000;
+    width: 400px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+label {
+    color: #212167;
+}
+
+.input {
+    border-radius: 20px;
+    height: 25px;
+    margin: 8px;
+    border: 2px solid #23438C;
+    background-color: white;
+    width: 200px;
+}
+
+#tab {
+    width: 1200px;
+    height: 700px;
+    background-color: #DCF2F1;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: flex-start;
+    position: relative;
+}
+#content {
+    overflow-y: auto; 
+    max-height: 700px;
+}
+.room-container {
+    position: relative; /* Added relative positioning */
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.room-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.room-text {
+    position: absolute; /* Changed position to absolute */
+    top: 30%; /* Adjusted top positioning */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    color: white;
+    font-size: 22px; /* Increased font size for better readability */
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1; /* Ensure the text is above the image */
+}
+.roomCheckbox{
+    position: absolute; 
+    top: 5%; 
+    left: 5%;
+    transform: translateX(-50%);
+    z-index: 1;
+    visibility: hidden;
 }

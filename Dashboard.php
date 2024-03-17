@@ -37,7 +37,7 @@ $current_userid = $_SESSION['userid'];
                 <img class="icon" src="dashboard_icon.png" title="Dashboard" >
             </a>
             <img class="icon" src="schedule.png" title="Scheduling">
-            <a href="Rooms.html">
+            <a href="Rooms.php">
                 <img class="icon" src="rooms.png" title="Rooms">
             </a>
             <a href="Devices.php">
@@ -69,10 +69,10 @@ $current_userid = $_SESSION['userid'];
                     <p class="options">Scheduling</p>
                 </div>
                 <div class="menuitems" id="rooms">
-                    <a href="Rooms.html">
+                    <a href="Rooms.php">
                         <img class="icon" src="rooms.png" >
                     </a>
-                    <a href="Rooms.html">
+                    <a href="Rooms.php">
                         <p class="options">Rooms</p>
                     </a> 
                 </div>

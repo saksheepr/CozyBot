@@ -14,11 +14,12 @@ if ($conn->connect_error) {
 
 // Create Room table
 $sqlRoom = "CREATE TABLE Room (
-        RoomID INT PRIMARY KEY auto_increment,
-        UserID int,
-        RoomName VARCHAR(255) NOT NULL,
-        FOREIGN KEY (UserID) REFERENCES User(UserID))";
-
+    RoomID INT PRIMARY KEY auto_increment,
+    UserID INT,
+    RoomName VARCHAR(255) NOT NULL,
+    RoomImage VARCHAR(255) DEFAULT 'room2.jpg',
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
+)";
 if ($conn->query($sqlRoom) === TRUE) {
   echo "Table Room created successfully<br>";
 } else {
@@ -34,7 +35,7 @@ $sqlDevice = "CREATE TABLE Device (
         UserID INT,
         RoomID INT,
         FOREIGN KEY (UserID) REFERENCES User(UserID),
-        FOREIGN KEY (RoomID) REFERENCES Room(RoomID))";
+        FOREIGN KEY (RoomID) REFERENCES Room(RoomID)ON DELETE CASCADE)";
 
 if ($conn->query($sqlDevice) === TRUE) {
   echo "Table Device created successfully";
@@ -43,4 +44,4 @@ if ($conn->query($sqlDevice) === TRUE) {
 }
 
 $conn->close();
-?>
+
