@@ -38,6 +38,7 @@ function showNewRoom() {
   document.getElementById('existingRoomList').style.display = 'none';
 }
 
+document.getElementById('all').style.display = 'none';
 
 // Function to update the total number of devices
 function updateDeviceCount() {
@@ -154,7 +155,6 @@ function displayDevices(devices) {
       tabContainer.insertAdjacentHTML('beforeend', deviceDetailsHTML);
     });
     updateDeviceCount(); // Update device count
-    document.getElementById('all').style.display = 'none';
     // Add event listener to the select all checkbox
     var selectAllCheckbox = document.getElementById('select');
     if (selectAllCheckbox) {

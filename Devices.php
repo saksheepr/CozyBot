@@ -42,7 +42,9 @@ $current_userid = $_SESSION['userid'];
       <img class="icon" src="device.png">
     </a>
     <img class="icon" src="members.png">
-    <img class="icon" src="logout.png">
+    <a href="logout.php">
+      <img class="icon" src="logout.png">
+    </a>
   </div>
 
   <div id="content">
@@ -51,7 +53,7 @@ $current_userid = $_SESSION['userid'];
     <div class="nav">
       <div id="buttons">
         <button class="button" onclick="openPopup()">Add Device</button>
-        <button class="button" id="delete" >Remove Device</button>
+        <button class="button" id="delete">Remove Device</button>
       </div>
       <p id="totalDevices" style="color:#1D084B;">Total No. of Devices: <span id="deviceCount">0</span></p>
     </div>
@@ -77,7 +79,7 @@ $current_userid = $_SESSION['userid'];
     <p style="display:inline; position: relative; left: 760px; top: 100px;">Click to select for delete</p>
 
     <input type="checkbox" id="selectall" style="position: relative; left: 810px; top: 100px; display: none;">
-    <p id="all" style="display:inline; position: relative; left: 820px; top: 100px; display: inline;">Select/Deselect
+    <p id="all" style="display:inline; position: relative; left: 820px; top: 100px; display: none;">Select/Deselect
       all</p>
 
     <div id="tab"></div>

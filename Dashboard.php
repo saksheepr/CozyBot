@@ -33,7 +33,7 @@ $current_userid = $_SESSION['userid'];
             <a href="User_Profile.html">
                 <img id ="profile_s" src="profile.png" alt="Profile Picture" title="User_Profile">
             </a>  
-            <a href="Dashboard.html">
+            <a href="Dashboard.php">
                 <img class="icon" src="dashboard_icon.png" title="Dashboard" >
             </a>
             <img class="icon" src="schedule.png" title="Scheduling">
@@ -44,7 +44,9 @@ $current_userid = $_SESSION['userid'];
                 <img class="icon" src="device.png" title="Devices" >
             </a>
             <img class="icon" src="members.png" title="Members" >
-            <img class="icon" src="logout.png" title="Logout" >
+            <a href="logout.php">
+                    <img class="icon" src="logout.png" >
+            </a>
         </div>
         <div id="nav_expand" >
             <span class="icon" id="expand" style="font-size:30px;cursor:pointer;color: navy;display: inline;" onclick="openNav()">&#9776;</span>
@@ -55,10 +57,10 @@ $current_userid = $_SESSION['userid'];
             </a>
             <div id="nav">
                 <div class="menuitems" id="dasboard">
-                    <a href="Dashboard.html">
+                    <a href="Dashboard.php">
                         <img class="icon" src="dashboard_icon.png" >
                     </a>
-                    <a href="Dashboard.html">
+                    <a href="Dashboard.php">
                         <p class="options">Dashboard</p>
                     </a>
                 </div>
@@ -87,8 +89,12 @@ $current_userid = $_SESSION['userid'];
                     <p class="options">Members</p>
                 </div>
                 <div class="menuitems" id="logout">
+                <a href="logout.php">
                     <img class="icon" src="logout.png" >
+                </a>
+                <a href="logout.php">
                     <p class="options">Logout</p>
+                </a>
                 </div>
             </div>
         </div>
