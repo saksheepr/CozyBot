@@ -1,0 +1,148 @@
+/* Global Styles */
+body {
+    padding-left: 20px;
+    margin-left: 50px;
+    font-family: 'Optima', sans-serif;
+    background-color: #DCF2F1;
+}
+
+/* Navigation */
+#nav_shrink {
+    height: 695px;
+    width: 50px;
+    background-image: linear-gradient(to right, #5b5bac, #23438C);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.icon {
+    height: 20px;
+}
+
+#profile_s {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+td, th {
+    padding: 15px 20px;
+    text-align: center;
+}
+
+th {
+    background-color: #23438C;
+    color: #fafafa;
+    font-family: 'Optima', sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Optima', sans-serif;
+}
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+/* Buttons */
+#addMemberBtn {
+    margin-top: 20px;
+    background-color: #23438C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Optima', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#addMemberBtn:hover {
+    background-color: #1e68ff;
+}
+
+/* Form */
+#popupForm {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+#popupForm h2 {
+    font-family: 'Optima', sans-serif;
+    color: #23438C;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#popupForm label {
+    display: block;
+    font-family: 'Optima', sans-serif;
+    margin-bottom: 10px;
+}
+
+#popupForm input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-family: 'Optima', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#popupForm button[type="submit"] {
+    background-color: #23438C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Optima', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#popupForm button[type="submit"]:hover {
+    background-color: #1e68ff;
+}
+
+/* Welcome Title */
+h1 {
+    font-family: 'Optima', sans-serif;
+    color: Black;
+    text-align: center;
+    font-size: 30px;
+    
+}
