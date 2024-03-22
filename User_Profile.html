@@ -32,6 +32,10 @@
                 <input type="file" accept="image/*" id="avatar-input" style="display: none;">
                 <button onclick="openAvatarDialog()">Change Profile</button>
             </div>
+            
+            <!-- PHP Code Added Externally -->
+            <?php include 'fetch_userdata.php'; ?>
+
             <form action="update_table.php" method="POST" enctype="multipart/form-data">
                 <form id="profile-form">
                     <div class="form-group">
@@ -61,6 +65,7 @@
                             <option value="Guest">Guest</option>
                         </select>
                     </div>
+                    <button type="button" id="edit-btn">Edit</button>
                     <button type="submit">Save Changes</button>
                 </form>
             </form>
