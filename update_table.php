@@ -3,8 +3,8 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
-$dbname = "cozybot";
+$password = "";
+$dbname = "Cozybot";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -81,9 +81,9 @@ document.getElementById("room").addEventListener("change", function() {
 // Add event listener to the displayed image
 document.getElementById("displayedImage").addEventListener("click", function() {
     // Specify the URL of the page you want to open in a new tab/window
-    var newPageUrl = "Rooms.html";
+    var newPageUrl = "Rooms.php";
 
     // Open the new page in a new tab/window
-    window.open(newPageUrl, "_blank");
+    window.open(newPageUrl, "_self");
 });
 

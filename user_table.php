@@ -21,7 +21,8 @@ $sql = "CREATE TABLE User (
     Email VARCHAR(255) UNIQUE NOT NULL,
     PhoneNo VARCHAR(20) UNIQUE NOT NULL,
     CreatedOn TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    LastLogin TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+    LastLogin TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UserImage VARCHAR(255) DEFAULT 'profile.png')";
 
 if ($conn->query($sql) === TRUE) {
   echo "Table User created successfully";
@@ -30,4 +31,3 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
-?>
