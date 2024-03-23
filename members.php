@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 $current_userid = $_SESSION['userid'];
-$sql = "SELECT MemberID, MemberName, Role, Status FROM member WHERE UserID = '$current_userid'";
+$sql = "SELECT MemberID, MemberName, Role, Status FROM members WHERE UserID = '$current_userid'";
 $result = $conn->query($sql);
 
 $userFirstName = isset($_SESSION['firstname']) ? $_SESSION['firstname'] : "Unknown";
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role'] ?? ''; // Add the role variable
 
     // Prepare SQL statement to insert new member   
-    $sql = "INSERT INTO member (UserID, MemberName, Role, Status) 
+    $sql = "INSERT INTO members (UserID, MemberName, Role, Status) 
             VALUES ('$current_userid', '$memberName', '$role', '$status')"; // Include role in the SQL query
     
     if ($conn->query($sql) === TRUE) {
