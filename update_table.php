@@ -17,15 +17,15 @@ if ($conn->connect_error) {
 // Assuming $user_id is retrieved from the database or some other authentication method
 // Example: Retrieving user_id based on username
 $username = $_POST['username'];
-$stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+$stmt = $conn->prepare("SELECT userid FROM user WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $user_id = $row["id"];
+    $user_id = $row["userid"];
     // Set user_id in the session
-    $_SESSION['user_id'] = $user_id;
+    $_SESSION['userid'] = $user_id;
 } else {
     echo "User not found.";
     exit; // Exit script if user is not found
@@ -41,8 +41,8 @@ $password = $_POST['password'];
 $access_control = $_POST['access_control'];
 
 // Prepare and bind
-$stmt = $conn->prepare("UPDATE users SET username=?, firstname=?, lastname=?, email=?, password=?, access_control=? WHERE id=?");
-$stmt->bind_param("ssssssi", $username, $firstname, $lastname, $email, $password, $access_control, $user_id);
+$stmt = $conn->prepare("UPDATE user SET username=?, firstname=?, lastname=?, email=?, password=? WHERE userid=?");
+$stmt->bind_param("sssssi", $username, $firstname, $lastname, $email, $password, $user_id);
 $stmt->execute();
 
 echo "Updated successfully";
