@@ -1,8 +1,9 @@
-/* Global Styles */
+
 body {
-    padding-left: 20px;
+    padding-left: 50px;
+    padding-right:50px;
     margin-left: 50px;
-    font-family: 'Optima', sans-serif;
+    font-family: 'candara', sans-serif;
     background-color: #DCF2F1;
 }
 
@@ -30,6 +31,16 @@ body {
     border-radius: 50%;
 }
 
+#heading{
+    font-size: larger;
+    text-align: center;
+    
+}
+
+#heading h1{
+  font-size: 50px;
+}
+
 /* Table Styles */
 table {
     width: 100%;
@@ -43,15 +54,19 @@ table {
 
 td, th {
     padding: 15px 20px;
+    font-size:18px;;
     text-align: center;
+    font-family:georgia;
+    font-weight:normal;
+  
 }
 
 th {
-    background-color: #23438C;
-    color: #fafafa;
-    font-family: 'Optima', sans-serif;
-    font-weight: 200;
-    text-transform: uppercase;
+    background-color: #435c95;
+    color: white;
+    font-family: 'Georgia',serif;
+    font-size: 25px;
+  
 }
 
 tr {
@@ -64,85 +79,113 @@ tr:nth-child(even) {
     background-color: #eeeeee;
 }
 
-/* Buttons */
-#addMemberBtn {
-    margin-top: 20px;
-    background-color: #23438C;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Optima', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.container {
+    display: flex;
+    justify-content:center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
+
+#addMemberBtn {
+    background-color: #435c95;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Georgia', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 #addMemberBtn:hover {
     background-color: #1e68ff;
+    animation: pulse 1s infinite alternate;
 }
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
 
 /* Form */
 #popupForm {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
     width: 400px;
     box-sizing: border-box;
-}
-
-#popupForm h2 {
-    font-family: 'Optima', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  
+  #popupForm h2 {
+    font-family: 'candara', sans-serif;
     color: #23438C;
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-#popupForm label {
+    margin-bottom: 20px;
+    text-align: left;
+    font-size:30px;
+    
+  }
+  
+  #popupForm label {
     display: block;
-    font-family: 'Optima', sans-serif;
+    font-family: 'georgia', sans-serif;
     margin-bottom: 10px;
-}
+    font-size:18px;
+    font-weight: 500;
+    text-align: left;
+  }
 
 #popupForm input[type="text"] {
-    width: calc(100% - 40px);
+    width: 95%; /* Remove inline width */
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 0.5px solid grey;
+    border-radius:2px;
     margin-bottom: 20px;
-    font-family: 'Optima', sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
+    font-family: 'Palatino', sans-serif;
+    text-align: left;
+    outline: none;
+  }
+
+#popupForm input[type="text"]:focus {
+    outline: 1px solid black;
+  }
 
 #popupForm button[type="submit"] {
-    background-color: #23438C;
+    background-color: #435c95;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer;
-    font-family: 'Optima', sans-serif;
+    font-family: 'Georgia', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+    font-size: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-#popupForm button[type="submit"]:hover {
+  #addMemberBtn:hover {
     background-color: #1e68ff;
+    animation: pulse 1s infinite alternate;
 }
 
-/* Welcome Title */
-h1 {
-    font-family: 'Optima', sans-serif;
-    color: Black;
-    text-align: center;
-    font-size: 30px;
-    
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
 }
