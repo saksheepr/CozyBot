@@ -47,9 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="memberstyle.css">
 </head>
 <body>
+    <div id="heading">
+    <h1>Your Members</h1>
+    </div>
     <div id="welcome">
         <h1>Welcome, <?php echo $userFirstName; ?></h1>
-        <
     </div>
 
     <div id="nav_shrink">
@@ -86,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td><?php echo $row['Role']; ?></td>
                     <td><?php echo $row['Status']; ?></td>
                     <td>
-                        <img src="delete.png" width="30px" alt="Delete" onclick="deleteUser(<?php echo $row['MemberID']; ?>)">
+                        <img src="delete.png" width="30px" alt="Delete" onclick="confirmDelete(<?php echo $row['MemberID']; ?>)">
                         <a href="location.php"><img src="locationpin.png" width="30px" alt="Delete"></a>
                     </td>
                 </tr>
@@ -97,9 +99,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>No members added.</p>
         <?php endif; ?>
 
+        <div class="container">
         <button id="addMemberBtn" onclick="togglePopup()">Add Member</button>
+        </div>
 
         <div id="popupForm" style="display: none;">
+            <img src="close.png" width=20px height=20px id="closeButton" onclick="togglePopup()">
             <h2>Enter Member Details</h2>
             <form id="userForm" method="post">
                 <label for="name">Name:</label>
@@ -110,8 +115,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 <label for="status">Status:</label>
                 <input type="text" id="status" name="status" required><br><br>
-                
+        <div class="container">
                 <button type="submit">Add New User</button>
+        </div>
             </form>
         </div>
     </div>
@@ -125,6 +131,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 popup.style.display = "block";
             } else {
                 popup.style.display = "none";
+            }
+        }
+
+        function confirmDelete(memberID) {
+            var confirmDelete = confirm("Are you sure you want to delete this member?");
+            if (confirmDelete) {
+                deleteUser(memberID);
             }
         }
 
