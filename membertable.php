@@ -1,8 +1,8 @@
 <?php
 
 
-$host = "localhost";
-$user = "root";
+$servername = "localhost";
+$username = "root";
 $password = "";
 $dbname = "cozybot"; 
 
@@ -15,13 +15,13 @@ if ($conn->connect_error) {
 }
 
 // SQL query to create the table
-$sql = "CREATE TABLE members (
-    MemberID INT(11) NOT NULL AUTO_INCREMENT,
+$sql = "CREATE TABLE members(
+    MemberID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     MemberName VARCHAR(255) NOT NULL,
     Role VARCHAR(100),
     STATUS ENUM('Home', 'Away'),
     UserId INT,
-    FOREIGN KEY (UserId) REFERENCES UserTable(UserId)
+    FOREIGN KEY (UserId) REFERENCES User(UserId)
 )";
 
 // Execute query
