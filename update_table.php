@@ -37,7 +37,7 @@ $username = $_POST['username'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
-$password = $_POST['password'];
+$password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
 $access_control = $_POST['access_control'];
 
 // Prepare and bind
