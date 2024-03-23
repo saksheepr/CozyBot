@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CozyBot - Re-designing your life the smart way</title>
+    <link rel="icon" href="home.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <header>
+        <img id="logo" src="home.png" alt="logo">
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#aboutus">About Us</a></li>
+                <li><a href="#contact">Contact us</a></li>
+                <li><a href="Sign_Up.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <div class="content-wrapper">
+            <div class="text-box">  
+                <h1 style="margin-bottom: 0px;">CozyBot</h1>
+                <h2>Re-designing your home <br> The Smart Way </h2>
+                <a href="Sign_Up.html"><button class="button">SIGN UP <img id="signup" src="play.png"></button></a>
+            </div>
+            <div id="image">
+                <img src="shome1.png" alt="CozyBot product example">
+            </div>
+        </div>
+    </section>
+    
+
+        <section id="aboutus">
+            <h1 class="about-us-title">About Us</h1>
+            <div class="four-column-section">
+                <div class="column">
+                    <div class="sub-column">
+                        <h3>CozyBot's Capabilities</h3>
+                        <p>Introducing CozyBot, your ultimate smart home companion!
+                            This state-of-the-art device effortlessly integrates automation,
+                            adaptive learning, and innovation into your daily routine.
+                            Its adaptive learning capabilities tailor responses to your unique lifestyle.
+                            With a commitment to constant innovation, CozyBot ensures your home evolves alongside the
+                            latest technological advancements.</p>
+                            <button class="button" onclick="openPopUp()">Learn More</button>                    </div>
+                </div>
+                <div class="column">
+                    <div class="sub-column">
+                    <img src="adaptss.jpg">
+                    <img src="automatess.jpg">
+                    <img src="innovatess.jpg">
+                    </div>
+                </div>
+            </div>
+            <div id="popup" style="display: none;">
+                <h2>CozyBot's Smart Home Features</h2>
+                <p>CozyBot empowers your home with a range of intelligent features, including:</p>
+            
+                <h3>Automation</h3>
+                <p>Experience effortless control over your smart devices. CozyBot automates tasks like adjusting lighting, managing thermostats, and operating appliances based on your preferences and routines. Imagine arriving home to a perfectly lit and comfortable environment, thanks to CozyBot's automated welcome sequence.</p>
+            
+                <h3>Adaptive Learning</h3>
+                <p>CozyBot goes beyond automation by intelligently adapting to your unique lifestyle. It learns your preferences, habits, and schedules, personalizing its responses to optimize your comfort and convenience. The more you interact with CozyBot, the better it understands your needs, making your smart home experience truly intuitive.</p>
+            
+                <h3>Innovation</h3>
+                <p>CozyBot is constantly evolving to stay ahead of the curve. Our team of dedicated engineers is committed to pushing the boundaries of smart home technology, ensuring your home is always equipped with the latest advancements. With CozyBot, you can enjoy peace of mind knowing your smart home system is always up-to-date and ready for the future.</p>
+            
+                <button class="button" onclick="closePopUp()">Close</button>
+              </div>
+              <script>
+                function openPopUp() {
+                  document.getElementById("popup").style.display = "block";
+                }
+            
+                function closePopUp() {
+                  document.getElementById("popup").style.display = "none";
+                }
+              </script> 
+            
+        </section>
+    <section class="affiliations">
+        <h2>Affiliations</h2>
+        <div class="affiliation-logos">
+            <img src="affil.jpg" alt="Organization 1">
+            <img src="affil1.jpg" alt="Organization 2">
+            <img src="affil2.jpg" alt="Organization 3">
+            <img src="affil3.jpg" alt="Organization 4">
+            <img src="affil4.jpg" alt="Organization 5">
+            <img src="affil5.jpg" alt="Organization 6">
+        </div>
+    </section>
+
+    </section>
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial active-testimonial">
+            <p>
+                "CozyBot has transformed my home routine. The automation features are
+                unbelievable, and the adaptive learning keeps getting better! It's like
+                having a personal smart assistant that just gets me."
+            </p>
+            <p class="testimonial-author">John Doe</p>
+        </div>
+        <div class="testimonial">
+            <p>
+                "CozyBot has saved me countless hours and made my life so much
+                easier. I can control everything from my lights and thermostat to my
+                appliances from my phone. It's truly the future of smart homes!"
+            </p>
+            <p class="testimonial-author">Jane Smith</p>
+        </div>
+        <div class="testimonial">
+            <p>
+                "I absolutely love how CozyBot learns my preferences and anticipates my
+                needs. It's the most intuitive smart home device I've ever used, and
+                the customer support is outstanding."
+            </p>
+            <p class="testimonial-author">Sarah Johnson</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <input class="button" type="submit" value="Send Message">
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>Email: <a href="mailto:saksheepriya2004@gmail.com">cozy_bot@gmail.com</a></p>
+          <p>Phone: +91 78965413204</p>
+        </div>
+        <div class="footer-section">
+          <h3>Address</h3>
+          <a href="https://maps.app.goo.gl/PkYb64D4FGqjMQUU9">
+            <p>SG Palya,</p>
+          </a>
+          <a href="https://maps.app.goo.gl/PkYb64D4FGqjMQUU9">
+            <p>Bangalore, Karnataka</p>
+          </a>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Explore</h3>
+          <p>Terms of Service</p>
+          <p>Privacy Policy</p>
+        </div>
+      </footer>
+</body>
+<script src="home_script.js"></script>
+</html>

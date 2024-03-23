@@ -49,4 +49,4 @@ echo "Updated successfully";
 
 $stmt->close();
 $conn->close();
-?>
+
