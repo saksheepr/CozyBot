@@ -87,30 +87,27 @@ tr:nth-child(even) {
 
 
 #addMemberBtn {
-    background-color: #435c95;
-    color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    color: black;
+    font-weight: bolder;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
     cursor: pointer;
-    font-family: 'Georgia', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 18px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+    font-size: 20px;
+    font-family: candara;
 }
 #addMemberBtn:hover {
-    background-color: #1e68ff;
-    animation: pulse 1s infinite alternate;
+    transform: scale(1.1);
+
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.05);
-    }
-}
+
 
 
 /* Form */
@@ -120,13 +117,12 @@ tr:nth-child(even) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #DCF2F1;
     padding: 40px;
-    border-radius: 10px;
+    border: 2px solid navy;
+    border-radius: 20px;
+    z-index: 1000;
     width: 400px;
-    box-sizing: border-box;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
   }
   
   #popupForm h2 {
@@ -149,10 +145,10 @@ tr:nth-child(even) {
   }
 
 #popupForm input[type="text"] {
-    width: 95%; /* Remove inline width */
+    width: 95%;
     padding: 10px;
     border: 0.5px solid grey;
-    border-radius:2px;
+    border-radius:20px;
     margin-bottom: 20px;
     font-family: 'Palatino', sans-serif;
     text-align: left;
@@ -163,29 +159,43 @@ tr:nth-child(even) {
     outline: 1px solid black;
   }
 
-#popupForm button[type="submit"] {
-    background-color: #435c95;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Georgia', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 18px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  #addMemberBtn:hover {
-    background-color: #1e68ff;
-    animation: pulse 1s infinite alternate;
+#popupForm input[type="text"] {
+    transition: width 0.3s ease; 
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.05);
-    }
+#popupForm input[type="text"]:hover {
+    width: 100%; 
+}
+
+#popupForm button[type="submit"] {
+    border: none;
+    color: black;
+    font-weight: bolder;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+    font-size: 20px;
+    font-family: candara;
+}
+
+#popupForm button:hover {
+    transform: scale(1.1);
+}
+
+#popupForm select{
+    width: 95%;
+    padding:10px;
+    border: 0.5px solid grey;
+    border-radius:20px;
+    margin-bottom: 20px;
+    font-family: 'Palatino', sans-serif;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
 }

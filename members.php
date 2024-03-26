@@ -113,8 +113,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="role">Role:</label>
                 <input type="text" id="role" name="role" required><br><br>
                 
-                <label for="status">Status:</label>
-                <input type="text" id="status" name="status" required><br><br>
+                <label for="status">Status:</label><br>
+                <select id="status" name="status" required>
+                    <option value="home">Home</option>
+                    <option value="away">Away</option>
+                </select><br><br>
+
         <div class="container">
                 <button type="submit">Add New User</button>
         </div>
