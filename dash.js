@@ -56,26 +56,11 @@ document.getElementById("room").addEventListener("change", function() {
     var selectedOption = this.value;
     var imageSrc = '';
 
-    // Determine the image source based on the selected option
-    switch (selectedOption) {
-        case "Bedroom":
-            imageSrc = "Bedroom.jpg";
-            break;
-        case "Living Room":
-            imageSrc = "LivingRoom.jpg";
-            break;
-        case "Kitchen":
-            imageSrc = "Kitchen.jpg";
-            break;
-        case "Kids Room":
-            imageSrc = "KidsRoom.jpg";
-            break;
-        default:
-            imageSrc = "SmartLighting.jpg"; // default image
-    }
+    // Get the data-image attribute of the selected option
+    var selectedOptionImage = this.options[this.selectedIndex].getAttribute("data-image");
 
     // Update the image source
-    document.getElementById("displayedImage").src = imageSrc;
+    document.getElementById("displayedImage").src = selectedOptionImage;
 });
 
 // Add event listener to the displayed image

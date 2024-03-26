@@ -49,6 +49,25 @@ $current_userid = $_SESSION['userid'];
 
   <div id="content">
     <img id="pic" src="devices.png">
+    <div id="set">
+      <button onclick="closeDeviceSettings()"
+        style="position: absolute; top: 10px; right: 10px; cursor: pointer;color:white;background-color: rgb(194, 60, 60);border-radius: 8px;">X</button>
+      <br>
+      <div class="device">
+        <h2 id="t1">Living Room Light</h2>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <h3 id="roomName">Room Name : </h3>
+      <img id="type" src="lights.png" alt="Device" />
+      <div id="slidecontainer">
+      <h3 id="brightness">Brightness : <span id="demo"></span></h3>
+        <input type="range" min="1" max="100" value="50" class="slider_set" id="myRange">
+      </div>
+
+    </div>
     <h1>My Devices</h1>
     <div class="nav">
       <div id="buttons">
@@ -65,7 +84,7 @@ $current_userid = $_SESSION['userid'];
         <option>Fans</option>
         <option>Thermostat</option>
         <option>Ac</option>
-        <option>Plugs</option>
+        <option>Geyser</option>
       </select>
       <div class="topnav">
         <div class="search-container">
@@ -101,7 +120,7 @@ $current_userid = $_SESSION['userid'];
           <option value="Fans">Fans</option>
           <option value="Thermostat">Thermostat</option>
           <option value="Ac">Ac</option>
-          <option value="Plugs">Plugs</option>
+          <option value="Geyser">Geyser</option>
         </select><br><br>
 
         <label for="existingRoom">Select Existing Room :</label><br>
@@ -142,7 +161,7 @@ $current_userid = $_SESSION['userid'];
     </div>
 
   </div>
-
+  <script src="device_script.js?v=<?php echo time(); ?>"></script>
 
 </body>
 

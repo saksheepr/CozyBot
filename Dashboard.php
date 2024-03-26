@@ -114,39 +114,40 @@ $current_userid = $_SESSION['userid'];
             ; ?>
         </h2>
         <div id="rooms_widget">
-            <select id="room" name="Room">
-                <?php
-          $sql = "SELECT RoomName FROM Room WHERE userid = ?";
+    <select id="room" name="Room">
+        <?php
+        $sql = "SELECT RoomName, RoomImage FROM Room WHERE userid = ?";
 
-          // Prepare the statement
-          $stmt = $conn->prepare($sql);
+        // Prepare the statement
+        $stmt = $conn->prepare($sql);
 
-          // Bind the parameter
-          $stmt->bind_param("i", $current_userid);
+        // Bind the parameter
+        $stmt->bind_param("i", $current_userid);
 
-          // Execute the statement
-          $stmt->execute();
+        // Execute the statement
+        $stmt->execute();
 
-          // Get the result
-          $result = $stmt->get_result();
+        // Get the result
+        $result = $stmt->get_result();
 
-          // Check if there are rows returned
-          if ($result->num_rows > 0) {
+        // Check if there are rows returned
+        if ($result->num_rows > 0) {
             // Output data of each row
             while ($row = $result->fetch_assoc()) {
-              // Output option element for each room
-              echo '<option value="' . $row['RoomName'] . '">' . $row['RoomName'] . '</option>';
+                // Output option element for each room
+                echo '<option value="' . $row['RoomName'] . '" data-image="' . $row['RoomImage'] . '">' . $row['RoomName'] . '</option>';
             }
-          } else {
+        } else {
             echo '<option value="">No rooms found</option>';
-          }
+        }
 
-          // Close the statement
-          $stmt->close();
-          ?>
-        </select>
-            <img id="displayedImage" class="rooms_image" src="Bedroom.jpg" alt="Displayed Image">
-        </div>
+        // Close the statement
+        $stmt->close();
+        ?>
+    </select>
+    <img id="displayedImage" class="rooms_image" src="room.jpg" alt="Displayed Image">
+</div>
+
         <div class="view">
             <h3>My Devices</h3>
             <a href="Devices.php">View All</a>
@@ -219,13 +220,13 @@ $current_userid = $_SESSION['userid'];
                     ?>
             </div>
             <div class="de">
-                <img class="icon_device" src="plug.png" alt="plug">
+                <img class="icon_device" src="geyser.png" alt="plug">
                 <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Plugs'";
+                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Geyser'";
                     $result = $conn->query($sql);
                     if ($result) {
                         $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Plugs</p>';
+                        echo '<p class="dev">' . $row['light_count'] .' Geyser</p>';
                     } else {
                         echo "Error: " . $conn->error;
                     }
