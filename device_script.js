@@ -254,12 +254,68 @@ function DeviceDetailsClick(deviceDetails) {
       console.log('Device Type ', deviceType);
       if (deviceType == 'Lights') {
         document.getElementById('slidecontainer').style.display = 'block';
-        document.getElementById('type').style.display = 'block';
+        document.getElementById('type1').style.display = 'block';
+        document.getElementById('type2').style.display = 'none';
+        document.getElementById('type3').style.display = 'none';
+        document.getElementById('type4').style.display = 'none';
+        document.getElementById('type5').style.display = 'none';
+        document.getElementById('type6').style.display = 'none';
+      }
+      else if (deviceType == 'Fans') {
+        document.getElementById('slidecontainer').style.display = 'none';
+        document.getElementById('type2').style.display = 'block';
+        document.getElementById('type1').style.display = 'none';
+        document.getElementById('type3').style.display = 'none';
+        document.getElementById('type4').style.display = 'none';
+        document.getElementById('type5').style.display = 'none';
+        document.getElementById('type6').style.display = 'none';
+      }
+      else if (deviceType == 'Thermostat') {
+        document.getElementById('slidecontainer').style.display = 'none';
+        document.getElementById('type3').style.display = 'block';
+        document.getElementById('type2').style.display = 'none';
+        document.getElementById('type1').style.display = 'none';
+        document.getElementById('type4').style.display = 'none';
+        document.getElementById('type5').style.display = 'none';
+        document.getElementById('type6').style.display = 'none';
+      }
+      else if (deviceType == 'Ac') {
+        document.getElementById('slidecontainer').style.display = 'none';
+        document.getElementById('type3').style.display = 'none';
+        document.getElementById('type2').style.display = 'none';
+        document.getElementById('type1').style.display = 'none';
+        document.getElementById('type4').style.display = 'block';
+        document.getElementById('type5').style.display = 'none';
+        document.getElementById('type6').style.display = 'none';
+      }
+      else if (deviceType == 'Geyser') {
+        document.getElementById('slidecontainer').style.display = 'none';
+        document.getElementById('type3').style.display = 'none';
+        document.getElementById('type2').style.display = 'none';
+        document.getElementById('type1').style.display = 'none';
+        document.getElementById('type4').style.display = 'none';
+        document.getElementById('type5').style.display = 'block';
+        document.getElementById('type6').style.display = 'none';
+      }
+      else if (deviceType == 'Doors') {
+        document.getElementById('slidecontainer').style.display = 'none';
+        document.getElementById('type1').style.display = 'none';
+        document.getElementById('type2').style.display = 'none';
+        document.getElementById('type3').style.display = 'none';
+        document.getElementById('type4').style.display = 'none';
+        document.getElementById('type5').style.display = 'none';
+        document.getElementById('type6').style.display = 'block';
       }
       else {
         document.getElementById('slidecontainer').style.display = 'none';
-        document.getElementById('type').style.display = 'none';
+        document.getElementById('type1').style.display = 'none';
+        document.getElementById('type2').style.display = 'none';
+        document.getElementById('type3').style.display = 'none';
+        document.getElementById('type4').style.display = 'none';
+        document.getElementById('type5').style.display = 'none';
+        document.getElementById('type6').style.display = 'none';
       }
+      
     }
     var slider = document.getElementById("myRange");
     var output = document.getElementById("demo");
@@ -290,30 +346,3 @@ function closeDeviceSettings() {
   document.getElementById('pic').style.display = 'block';
   document.getElementById('set').style.display = 'none';
 }
-
-
-/*
-// Function to handle click on devicedetails
-function DeviceDetailsClick(deviceDetails) {
-  document.getElementById('pic').style.display = 'none';
-  document.getElementById('set').style.display = 'block';
-  deviceDetails.style.background = 'white';
-  deviceDetails.querySelector('p').style.color = '#212167';
-  deviceDetails.querySelector('.icontype').src= "light_onclick.png";
-  var deviceId = deviceDetails.getAttribute('data-device-id');
-  console.log('Device ID clicked:', deviceId);
-}
-
-// Function to close the popup
-function closeDeviceSettings() {
-  document.getElementById('pic').style.display = 'block';
-  document.getElementById('set').style.display = 'none';
-  var allDeviceDetails = document.querySelectorAll('.devicedetails');
-    allDeviceDetails.forEach(function(deviceDetails) {
-        deviceDetails.style.background = 'linear-gradient(to right, #1D084B, #212167, #23438C)';
-        deviceDetails.querySelector('p').style.color = '#D1CBCB'; 
-        deviceDetails.querySelector('.icontype').src = 'bulb.png';
-    });
-}*/
-
-

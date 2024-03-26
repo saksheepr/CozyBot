@@ -337,7 +337,7 @@ select {
 #slidecontainer {
     position: absolute;
     left : 55px;
-    top: 300px;
+    top: 270px;
     width: 90%;
     display: none;
   }
@@ -379,3 +379,28 @@ select {
     left: 200px;
     display: none;
   }
+.mode{
+    display: inline;
+    margin-left: 30px;
+}
+.mode:hover{
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    background-color: #23438C;
+}
+#mode {
+    position: absolute;
+    left : 55px;
+    top: 360px;
+  }
+#save{
+    position: absolute;
+    left : 55px;
+    bottom: 30px;
+}
+.type{
+    height: 100px;
+    position: absolute;
+    left: 200px;
+}

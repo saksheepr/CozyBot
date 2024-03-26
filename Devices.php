@@ -41,7 +41,9 @@ $current_userid = $_SESSION['userid'];
     <a href="Devices.php">
       <img class="icon" src="device.png">
     </a>
+    <a href="members.php">
     <img class="icon" src="members.png">
+    </a>
     <a href="logout.php">
       <img class="icon" src="logout.png">
     </a>
@@ -61,12 +63,18 @@ $current_userid = $_SESSION['userid'];
         </label>
       </div>
       <h3 id="roomName">Room Name : </h3>
-      <img id="type" src="lights.png" alt="Device" />
+      <img id="type1" src="lights.png" alt="Device" class="type" />
+      <img id="type2" src="fans.png" alt="Device" class="type"/>
+      <img id="type3" src="thermostats.png" alt="Device" class="type"/>
+      <img id="type4" src="acs.png" alt="Device" class="type"/>
+      <img id="type5" src="geysers.png" alt="Device" class="type"/>
+      <img id="type6" src="doors.png" alt="Device" class="type"/>
       <div id="slidecontainer">
       <h3 id="brightness">Brightness : <span id="demo"></span></h3>
         <input type="range" min="1" max="100" value="50" class="slider_set" id="myRange">
       </div>
-
+      <h3 id="mode">Mode : <span id="demo"><p class="mode">Morning</p> <p class="mode">Day</p> <p class="mode">Night</p>  </span> </h3>
+      <button id="save" class="button">Save Changes</button>
     </div>
     <h1>My Devices</h1>
     <div class="nav">
