@@ -10,7 +10,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-  die ("Connection failed: " . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
 $current_userid = $_SESSION['userid'];
 
@@ -42,7 +42,7 @@ $current_userid = $_SESSION['userid'];
       <img class="icon" src="device.png">
     </a>
     <a href="members.php">
-    <img class="icon" src="members.png">
+      <img class="icon" src="members.png">
     </a>
     <a href="logout.php">
       <img class="icon" src="logout.png">
@@ -64,23 +64,95 @@ $current_userid = $_SESSION['userid'];
       </div>
       <h3 id="roomName">Room Name : </h3>
       <img id="type1" src="lights.png" alt="Device" class="type" />
-      <img id="type2" src="fans.png" alt="Device" class="type"/>
-      <img id="type3" src="thermostats.png" alt="Device" class="type"/>
-      <img id="type4" src="acs.png" alt="Device" class="type"/>
-      <img id="type5" src="geysers.png" alt="Device" class="type"/>
-      <img id="type6" src="doors.png" alt="Device" class="type"/>
+      <img id="type2" src="fans.png" alt="Device" class="type" />
+      <img id="type3" src="thermostats.png" alt="Device" class="type" />
+      <img id="type4" src="acs.png" alt="Device" class="type" />
+      <img id="type5" src="geysers.png" alt="Device" class="type" />
+      <img id="type6" src="doors.png" alt="Device" class="type" />
       <div id="slidecontainer">
-      <h3 id="brightness">Brightness : <span id="demo"></span></h3>
+        <h3 id="brightness">Brightness : <span id="demo"></span></h3>
         <input type="range" min="1" max="100" value="50" class="slider_set" id="myRange">
       </div>
-      <h3 id="mode">Mode : <span id="demo"><p class="mode">Morning</p> <p class="mode">Day</p> <p class="mode">Night</p>  </span> </h3>
+      <div id="slidecontainer2">
+        <h3 id="temp">Desired Temperature : <span id="demo2">°F</span></h3>
+        <input type="range" min="40" max="90" value="45" class="slider_set" id="myRange2">
+      </div>
+      <h3 id="mode">Mode : <span id="demo">
+          <p id="Morning" class="mode">Morning</p>
+          <p id="Day" class="mode">Day</p>
+          <p id="Night" class="mode">Night</p>
+          <p id="power_saving" class="mode">Power Saving</p>
+        </span> </h3>
+      <div id="thermo-mode">
+        <h3 id="modes">Modes :</h3>
+        <div id="mod">
+          <div id="Heating" class="mo"><img class="modes" src="heating.png">
+            <p>Heating</p>
+          </div>
+          <div id="Cooling" class="mo"><img class="modes" src="cooling.png">
+            <p>Cooling</p>
+          </div>
+          <div id="Auto" class="mo"><img class="modes" src="auto.png">
+            <p>Auto</p>
+          </div>
+        </div>
+      </div>
+      <div id="fan-control">
+      <h3 id="control">Fan Control : </h3>
+      <label id="fan-con" class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      
+
+      <div id="bulb-shade">
+        <h3 id="shade">Shade : </h3>
+        <div id="bulb-container">
+          <div class="bulb" id="white" title="White"></div>
+          <div class="bulb" id="cream" title="Cream"></div>
+          <div class="bulb" id="red" title="Red"></div>
+          <div class="bulb" id="green" title="Green"></div>
+          <div class="bulb" id="blue" title="Blue"></div>
+          <div class="bulb" id="yellow" title="Yellow"></div>
+          <div class="bulb" id="orange" title="Orange"></div>
+          <div class="bulb" id="purple" title="Purple"></div>
+          <div class="bulb" id="pink" title="Pink"></div>
+          <div class="bulb" id="cyan" title="Cyan"></div>
+          <div class="bulb" id="indigo" title="Indigo"></div>
+          <div class="bulb" id="lime" title="Lime"></div>
+        </div>
+      </div>
+      <div id="speed-fan">
+        <h3 id="speed">Fan Speed : </h3>
+        <div class="fan-speed">
+          <div class="speed-circle" id="1" style="width: 15px; height: 15px;">
+          </div>
+          <div class="speed-circle" id="2" style="width: 20px; height: 20px;">
+          </div>
+          <div class="speed-circle" id="3" style="width: 25px; height: 25px;">
+          </div>
+          <div class="speed-circle" id="4" style="width: 35px; height: 35px;">
+          </div>
+          <div class="speed-circle" id="5" style="width: 40px; height: 40px;">
+          </div>
+        </div>
+      </div>
+      <div id="settings">
+        <label id="direct" for="direction">Direction:</label>
+        <select name="direction" id="direction">
+          <option value="clockwise">Clockwise</option>
+          <option value="counterclockwise">Counterclockwise</option>
+        </select>
+      </div>
+
       <button id="save" class="button">Save Changes</button>
     </div>
     <h1>My Devices</h1>
     <div class="nav">
       <div id="buttons">
         <button class="button" onclick="openPopup()">Add Device</button>
-        <button class="button" id="delete" onclick="removeSelectedDevices()">Remove Room</button>
+        <button class="button" id="delete" onclick="removeSelectedDevices()">Remove Device</button>
       </div>
       <p id="totalDevices" style="color:#1D084B;">Total No. of Devices: <span id="deviceCount">0</span></p>
     </div>

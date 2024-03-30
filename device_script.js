@@ -260,6 +260,14 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('type4').style.display = 'none';
         document.getElementById('type5').style.display = 'none';
         document.getElementById('type6').style.display = 'none';
+        document.getElementById('mode').style.display = 'block';
+        document.getElementById('bulb-shade').style.display = 'block';
+        document.getElementById('speed-fan').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('slidecontainer2').style.display = 'none';
+        document.getElementById('thermo-mode').style.display = 'none';
+        document.getElementById('fan-control').style.display = 'none';
+        fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Fans') {
         document.getElementById('slidecontainer').style.display = 'none';
@@ -269,8 +277,17 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('type4').style.display = 'none';
         document.getElementById('type5').style.display = 'none';
         document.getElementById('type6').style.display = 'none';
+        document.getElementById('mode').style.display = 'block';
+        document.getElementById('bulb-shade').style.display = 'none';
+        document.getElementById('speed-fan').style.display = 'block';
+        document.getElementById('settings').style.display = 'block';
+        document.getElementById('slidecontainer2').style.display = 'none';
+        document.getElementById('thermo-mode').style.display = 'none';
+        document.getElementById('fan-control').style.display = 'none';
+        fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Thermostat') {
+        document.getElementById('slidecontainer2').style.display = 'block';
         document.getElementById('slidecontainer').style.display = 'none';
         document.getElementById('type3').style.display = 'block';
         document.getElementById('type2').style.display = 'none';
@@ -278,6 +295,13 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('type4').style.display = 'none';
         document.getElementById('type5').style.display = 'none';
         document.getElementById('type6').style.display = 'none';
+        document.getElementById('mode').style.display = 'none';
+        document.getElementById('bulb-shade').style.display = 'none';
+        document.getElementById('speed-fan').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('thermo-mode').style.display = 'block';
+        document.getElementById('fan-control').style.display = 'block';
+        fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Ac') {
         document.getElementById('slidecontainer').style.display = 'none';
@@ -287,6 +311,13 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('type4').style.display = 'block';
         document.getElementById('type5').style.display = 'none';
         document.getElementById('type6').style.display = 'none';
+        document.getElementById('mode').style.display = 'none';
+        document.getElementById('bulb-shade').style.display = 'none';
+        document.getElementById('speed-fan').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('slidecontainer2').style.display = 'none';
+        document.getElementById('thermo-mode').style.display = 'none';
+        document.getElementById('fan-control').style.display = 'none';
       }
       else if (deviceType == 'Geyser') {
         document.getElementById('slidecontainer').style.display = 'none';
@@ -296,15 +327,13 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('type4').style.display = 'none';
         document.getElementById('type5').style.display = 'block';
         document.getElementById('type6').style.display = 'none';
-      }
-      else if (deviceType == 'Doors') {
-        document.getElementById('slidecontainer').style.display = 'none';
-        document.getElementById('type1').style.display = 'none';
-        document.getElementById('type2').style.display = 'none';
-        document.getElementById('type3').style.display = 'none';
-        document.getElementById('type4').style.display = 'none';
-        document.getElementById('type5').style.display = 'none';
-        document.getElementById('type6').style.display = 'block';
+        document.getElementById('mode').style.display = 'none';
+        document.getElementById('bulb-shade').style.display = 'none';
+        document.getElementById('speed-fan').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('slidecontainer2').style.display = 'none';
+        document.getElementById('thermo-mode').style.display = 'none';
+        document.getElementById('fan-control').style.display = 'none';
       }
       else {
         document.getElementById('slidecontainer').style.display = 'none';
@@ -313,30 +342,20 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('type3').style.display = 'none';
         document.getElementById('type4').style.display = 'none';
         document.getElementById('type5').style.display = 'none';
-        document.getElementById('type6').style.display = 'none';
+        document.getElementById('type6').style.display = 'block';
+        document.getElementById('mode').style.display = 'none';
+        document.getElementById('bulb-shade').style.display = 'none';
+        document.getElementById('speed-fan').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('slidecontainer2').style.display = 'none';
+        document.getElementById('thermo-mode').style.display = 'none';
+        document.getElementById('fan-control').style.display = 'none';
       }
-      
-    }
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
 
-    slider.oninput = function () {
-      output.innerHTML = this.value;
-      updateSliderColor();
     }
 
-    // Update the slider color on page load
-    updateSliderColor();
-
-    function updateSliderColor() {
-      var value = slider.value;
-      var thumbWidth = 20;
-      var trackWidth = slider.offsetWidth - thumbWidth;
-      var trackColor = "linear-gradient(to right, #1D084B " + (value / 100 * trackWidth) + "px, #d3d3d3 " + (value / 100 * trackWidth) + "px)";
-      slider.style.background = trackColor;
-    }
   };
+
   xhr.open("GET", "get_device_details.php?deviceId=" + deviceId, true);
   xhr.send();
 }
@@ -345,4 +364,209 @@ function DeviceDetailsClick(deviceDetails) {
 function closeDeviceSettings() {
   document.getElementById('pic').style.display = 'block';
   document.getElementById('set').style.display = 'none';
+}
+
+const bulbs = document.querySelectorAll('.bulb');
+
+// Add click event listener to each bulb
+bulbs.forEach(bulb => {
+  bulb.addEventListener('click', () => {
+    // Remove 'selected' class from all bulbs
+    bulbs.forEach(b => b.classList.remove('selected'));
+    // Add 'selected' class to the clicked bulb
+    bulb.classList.add('selected');
+  });
+});
+
+const modes = document.querySelectorAll('.mode');
+
+// Add click event listener to each mode
+modes.forEach(mode => {
+  mode.addEventListener('click', () => {
+    // Remove 'selected' class from all modes
+    modes.forEach(m => m.classList.remove('selected-mode'));
+    // Add 'selected' class to the clicked mode
+    mode.classList.add('selected-mode');
+  });
+});
+
+const circles = document.querySelectorAll('.speed-circle');
+
+// Add click event listener to each speed circle
+circles.forEach(circle => {
+  circle.addEventListener('click', () => {
+    // Remove 'selected-speed' class from all circles
+    circles.forEach(c => c.classList.remove('selected-speed'));
+    // Add 'selected-speed' class to the clicked circle
+    circle.classList.add('selected-speed');
+  });
+});
+
+const mode = document.querySelectorAll('.mo');
+
+// Add click event listener to each mode
+mode.forEach(mo => {
+  mo.addEventListener('click', () => {
+    // Remove 'selected' class from all mode
+    mode.forEach(m => m.classList.remove('selected-modes'));
+    // Add 'selected' class to the clicked modes
+    mo.classList.add('selected-modes');
+  });
+});
+
+function fetchAndSetSettings(deviceId) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var settings = JSON.parse(this.responseText);
+      console.log('Settings:', settings);
+
+      var deviceType = settings.DeviceType;
+      console.log('Device Type:', deviceType);
+
+      if (deviceType === 'Lights') {
+        // Update brightness slider value and output
+        var brightnessSlider = document.getElementById('myRange');
+        var brightnessOutput = document.getElementById('demo');
+        brightnessOutput.innerHTML = settings.Brightness;
+        brightnessSlider.value = parseInt(settings.Brightness);
+        // Update slider color
+        updateSliderColor(brightnessSlider);
+
+        // Update mode
+        var selectedModeId = settings.Mode;
+        if (selectedModeId) {
+          modes.forEach(m => {
+            if (m.id === selectedModeId) {
+              m.classList.add('selected-mode'); // Add 'selected-mode' class to the selected mode
+            } else {
+              m.classList.remove('selected-mode'); // Remove 'selected-mode' class from other modes
+            }
+          });
+        }
+
+        // Update shade
+        var selectedShadeId = settings.Shade;
+        if (selectedShadeId) {
+          bulbs.forEach(b => {
+            if (b.id === selectedShadeId) {
+              b.classList.add('selected');
+            } else {
+              b.classList.remove('selected');
+            }
+          });
+        }
+      }
+      else if (deviceType === 'Fans') {
+        var selectedSpeedId = settings.Fan_Speed;
+        if (selectedSpeedId) {
+          updateFanSpeed(selectedSpeedId);
+          // Function to update fan speed
+          function updateFanSpeed(selectedSpeedId) {
+            // Remove 'selected-speed' class from all circles
+            var circles = document.querySelectorAll('.speed-circle');
+            circles.forEach(function (circle) {
+              circle.classList.remove('selected-speed');
+            });
+
+            // Add 'selected-speed' class to the clicked circle
+            var selectedSpeedElement = document.getElementById(selectedSpeedId);
+            if (selectedSpeedElement) {
+              selectedSpeedElement.classList.add('selected-speed');
+            }
+          }
+        }
+
+        // Update mode
+        var selectedModeId = settings.Mode;
+        if (selectedModeId) {
+          modes.forEach(m => {
+            if (m.id === selectedModeId) {
+              m.classList.add('selected-mode'); // Add 'selected-mode' class to the selected mode
+            } else {
+              m.classList.remove('selected-mode'); // Remove 'selected-mode' class from other modes
+            }
+          });
+        }
+
+        // Update direction
+        var selectedDirection = settings.Direction;
+        if (selectedDirection) {
+          var directionSelect = document.getElementById('direction');
+          if (directionSelect) {
+            for (var i = 0; i < directionSelect.options.length; i++) {
+              if (directionSelect.options[i].value === selectedDirection) {
+                directionSelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+        }
+      } else if (deviceType === 'Thermostat') {
+        console.log("Temperature:", settings.Temperature);
+        // Update temperature slider value and output
+        var tempSlider = document.getElementById('myRange2');
+        var tempOutput = document.getElementById('demo2');
+        tempOutput.innerHTML = settings.Temperature + '°F';
+        tempSlider.value = parseInt(settings.Temperature);
+        updateSliderColor(tempSlider);
+
+        console.log("Mode:", settings.Mode);
+        // Update mode
+        var selectedModeId = settings.Mode;
+        if (selectedModeId) {
+          mode.forEach(m => {
+            if (m.id === selectedModeId) {
+              m.classList.add('selected-modes'); // Add 'selected-mode' class to the selected mode
+            } else {
+              m.classList.remove('selected-modes'); // Remove 'selected-mode' class from other modes
+            }
+          });
+        }
+        console.log("Fan Control : ", settings.FanControl);
+        // Update fan control
+        var fanControlCheckbox = document.getElementById('fan-con');
+        if (fanControlCheckbox) {
+          // Check the checkbox if fan control is 'On', otherwise leave it unchecked
+          fanControlCheckbox.querySelector('input[type="checkbox"]').checked = settings.FanControl === 'On';
+        }
+      }
+    }
+  };
+
+  xhr.open("GET", "get_light_settings.php?deviceId=" + deviceId, true);
+  xhr.send();
+}
+
+// Initialize brightness slider
+var brightnessSlider = document.getElementById("myRange");
+var brightnessOutput = document.getElementById("demo");
+brightnessOutput.innerHTML = brightnessSlider.value;
+
+brightnessSlider.oninput = function () {
+  brightnessOutput.innerHTML = this.value;
+  updateSliderColor(brightnessSlider);
+}
+
+// Initialize temperature slider
+var tempSlider = document.getElementById("myRange2");
+var tempOutput = document.getElementById("demo2");
+tempOutput.innerHTML = tempSlider.value + '°F';
+
+tempSlider.oninput = function () {
+  tempOutput.innerHTML = this.value + '°F';
+  updateSliderColor(tempSlider);
+}
+
+// Update the slider color on page load
+updateSliderColor(brightnessSlider);
+updateSliderColor(tempSlider);
+
+function updateSliderColor(slider) {
+  var value = slider.value;
+  var thumbWidth = 20; // Adjust this value based on your thumb width
+  var trackWidth = slider.offsetWidth - thumbWidth;
+  var gradientStop = (value - slider.min) / (slider.max - slider.min); // Calculate the percentage of the slider filled
+  var trackColor = "linear-gradient(to right, #1D084B " + (gradientStop * trackWidth) + "px, #d3d3d3 " + (gradientStop * trackWidth) + "px)";
+  slider.style.background = trackColor;
 }

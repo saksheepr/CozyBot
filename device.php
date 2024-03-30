@@ -43,5 +43,21 @@ if ($conn->query($sqlDevice) === TRUE) {
   echo "Error creating table Device: " . $conn->error;
 }
 
+// Create DeviceSettings table
+$sqlDevice = "CREATE TABLE DeviceSettings (
+  SettingID INT PRIMARY KEY  auto_increment,
+  DeviceID INT, 
+  UserID INT, 
+  SettingName VARCHAR(255), 
+  SettingValue VARCHAR(255), 
+  FOREIGN KEY (UserID) REFERENCES User(UserID), 
+  FOREIGN KEY (DeviceID) REFERENCES Device(DeviceID) ON DELETE CASCADE );";
+
+if ($conn->query($sqlDevice) === TRUE) {
+  echo "Table DeviceSettings created successfully";
+} else {
+  echo "Error creating table Device: " . $conn->error;
+}
+
 $conn->close();
 

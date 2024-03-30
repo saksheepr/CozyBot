@@ -51,6 +51,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_insert->bind_param("ssii", $deviceName, $deviceType, $current_userid, $roomID);
 
     if ($stmt_insert->execute()) {
+        // Insert default settings based on device type
+        $deviceID = $stmt_insert->insert_id; // Get the last inserted device ID
+        if ($deviceType == 'Lights') {
+            // Insert default settings for lights
+            $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES 
+            (NULL, ?, ?, 'Brightness', '50'), 
+            (NULL, ?, ?, 'Mode', 'Morning'), 
+            (NULL, ?, ?, 'Shade', 'white')";
+            $stmt_settings = $conn->prepare($insertSettingsQuery);
+            $stmt_settings->bind_param("iiiiii", $deviceID, $current_userid, $deviceID, $current_userid, $deviceID, $current_userid);
+            $stmt_settings->execute();
+            $stmt_settings->close();
+        } elseif ($deviceType == 'Fans') {
+            // Insert default settings for fans
+            $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES 
+            (NULL, ?, ?, 'Fan_Speed', '1'), 
+            (NULL, ?, ?, 'Mode', 'Morning'), 
+            (NULL, ?, ?, 'Direction', 'clockwise')";
+            $stmt_settings = $conn->prepare($insertSettingsQuery);
+            $stmt_settings->bind_param("iiiiii", $deviceID, $current_userid, $deviceID, $current_userid, $deviceID, $current_userid);
+            $stmt_settings->execute();
+            $stmt_settings->close();
+        } elseif ($deviceType == 'Thermostat') {
+            // Insert default settings for thermostat
+            $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES 
+            (NULL, ?, ?, 'Temperature', '45'), 
+            (NULL, ?, ?, 'Mode', 'Cooling'), 
+            (NULL, ?, ?, 'FanControl', 'Off')";
+            $stmt_settings = $conn->prepare($insertSettingsQuery);
+            $stmt_settings->bind_param("iiiiii", $deviceID, $current_userid, $deviceID, $current_userid, $deviceID, $current_userid);
+            $stmt_settings->execute();
+            $stmt_settings->close();
+        }
+
         header("Location: Devices.php");
         exit;
     } else {
@@ -63,4 +97,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close the database connection
 $conn->close();
-?>
