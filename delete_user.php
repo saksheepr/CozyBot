@@ -16,7 +16,7 @@ $current_userid = $_SESSION['userid'];
 $memberID = $_POST['memberid'] ?? '';
 
 // Prepare SQL statement to delete the user
-$sql = "DELETE FROM member WHERE MemberID = $memberID AND UserID = $current_userid";
+$sql = "DELETE FROM members WHERE MemberID = $memberID AND UserID = $current_userid";
 
 if ($conn->query($sql) === TRUE) {
     echo "success";
