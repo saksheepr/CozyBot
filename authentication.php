@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
         if (password_verify($loginPassword, $row["Password"])) {
             // Update last login timestamp
             $userId = $row["UserID"];
-            $updateSql = "UPDATE User SET lastlogin = NOW() WHERE UserID = $userId";
+            $updateSql = "UPDATE User SET LastLogin = NOW() WHERE UserID = $userId";
             $conn->query($updateSql);
 
             // Set session variables

@@ -397,10 +397,10 @@ function DeviceDetailsClick(deviceDetails) {
         fetchAndSetSettings(deviceId);
       }
 
-      document.getElementById('save').addEventListener('click', function() {
+      document.getElementById('save').addEventListener('click', function () {
         saveChanges(deviceId, deviceType);
-    });
-      function saveChanges(deviceId,deviceType) {
+      });
+      function saveChanges(deviceId, deviceType) {
         var settings = {};
         var deviceStatus = document.querySelector('.switch input').checked ? 'On' : 'Off';
         if (deviceType === 'Lights') {
@@ -416,11 +416,11 @@ function DeviceDetailsClick(deviceDetails) {
           settings.Mode = document.querySelector('.mo.selected-modes').id;
           var fanControlCheckbox = document.getElementById('fan-con');
           if (fanControlCheckbox.querySelector('input[type="checkbox"]').checked) {
-          // Check the checkbox if fan control is 'On', otherwise leave it unchecked
+            // Check the checkbox if fan control is 'On', otherwise leave it unchecked
             settings.FanControl = 'On';
-        }else{
-          settings.FanControl = 'Off';
-        }
+          } else {
+            settings.FanControl = 'Off';
+          }
         } else if (deviceType === 'Ac') {
           settings.Temperature = document.getElementById('myRange3').value;
           settings.Mode = document.querySelector('.mo.selected-modes').id;

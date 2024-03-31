@@ -34,7 +34,25 @@ $current_userid = $_SESSION['userid'];
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;"
             onclick="closeNav()">&#9776;</span>
         <a href="User_Profile.html">
-            <img id="profile_s" src="profile.png" alt="Profile Picture" title="User_Profile">
+        <?php
+        // SQL query to select the UserImage from the User table
+        $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                $userImage = $row["UserImage"];
+                // Now you have the UserImage, you can use it as needed
+                // For example, if you want to display it in an img tag:
+                echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
+            }
+        } else {
+            echo "0 results";
+        }
+
+        ?>
         </a>
         <a href="Dashboard.php">
             <img class="icon" src="dashboard_icon.png" title="Dashboard">
@@ -58,7 +76,20 @@ $current_userid = $_SESSION['userid'];
             onclick="openNav()">&#9776;</span>
         <a href="User_Profile.html">
             <div id="profile">
-                <img src="profile.png" alt="Profile Picture">
+                <?php
+                // Fetch the user's profile image from the database
+                $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid"; // Assuming $current_userid holds the current user's ID
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $userImage = $row["UserImage"];
+                    echo "<img src='$userImage' alt='Profile Picture'>";
+                } else {
+                    // If no profile image found, display a default image
+                    echo "<img src='default_profile_image.png' alt='Profile Picture'>";
+                }
+                ?>
             </div>
         </a>
         <div id="nav">

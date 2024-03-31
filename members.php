@@ -60,7 +60,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div id="nav_shrink">
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
-        <img id="profile_s" src="profile.png" alt="Profile Picture">
+        <a href="User_Profile.html">
+            <?php
+            // SQL query to select the UserImage from the User table
+            $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
+
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    $userImage = $row["UserImage"];
+                    // Now you have the UserImage, you can use it as needed
+                    // For example, if you want to display it in an img tag:
+                    echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
+                }
+            } else {
+                echo "0 results";
+            }
+
+            ?>
+        </a>
         <a href="Dashboard.php">
             <img class="icon" src="dashboard_icon.png">
         </a>
@@ -72,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img class="icon" src="device.png">
         </a>
         <a href="members.php">
-            <img class="icon" src="members.png" >
-            </a>
+            <img class="icon" src="members.png">
+        </a>
         <img class="icon" src="logout.png">
     </div>
 
