@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare SQL statement to insert new member   
     $sql = "INSERT INTO members (UserID, MemberName, Role, Status) 
             VALUES ('$current_userid', '$memberName', '$role', '$status')"; // Include role in the SQL query
-    
+
     if ($conn->query($sql) === TRUE) {
         // Redirect to avoid form resubmission
         header("Location: {$_SERVER['PHP_SELF']}");
@@ -40,67 +40,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Management</title>
     <link rel="stylesheet" href="memberstyle.css">
 </head>
+
 <body>
     <div id="heading">
-    <h1>Your Members</h1>
+        <h1>Your Members</h1>
     </div>
     <div id="welcome">
-        <h1>Welcome, <?php echo $userFirstName; ?></h1>
+        <h1>Welcome,
+            <?php echo $userFirstName; ?>
+        </h1>
     </div>
 
     <div id="nav_shrink">
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
         <img id="profile_s" src="profile.png" alt="Profile Picture">
         <a href="Dashboard.php">
-            <img class="icon" src="dashboard_icon.png" >
+            <img class="icon" src="dashboard_icon.png">
         </a>
-        <img class="icon" src="energy.png" >
+        <img class="icon" src="schedule.png">
         <a href="Rooms.php">
-            <img class="icon" src="rooms.png" >
+            <img class="icon" src="rooms.png">
         </a>
         <a href="Devices.php">
-            <img class="icon" src="device.png" >
+            <img class="icon" src="device.png">
         </a>
-        <img class="icon" src="logout.png" >
+        <a href="members.php">
+            <img class="icon" src="members.png" >
+            </a>
+        <img class="icon" src="logout.png">
     </div>
 
     <div class="userTable">
         <?php if ($result->num_rows > 0): ?>
-        <table id="userTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                <tr id="user-<?php echo $row['MemberID']; ?>">
-                    <td><?php echo $row['MemberName']; ?></td>
-                    <td><?php echo $row['Role']; ?></td>
-                    <td><?php echo $row['Status']; ?></td>
-                    <td>
-                        <img src="delete.png" width="30px" alt="Delete" onclick="confirmDelete(<?php echo $row['MemberID']; ?>)">
-                        <a href="location.php"><img src="locationpin.png" width="30px" alt="Delete"></a>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr id="user-<?php echo $row['MemberID']; ?>">
+                            <td>
+                                <?php echo $row['MemberName']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['Role']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row['Status']; ?>
+                            </td>
+                            <td>
+                                <img src="delete.png" width="30px" alt="Delete"
+                                    onclick="confirmDelete(<?php echo $row['MemberID']; ?>)">
+                                <a href="location.php"><img src="locationpin.png" width="30px" alt="Delete"></a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
         <?php else: ?>
-        <p>No members added.</p>
+            <p>No members added.</p>
         <?php endif; ?>
 
         <div class="container">
-        <button id="addMemberBtn" onclick="togglePopup()">Add Member</button>
+            <button id="addMemberBtn" onclick="togglePopup()">Add Member</button>
         </div>
 
         <div id="popupForm" style="display: none;">
@@ -109,19 +123,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form id="userForm" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br><br>
-                
+
                 <label for="role">Role:</label>
                 <input type="text" id="role" name="role" required><br><br>
-                
+
                 <label for="status">Status:</label><br>
                 <select id="status" name="status" required>
                     <option value="home">Home</option>
                     <option value="away">Away</option>
                 </select><br><br>
 
-        <div class="container">
-                <button type="submit">Add New User</button>
-        </div>
+                <div class="container">
+                    <button type="submit">Add New User</button>
+                </div>
             </form>
         </div>
     </div>
@@ -147,12 +161,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         function deleteUser(memberID) {
             var row = document.getElementById("user-" + memberID);
-            
+
             // AJAX call to delete user from database
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "delete_user.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     // If deletion was successful, remove the row from the table
                     if (xhr.responseText.trim() === "success") {
@@ -162,6 +176,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             };
             xhr.send("memberid=" + memberID);
         }
+        var elements = document.querySelectorAll('.icon');
+
+        // Iterate through each element and add the mouseover event listener
+        elements.forEach(function (element) {
+            element.addEventListener('mouseover', function () {
+                element.style.filter = 'drop-shadow(0 0 0.75rem yellow)';
+                element.style.height = '25px';
+            });
+
+            // Add mouseout event listener to revert the background color
+            element.addEventListener('mouseout', function () {
+                element.style.filter = '';
+                element.style.height = '20px';
+            });
+        });
+
     </script>
 </body>
+
 </html>

@@ -263,10 +263,17 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('mode').style.display = 'block';
         document.getElementById('bulb-shade').style.display = 'block';
         document.getElementById('speed-fan').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
+        document.getElementById('setting').style.display = 'none';
         document.getElementById('slidecontainer2').style.display = 'none';
         document.getElementById('thermo-mode').style.display = 'none';
         document.getElementById('fan-control').style.display = 'none';
+        document.getElementById('slidecontainer3').style.display = 'none';
+        document.getElementById('ac-mode').style.display = 'none';
+        document.getElementById('slidecontainer4').style.display = 'none';
+        document.getElementById('gmode').style.display = 'none';
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('locking').style.display = 'none';
+        document.getElementById('lock-mode').style.display = 'none';
         fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Fans') {
@@ -280,10 +287,17 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('mode').style.display = 'block';
         document.getElementById('bulb-shade').style.display = 'none';
         document.getElementById('speed-fan').style.display = 'block';
-        document.getElementById('settings').style.display = 'block';
+        document.getElementById('setting').style.display = 'block';
         document.getElementById('slidecontainer2').style.display = 'none';
         document.getElementById('thermo-mode').style.display = 'none';
         document.getElementById('fan-control').style.display = 'none';
+        document.getElementById('slidecontainer3').style.display = 'none';
+        document.getElementById('ac-mode').style.display = 'none';
+        document.getElementById('slidecontainer4').style.display = 'none';
+        document.getElementById('gmode').style.display = 'none';
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('locking').style.display = 'none';
+        document.getElementById('lock-mode').style.display = 'none';
         fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Thermostat') {
@@ -298,9 +312,16 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('mode').style.display = 'none';
         document.getElementById('bulb-shade').style.display = 'none';
         document.getElementById('speed-fan').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
+        document.getElementById('setting').style.display = 'none';
         document.getElementById('thermo-mode').style.display = 'block';
         document.getElementById('fan-control').style.display = 'block';
+        document.getElementById('slidecontainer3').style.display = 'none';
+        document.getElementById('ac-mode').style.display = 'none';
+        document.getElementById('slidecontainer4').style.display = 'none';
+        document.getElementById('gmode').style.display = 'none';
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('locking').style.display = 'none';
+        document.getElementById('lock-mode').style.display = 'none';
         fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Ac') {
@@ -314,10 +335,18 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('mode').style.display = 'none';
         document.getElementById('bulb-shade').style.display = 'none';
         document.getElementById('speed-fan').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
+        document.getElementById('setting').style.display = 'none';
         document.getElementById('slidecontainer2').style.display = 'none';
         document.getElementById('thermo-mode').style.display = 'none';
         document.getElementById('fan-control').style.display = 'none';
+        document.getElementById('slidecontainer3').style.display = 'block';
+        document.getElementById('ac-mode').style.display = 'block';
+        document.getElementById('slidecontainer4').style.display = 'none';
+        document.getElementById('gmode').style.display = 'none';
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('locking').style.display = 'none';
+        document.getElementById('lock-mode').style.display = 'none';
+        fetchAndSetSettings(deviceId);
       }
       else if (deviceType == 'Geyser') {
         document.getElementById('slidecontainer').style.display = 'none';
@@ -330,10 +359,18 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('mode').style.display = 'none';
         document.getElementById('bulb-shade').style.display = 'none';
         document.getElementById('speed-fan').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
+        document.getElementById('setting').style.display = 'none';
         document.getElementById('slidecontainer2').style.display = 'none';
         document.getElementById('thermo-mode').style.display = 'none';
         document.getElementById('fan-control').style.display = 'none';
+        document.getElementById('slidecontainer3').style.display = 'none';
+        document.getElementById('ac-mode').style.display = 'none';
+        document.getElementById('slidecontainer4').style.display = 'block';
+        document.getElementById('gmode').style.display = 'block';
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('locking').style.display = 'none';
+        document.getElementById('lock-mode').style.display = 'none';
+        fetchAndSetSettings(deviceId);
       }
       else {
         document.getElementById('slidecontainer').style.display = 'none';
@@ -346,11 +383,75 @@ function DeviceDetailsClick(deviceDetails) {
         document.getElementById('mode').style.display = 'none';
         document.getElementById('bulb-shade').style.display = 'none';
         document.getElementById('speed-fan').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
+        document.getElementById('setting').style.display = 'none';
         document.getElementById('slidecontainer2').style.display = 'none';
         document.getElementById('thermo-mode').style.display = 'none';
         document.getElementById('fan-control').style.display = 'none';
+        document.getElementById('slidecontainer3').style.display = 'none';
+        document.getElementById('ac-mode').style.display = 'none';
+        document.getElementById('slidecontainer4').style.display = 'none';
+        document.getElementById('gmode').style.display = 'none';
+        document.getElementById('lock').style.display = 'block';
+        document.getElementById('locking').style.display = 'block';
+        document.getElementById('lock-mode').style.display = 'block';
+        fetchAndSetSettings(deviceId);
       }
+
+      document.getElementById('save').addEventListener('click', function() {
+        saveChanges(deviceId, deviceType);
+    });
+      function saveChanges(deviceId,deviceType) {
+        var settings = {};
+        var deviceStatus = document.querySelector('.switch input').checked ? 'On' : 'Off';
+        if (deviceType === 'Lights') {
+          settings.Brightness = document.getElementById('myRange').value;
+          settings.Mode = document.querySelector('.mode.selected-mode').id;
+          settings.Shade = document.querySelector('.bulb.selected').id;
+        } else if (deviceType === 'Fans') {
+          settings.Fan_Speed = document.querySelector('.speed-circle.selected-speed').id;
+          settings.Mode = document.querySelector('.mode.selected-mode').id;
+          settings.Direction = document.getElementById('direction').value;
+        } else if (deviceType === 'Thermostat') {
+          settings.Temperature = document.getElementById('myRange2').value;
+          settings.Mode = document.querySelector('.mo.selected-modes').id;
+          var fanControlCheckbox = document.getElementById('fan-con');
+          if (fanControlCheckbox.querySelector('input[type="checkbox"]').checked) {
+          // Check the checkbox if fan control is 'On', otherwise leave it unchecked
+            settings.FanControl = 'On';
+        }else{
+          settings.FanControl = 'Off';
+        }
+        } else if (deviceType === 'Ac') {
+          settings.Temperature = document.getElementById('myRange3').value;
+          settings.Mode = document.querySelector('.mo.selected-modes').id;
+        } else if (deviceType === 'Geyser') {
+          settings.Temperature = document.getElementById('myRange4').value;
+          settings.Mode = document.querySelector('.mo.selected-modes').id;
+        } else if (deviceType === 'Doors') {
+          settings.Mode = document.querySelector('.mo.selected-modes').id;
+          settings['Lock Status'] = document.querySelector('.lo.selected-lock').id;
+          settings['Locking Preference'] = document.getElementById('preference').value;
+        }
+
+        // Send the updated settings to the server
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'save_settings.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              console.log('Settings saved successfully');
+              closeDeviceSettings();
+              // Optionally, you can provide feedback to the user
+            } else {
+              console.error('Failed to save settings:', xhr.status);
+              // Optionally, provide error feedback to the user
+            }
+          }
+        };
+        xhr.send(JSON.stringify({ deviceId: deviceId, settings: settings, deviceStatus: deviceStatus }));
+      }
+
 
     }
 
@@ -411,6 +512,17 @@ mode.forEach(mo => {
     mode.forEach(m => m.classList.remove('selected-modes'));
     // Add 'selected' class to the clicked modes
     mo.classList.add('selected-modes');
+  });
+});
+const lock = document.querySelectorAll('.lo');
+
+// Add click event listener to each mode
+lock.forEach(lo => {
+  lo.addEventListener('click', () => {
+    // Remove 'selected' class from all mode
+    lock.forEach(l => l.classList.remove('selected-lock'));
+    // Add 'selected' class to the clicked modes
+    lo.classList.add('selected-lock');
   });
 });
 
@@ -530,11 +642,95 @@ function fetchAndSetSettings(deviceId) {
           // Check the checkbox if fan control is 'On', otherwise leave it unchecked
           fanControlCheckbox.querySelector('input[type="checkbox"]').checked = settings.FanControl === 'On';
         }
+      } else if (deviceType === 'Geyser') {
+        console.log("Temperature:", settings.Temperature);
+        // Update temperature slider value and output
+        var tempSlider = document.getElementById('myRange4');
+        var tempOutput = document.getElementById('demo4');
+        tempOutput.innerHTML = settings.Temperature + '°C';
+        tempSlider.value = parseInt(settings.Temperature);
+        updateSliderColor(tempSlider);
+
+        console.log("Mode:", settings.Mode);
+        // Update mode
+        var selectedModeId = settings.Mode;
+        if (selectedModeId) {
+          modes.forEach(m => {
+            if (m.id === selectedModeId) {
+              m.classList.add('selected-mode'); // Add 'selected-mode' class to the selected mode
+            } else {
+              m.classList.remove('selected-mode'); // Remove 'selected-mode' class from other modes
+            }
+          });
+        }
+      } else if (deviceType === 'Ac') {
+        console.log("Temperature:", settings.Temperature);
+        // Update temperature slider value and output
+        var tempSlider = document.getElementById('myRange3');
+        var tempOutput = document.getElementById('demo3');
+        tempOutput.innerHTML = settings.Temperature + '°C';
+        tempSlider.value = parseInt(settings.Temperature);
+        updateSliderColor(tempSlider);
+
+        console.log("Mode:", settings.Mode);
+        // Update mode
+        var selectedModeId = settings.Mode;
+        if (selectedModeId) {
+          mode.forEach(m => {
+            if (m.id === selectedModeId) {
+              m.classList.add('selected-modes'); // Add 'selected-mode' class to the selected mode
+            } else {
+              m.classList.remove('selected-modes'); // Remove 'selected-mode' class from other modes
+            }
+          });
+        }
+      } else if (deviceType === 'Doors') {
+        var lockStatus = settings['Lock Status'];
+        console.log('Lock Status:', lockStatus);
+        var selectedModeId = lockStatus;
+        if (selectedModeId) {
+          lock.forEach(l => {
+            if (l.id === selectedModeId) {
+              l.classList.add('selected-lock');
+            } else {
+              l.classList.remove('selected-lock');
+            }
+          });
+        }
+
+        console.log("Mode:", settings.Mode);
+
+        var selectedModeId = settings.Mode;
+        if (selectedModeId) {
+          mode.forEach(m => {
+            if (m.id === selectedModeId) {
+              m.classList.add('selected-modes'); // Add 'selected-mode' class to the selected mode
+            } else {
+              m.classList.remove('selected-modes'); // Remove 'selected-mode' class from other modes
+            }
+          });
+        }
+
+        // Update Locking Preference
+        var preference = settings['Locking Preference'];
+        console.log("Locking Preference : ", preference);
+        var selectedpreference = preference;
+        if (selectedpreference) {
+          var preferenceSelect = document.getElementById('preference');
+          if (preferenceSelect) {
+            for (var i = 0; i < preferenceSelect.options.length; i++) {
+              if (preferenceSelect.options[i].value === selectedpreference) {
+                preferenceSelect.selectedIndex = i;
+                break;
+              }
+            }
+          }
+        }
       }
     }
   };
 
-  xhr.open("GET", "get_light_settings.php?deviceId=" + deviceId, true);
+  xhr.open("GET", "get_device_settings.php?deviceId=" + deviceId, true);
   xhr.send();
 }
 
@@ -557,10 +753,24 @@ tempSlider.oninput = function () {
   tempOutput.innerHTML = this.value + '°F';
   updateSliderColor(tempSlider);
 }
+// Initialize temperature slider
+var tempSlider2 = document.getElementById("myRange3");
+var tempOutput2 = document.getElementById("demo3");
+tempOutput2.innerHTML = tempSlider2.value + '°C';
 
-// Update the slider color on page load
-updateSliderColor(brightnessSlider);
-updateSliderColor(tempSlider);
+tempSlider2.oninput = function () {
+  tempOutput2.innerHTML = this.value + '°C';
+  updateSliderColor(tempSlider2);
+}
+// Initialize temperature slider
+var tempSlider3 = document.getElementById("myRange4");
+var tempOutput3 = document.getElementById("demo4");
+tempOutput3.innerHTML = tempSlider3.value + '°C';
+
+tempSlider3.oninput = function () {
+  tempOutput3.innerHTML = this.value + '°C';
+  updateSliderColor(tempSlider3);
+}
 
 function updateSliderColor(slider) {
   var value = slider.value;
@@ -570,3 +780,4 @@ function updateSliderColor(slider) {
   var trackColor = "linear-gradient(to right, #1D084B " + (gradientStop * trackWidth) + "px, #d3d3d3 " + (gradientStop * trackWidth) + "px)";
   slider.style.background = trackColor;
 }
+

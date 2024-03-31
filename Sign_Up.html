@@ -22,7 +22,7 @@
     </header>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="authentication.php" method="post" id="sign-up">
+        <form action="authentication.php" method="post" id="sign-up" onsubmit="return validateSignUpForm()">
           <h1>Create Account</h1>
           <div class="infield">
             <input type="text" placeholder="First Name" name="firstName" />
@@ -52,7 +52,7 @@
         </form>
       </div>
       <div class="form-container sign-in-container">
-        <form action="authentication.php" method="post" id="login">
+        <form action="authentication.php" method="post" id="login" onsubmit="return validateLoginForm()">
           <h1>Login</h1>
           <div class="infield">
             <input
@@ -107,6 +107,83 @@
           overlayBtn.classList.add("btnScaled");
         });
       });
+      // Function to validate the login form
+    function validateLoginForm() {
+        var loginUsername = document.forms["login"]["loginUsername"].value;
+        var loginPassword = document.forms["login"]["loginPassword"].value;
+
+        if (loginUsername == "" || loginPassword == "") {
+            alert("Username and password are required");
+            return false;
+        }
+
+        return true; // Return true if the form is valid
+    }
+    // Function to validate the sign-up form
+    function validateSignUpForm() {
+        var firstName = document.forms["sign-up"]["firstName"].value.trim();
+        var lastName = document.forms["sign-up"]["lastName"].value.trim();
+        var phone = document.forms["sign-up"]["phone"].value.trim();
+        var email = document.forms["sign-up"]["email"].value.trim();
+        var username = document.forms["sign-up"]["username"].value.trim();
+        var password = document.forms["sign-up"]["password"].value;
+
+        // Regular expressions for validation
+        var nameRegex = /^[a-zA-Z]+$/; // Allows only alphabets
+        var phoneRegex = /^\d{10}$/; // Allows 10 digits only
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Validates email format
+
+        // Validate first name
+        if (firstName == "") {
+            alert("Please enter your first name");
+            return false;
+        } else if (!nameRegex.test(firstName)) {
+            alert("First name must contain only alphabets");
+            return false;
+        }
+
+        // Validate last name
+        if (lastName == "") {
+            alert("Please enter your last name");
+            return false;
+        } else if (!nameRegex.test(lastName)) {
+            alert("Last name must contain only alphabets");
+            return false;
+        }
+
+        // Validate phone number
+        if (phone == "") {
+            alert("Please enter your phone number");
+            return false;
+        } else if (!phoneRegex.test(phone)) {
+            alert("Phone number must contain 10 digits only");
+            return false;
+        }
+
+        // Validate email
+        if (email == "") {
+            alert("Please enter your email");
+            return false;
+        } else if (!emailRegex.test(email)) {
+            alert("Invalid email format");
+            return false;
+        }
+
+        // Validate username
+        if (username == "") {
+            alert("Please enter your username");
+            return false;
+        }
+
+        // Validate password
+        if (password == "") {
+            alert("Please enter your password");
+            return false;
+        }
+
+        // All fields are valid
+        return true;
+    }
     </script>
   </body>
 </html>

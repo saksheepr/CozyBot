@@ -10,7 +10,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 $currentusername = $_SESSION['username'];
 $currentname = $_SESSION['firstname'];
@@ -25,7 +25,7 @@ $current_userid = $_SESSION['userid'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="dashb.css">
+    <link rel="stylesheet" type="text/css" href="dashb.css?v=<?php echo time(); ?>">
     <link rel="icon" href="home.png" type="image/x-icon">
 </head>
 
@@ -62,6 +62,19 @@ $current_userid = $_SESSION['userid'];
             </div>
         </a>
         <div id="nav">
+            <p id="llogin">Last Login :
+                <?php
+                $sql = "SELECT lastLogin FROM User WHERE UserID = $current_userid";
+                $result = $conn->query($sql);
+
+                if ($result && $result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    echo $row['lastLogin'];
+                } else {
+                    echo 'No record found';
+                }
+                ?>
+            </p>
             <div class="menuitems" id="dasboard">
                 <a href="Dashboard.php">
                     <img class="icon" src="dashboard_icon.png">
@@ -110,43 +123,42 @@ $current_userid = $_SESSION['userid'];
     </div>
     <div id="content">
         <h2>Welcome
-            <?php echo $currentname;
-            ; ?>
+            <?php echo $currentname; ?>
         </h2>
         <div id="rooms_widget">
-    <select id="room" name="Room">
-        <?php
-        $sql = "SELECT RoomName, RoomImage FROM Room WHERE userid = ?";
+            <select id="room" name="Room">
+                <?php
+                $sql = "SELECT RoomName, RoomImage FROM Room WHERE userid = ?";
 
-        // Prepare the statement
-        $stmt = $conn->prepare($sql);
+                // Prepare the statement
+                $stmt = $conn->prepare($sql);
 
-        // Bind the parameter
-        $stmt->bind_param("i", $current_userid);
+                // Bind the parameter
+                $stmt->bind_param("i", $current_userid);
 
-        // Execute the statement
-        $stmt->execute();
+                // Execute the statement
+                $stmt->execute();
 
-        // Get the result
-        $result = $stmt->get_result();
+                // Get the result
+                $result = $stmt->get_result();
 
-        // Check if there are rows returned
-        if ($result->num_rows > 0) {
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                // Output option element for each room
-                echo '<option value="' . $row['RoomName'] . '" data-image="' . $row['RoomImage'] . '">' . $row['RoomName'] . '</option>';
-            }
-        } else {
-            echo '<option value="">No rooms found</option>';
-        }
+                // Check if there are rows returned
+                if ($result->num_rows > 0) {
+                    // Output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        // Output option element for each room
+                        echo '<option value="' . $row['RoomName'] . '" data-image="' . $row['RoomImage'] . '">' . $row['RoomName'] . '</option>';
+                    }
+                } else {
+                    echo '<option value="">No rooms found</option>';
+                }
 
-        // Close the statement
-        $stmt->close();
-        ?>
-    </select>
-    <img id="displayedImage" class="rooms_image" src="room.jpg" alt="Displayed Image">
-</div>
+                // Close the statement
+                $stmt->close();
+                ?>
+            </select>
+            <img id="displayedImage" class="rooms_image" src="room.jpg" alt="Displayed Image">
+        </div>
 
         <div class="view">
             <h3>My Devices</h3>
@@ -156,81 +168,81 @@ $current_userid = $_SESSION['userid'];
         <div id="Mydevices">
             <div class="de">
                 <img class="icon_device" src="bulb.png" alt="bulb">
-                    <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Lights'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Lights</p>';
-                    } else {
-                        echo "Error: " . $conn->error;
-                    }
-                    ?>
+                <?php
+                $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Lights'";
+                $result = $conn->query($sql);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    echo '<p class="dev">' . $row['light_count'] . ' Lights</p>';
+                } else {
+                    echo '<p class="dev">0 Lights</p>';
+                }
+                ?>
             </div>
             <div class="de">
                 <img class="icon_device" src="door.png" alt="door">
                 <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Doors'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Doors</p>';
-                    } else {
-                        echo "Error: " . $conn->error;
-                    }
-                    ?>
+                $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Doors'";
+                $result = $conn->query($sql);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    echo '<p class="dev">' . $row['light_count'] . ' Doors</p>';
+                } else {
+                    echo '<p class="dev">0 Doors</p>';
+                }
+                ?>
             </div>
             <div class="de">
                 <img class="icon_device" src="fan.png" alt="fan">
                 <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Fans'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Fans</p>';
-                    } else {
-                        echo "Error: " . $conn->error;
-                    }
-                    ?>
+                $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Fans'";
+                $result = $conn->query($sql);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    echo '<p class="dev">' . $row['light_count'] . ' Fans</p>';
+                } else {
+                    echo '<p class="dev">0 Fans</p>';
+                }
+                ?>
             </div>
             <div class="de">
                 <img class="icon_device" src="thermostat.png" alt="thermostat">
                 <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Thermostat'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Thermostats</p>';
-                    } else {
-                        echo "Error: " . $conn->error;
-                    }
-                    ?>
+                $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Thermostat'";
+                $result = $conn->query($sql);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    echo '<p class="dev">' . $row['light_count'] . ' Thermostats</p>';
+                } else {
+                    echo '<p class="dev">0 Thermostats</p>';
+                }
+                ?>
             </div>
             <div class="de">
                 <img class="icon_device" src="ac.png" alt="ac">
                 <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Ac'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Acs</p>';
-                    } else {
-                        echo "Error: " . $conn->error;
-                    }
-                    ?>
+                $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Ac'";
+                $result = $conn->query($sql);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    echo '<p class="dev">' . $row['light_count'] . ' Acs</p>';
+                } else {
+                    echo '<p class="dev">0 Acs</p>';
+                }
+                ?>
             </div>
             <div class="de">
                 <img class="icon_device" src="geyser.png" alt="plug">
                 <?php
-                    $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Geyser'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        $row = $result->fetch_assoc();
-                        echo '<p class="dev">' . $row['light_count'] .' Geyser</p>';
-                    } else {
-                        echo "Error: " . $conn->error;
-                    }
-                    ?>
+                $sql = "SELECT count(*) as light_count FROM Device WHERE userid = $current_userid and DeviceType='Geyser'";
+                $result = $conn->query($sql);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    echo '<p class="dev">' . $row['light_count'] . ' Geyser</p>';
+                } else {
+                    echo '<p class="dev">0 Geysers</p>';
+                }
+                ?>
             </div>
         </div>
         <h3 id="t">Time Usage of Smart Devices</h3>

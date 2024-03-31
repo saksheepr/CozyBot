@@ -55,7 +55,7 @@ body {
     width: 120px;
     display: flex;
     position: relative;
-    top: 100px;
+    top: 140px;
     left: 20px;
     justify-content: space-around;
     align-items: center;
@@ -90,7 +90,7 @@ body {
     border-radius: 50%;
 }
 #logout {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 #rooms_widget{
     height: 250px;
@@ -470,4 +470,10 @@ a:hover {
     display: inline;
     top: 35px;
     left: 80px;
+}
+#llogin{
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    color: rgba(255, 255, 255, 0.718);
 }

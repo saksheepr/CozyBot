@@ -33,15 +33,8 @@ if ($typeResult->num_rows > 0) {
 
     // Query to fetch settings based on device type
     $sql = "";
-    if ($deviceType == 'Lights') {
-        $sql = "SELECT SettingName, SettingValue FROM DeviceSettings WHERE DeviceID = $deviceId";
-    } elseif ($deviceType == 'Fans') {
-        $sql = "SELECT SettingName, SettingValue FROM DeviceSettings WHERE DeviceID = $deviceId";
-    }elseif ($deviceType == 'Thermostat') {
-        $sql = "SELECT SettingName, SettingValue FROM DeviceSettings WHERE DeviceID = $deviceId";
-    }elseif ($deviceType == 'Geyser') {
-        $sql = "SELECT SettingName, SettingValue FROM DeviceSettings WHERE DeviceID = $deviceId";
-    }elseif ($deviceType == 'Ac') {
+    if ($deviceType == 'Lights' || $deviceType == 'Fans' || $deviceType == 'Thermostat' || $deviceType == 'Geyser' 
+    || $deviceType == 'Ac' || $deviceType == 'Doors') {
         $sql = "SELECT SettingName, SettingValue FROM DeviceSettings WHERE DeviceID = $deviceId";
     }
 

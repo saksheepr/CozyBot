@@ -32,14 +32,16 @@ $current_userid = $_SESSION['userid'];
             <a href="Dashboard.php">
                 <img class="icon" src="dashboard_icon.png" >
             </a>
-            <img class="icon" src="energy.png" >
+            <img class="icon" src="schedule.png" >
             <a href="Rooms.php">
                 <img class="icon" src="rooms.png" >
             </a>
             <a href="Devices.php">
                 <img class="icon" src="device.png" >
             </a>
+            <a href="members.php">
             <img class="icon" src="members.png" >
+            </a>
             <a href="logout.php">
                 <img class="icon" src="logout.png" >
             </a>

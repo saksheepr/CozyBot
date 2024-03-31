@@ -129,15 +129,16 @@ label {
 }
 
 #tab {
-    width: 1200px;
+    width: 1300px;
     height: 700px;
     background-color: #DCF2F1;
     overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 60px;
     justify-content: flex-start;
     position: relative;
+    left:100px;
 }
 #content {
     overflow-y: auto; 
@@ -145,7 +146,7 @@ label {
 }
 .room-container {
     position: relative; /* Added relative positioning */
-    width: 500px;
+    width: 520px;
     height: 300px;
     border-radius: 10px;
 }

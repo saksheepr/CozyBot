@@ -34,7 +34,7 @@ $current_userid = $_SESSION['userid'];
     <a href="Dashboard.php">
       <img class="icon" src="dashboard_icon.png">
     </a>
-    <img class="icon" src="energy.png">
+    <img class="icon" src="schedule.png">
     <a href="Rooms.php">
       <img class="icon" src="rooms.png">
     </a>
@@ -77,12 +77,12 @@ $current_userid = $_SESSION['userid'];
         <h3 id="temp">Desired Temperature : <span id="demo2">°F</span></h3>
         <input type="range" min="40" max="90" value="45" class="slider_set" id="myRange2">
       </div>
-      <h3 id="mode">Mode : <span id="demo">
+      <h3 id="mode">Mode : <div class="demo">
           <p id="Morning" class="mode">Morning</p>
           <p id="Day" class="mode">Day</p>
           <p id="Night" class="mode">Night</p>
           <p id="power_saving" class="mode">Power Saving</p>
-        </span> </h3>
+        </div> </h3>
       <div id="thermo-mode">
         <h3 id="modes">Modes :</h3>
         <div id="mod">
@@ -104,8 +104,78 @@ $current_userid = $_SESSION['userid'];
           <span class="slider round"></span>
         </label>
       </div>
-      
+      <div id="slidecontainer3">
+        <h3 id="actemp">Desired Temperature : <span id="demo3">°C</span></h3>
+        <input type="range" min="15" max="30" value="20" class="slider_set" id="myRange3">
+      </div>
+      <div id="slidecontainer4">
+        <h3 id="geysertemp">Desired Temperature : <span id="demo4">°C</span></h3>
+        <input type="range" min="30" max="60" value="40" class="slider_set" id="myRange4">
+      </div>
+      <h3 id="gmode">Mode : <div class="demo">
+          <p id="normal" class="mode">Normal</p>
+          <p id="hotspring" class="mode">Hot Spring Mode</p>
+          <p id="comfort" class="mode">Comfort Mode</p>
+          <p id="powersaving" class="mode">Power Saving</p>
+        </div> </h3>
+      <div id="ac-mode">
+        <h3 id="modes">Modes :</h3>
+        <div id="ac-mod">
+          <div id="cool" class="mo"><img class="modes" src="cool.png">
+            <p>Cool</p>
+          </div>
+          <div id="fan" class="mo"><img class="modes" src="fanmode.png">
+            <p>Fan</p>
+          </div>
+          <div id="automode" class="mo"><img class="modes" src="automode.png">
+            <p>Auto</p>
+          </div>
+          <div id="dry" class="mo"><img class="modes" src="dry.png">
+            <p>Dry</p>
+          </div>
+          <div id="eco" class="mo"><img class="modes" src="eco.jpg">
+            <p>Eco</p>
+          </div>
+          <div id="turbo" class="mo"><img class="modes" src="turbo.jpg">
+            <p>Turbo</p>
+          </div>
+          <div id="heat" class="mo"><img class="modes" src="heat.png">
+            <p>Heat</p>
+          </div>
+        </div>
+      </div>
 
+      <div id="lock">
+        <h3 id="locks">Lock Status :</h3>
+        <div id="loc">
+          <div id="locked" class="lo"><img class="modes" src="locked.png">
+            <p>Locked</p>
+          </div>
+          <div id="unlocked" class="lo"><img class="modes" src="unlocked.png">
+            <p>Unlocked</p>
+          </div>
+        </div>
+      </div>
+      <div id="locking">
+        <label id="pref" for="preference">Locking Preference :</label>
+        <select name="preference" id="preference">
+          <option value="automatic">Automatic Lock</option>
+          <option value="manual">Manual Lock</option>
+        </select>
+      </div>
+
+      <div id="lock-mode">
+        <h3 id="modes">Modes :</h3>
+        <div id="mod">
+          <div id="stay" class="mo"><img class="modes" src="stay.png">
+            <p>Home</p>
+          </div>
+          <div id="away" class="mo"><img class="modes" src="away.png">
+            <p>Away</p>
+          </div>
+        </div>
+      </div>    
+      
       <div id="bulb-shade">
         <h3 id="shade">Shade : </h3>
         <div id="bulb-container">
@@ -138,7 +208,7 @@ $current_userid = $_SESSION['userid'];
           </div>
         </div>
       </div>
-      <div id="settings">
+      <div id="setting">
         <label id="direct" for="direction">Direction:</label>
         <select name="direction" id="direction">
           <option value="clockwise">Clockwise</option>

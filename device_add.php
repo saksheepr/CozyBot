@@ -83,7 +83,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_settings->bind_param("iiiiii", $deviceID, $current_userid, $deviceID, $current_userid, $deviceID, $current_userid);
             $stmt_settings->execute();
             $stmt_settings->close();
-        }
+        } elseif ($deviceType == 'Ac') {
+            // Insert default settings for AC
+            $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES 
+            (NULL, ?, ?, 'Temperature', '22'), 
+            (NULL, ?, ?, 'Mode', 'cool')";
+            $stmt_settings = $conn->prepare($insertSettingsQuery);
+            $stmt_settings->bind_param("iiii", $deviceID, $current_userid, $deviceID, $current_userid);
+            $stmt_settings->execute();
+            $stmt_settings->close();
+        }elseif ($deviceType == 'Geyser') {
+            // Insert default settings for AC
+            $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES 
+            (NULL, ?, ?, 'Temperature', '40'), 
+            (NULL, ?, ?, 'Mode', 'comfort')";
+            $stmt_settings = $conn->prepare($insertSettingsQuery);
+            $stmt_settings->bind_param("iiii", $deviceID, $current_userid, $deviceID, $current_userid);
+            $stmt_settings->execute();
+            $stmt_settings->close();
+        }elseif ($deviceType == 'Doors') {
+            // Insert default settings for thermostat
+            $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES 
+            (NULL, ?, ?, 'Lock Status', 'locked'), 
+            (NULL, ?, ?, 'Mode', 'stay'), 
+            (NULL, ?, ?, 'Locking Preference', 'manual')";
+            $stmt_settings = $conn->prepare($insertSettingsQuery);
+            $stmt_settings->bind_param("iiiiii", $deviceID, $current_userid, $deviceID, $current_userid, $deviceID, $current_userid);
+            $stmt_settings->execute();
+            $stmt_settings->close();
+        } 
 
         header("Location: Devices.php");
         exit;
