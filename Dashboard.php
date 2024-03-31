@@ -34,30 +34,32 @@ $current_userid = $_SESSION['userid'];
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;"
             onclick="closeNav()">&#9776;</span>
         <a href="User_Profile.html">
-        <?php
-        // SQL query to select the UserImage from the User table
-        $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
+            <?php
+            // SQL query to select the UserImage from the User table
+            $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
 
-        $result = $conn->query($sql);
+            $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                $userImage = $row["UserImage"];
-                // Now you have the UserImage, you can use it as needed
-                // For example, if you want to display it in an img tag:
-                echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
+            if ($result->num_rows > 0) {
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    $userImage = $row["UserImage"];
+                    // Now you have the UserImage, you can use it as needed
+                    // For example, if you want to display it in an img tag:
+                    echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
+                }
+            } else {
+                echo "0 results";
             }
-        } else {
-            echo "0 results";
-        }
 
-        ?>
+            ?>
         </a>
         <a href="Dashboard.php">
             <img class="icon" src="dashboard_icon.png" title="Dashboard">
         </a>
-        <img class="icon" src="schedule.png" title="Scheduling">
+        <a href="Scheduling.php">
+            <img class="icon" src="schedule.png" title="Scheduling">
+        </a>
         <a href="Rooms.php">
             <img class="icon" src="rooms.png" title="Rooms">
         </a>
@@ -115,8 +117,12 @@ $current_userid = $_SESSION['userid'];
                 </a>
             </div>
             <div class="menuitems" id="schedule">
-                <img class="icon" src="schedule.png">
-                <p class="options">Scheduling</p>
+                <a href="Scheduling.php">
+                    <img class="icon" src="schedule.png" title="Scheduling">
+                </a>
+                <a href="Scheduling.php">
+                    <p class="options">Scheduling</p>
+                </a>
             </div>
             <div class="menuitems" id="rooms">
                 <a href="Rooms.php">
@@ -335,12 +341,17 @@ $current_userid = $_SESSION['userid'];
         <div class="security">
             <div id="arm1">
                 <h3 id="t1">Security</h3>
-                <div id="disarm">Disarmed</div>
+                <p id="unsecure">Disarmed</p>
+                <p id="secure">Armed</p>
             </div>
-
-            <div id="arm2">
-                <button class="button">Arm Home</button>
-                <button class="button">Arm Away</button>
+            <div id="gate" onclick="AddSecurity()">Add Security to Main Door </div>
+            <div id="mod">
+                <div id="stay" class="mo"><img class="modes" src="stay.png">
+                    <p class="se">Arm Home</p>
+                </div>
+                <div id="away" class="mo"><img class="modes" src="away.png">
+                    <p class="se">Arm Away</p>
+                </div>
             </div>
         </div>
         <div class="weather">

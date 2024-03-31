@@ -337,6 +337,9 @@ a:hover {
 
   #t1{
     display: inline;
+    position: absolute;
+    top:5px;
+    left:30px;
 }
 #t2{
     display: inline-block;
@@ -420,12 +423,75 @@ a:hover {
     align-items: center;
     justify-content: space-around;
 }
-#arm2 {
-    height: 100px;
-    width: 300px;
+#gate {
+    border: none;
+    color: black;
+    font-weight: bolder;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+    visibility: visible;
+    position: absolute;
+    top:80px;
+}
+#unsecure{
+    border-radius: 20px;
+    padding: 8px;
+    background-color: rgba(211, 16, 16, 0.605);
+    position: absolute;
+    top: 5px;
+    left: 200px;
+    color: white;
+}
+#secure{
+    border-radius: 20px;
+    padding: 8px;
+    background-color: #4FCF30;
+    position: absolute;
+    top: 5px;
+    left: 200px;
+    color: white;
+    visibility: hidden;
+}
+
+#gate:hover {
+    transform: scale(1.1);
+}
+#mod {
     display: flex;
+    width: 300px;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 5px;
+    visibility: hidden;
+}
+.se {
+    color: #1D084B;
+    margin: 2px;
+}
+.mo {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+}
+
+.mo:hover {
+    border-radius: 10px;
+    background-color: #44beaa;
+
+}
+.modes {
+    height: 50px;
 }
 .button {
     border: none;

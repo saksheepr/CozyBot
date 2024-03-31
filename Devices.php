@@ -31,30 +31,32 @@ $current_userid = $_SESSION['userid'];
   <div id="nav_shrink">
     <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
     <a href="User_Profile.html">
-        <?php
-        // SQL query to select the UserImage from the User table
-        $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
+      <?php
+      // SQL query to select the UserImage from the User table
+      $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
 
-        $result = $conn->query($sql);
+      $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            // Output data of each row
-            while ($row = $result->fetch_assoc()) {
-                $userImage = $row["UserImage"];
-                // Now you have the UserImage, you can use it as needed
-                // For example, if you want to display it in an img tag:
-                echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
-            }
-        } else {
-            echo "0 results";
+      if ($result->num_rows > 0) {
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+          $userImage = $row["UserImage"];
+          // Now you have the UserImage, you can use it as needed
+          // For example, if you want to display it in an img tag:
+          echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
         }
+      } else {
+        echo "0 results";
+      }
 
-        ?>
-        </a>
+      ?>
+    </a>
     <a href="Dashboard.php">
       <img class="icon" src="dashboard_icon.png">
     </a>
-    <img class="icon" src="schedule.png">
+    <a href="Scheduling.php">
+      <img class="icon" src="schedule.png">
+    </a>
     <a href="Rooms.php">
       <img class="icon" src="rooms.png">
     </a>
@@ -102,7 +104,8 @@ $current_userid = $_SESSION['userid'];
           <p id="Day" class="mode">Day</p>
           <p id="Night" class="mode">Night</p>
           <p id="power_saving" class="mode">Power Saving</p>
-        </div> </h3>
+        </div>
+      </h3>
       <div id="thermo-mode">
         <h3 id="modes">Modes :</h3>
         <div id="mod">
@@ -118,8 +121,8 @@ $current_userid = $_SESSION['userid'];
         </div>
       </div>
       <div id="fan-control">
-      <h3 id="control">Fan Control : </h3>
-      <label id="fan-con" class="switch">
+        <h3 id="control">Fan Control : </h3>
+        <label id="fan-con" class="switch">
           <input type="checkbox">
           <span class="slider round"></span>
         </label>
@@ -137,7 +140,8 @@ $current_userid = $_SESSION['userid'];
           <p id="hotspring" class="mode">Hot Spring Mode</p>
           <p id="comfort" class="mode">Comfort Mode</p>
           <p id="powersaving" class="mode">Power Saving</p>
-        </div> </h3>
+        </div>
+      </h3>
       <div id="ac-mode">
         <h3 id="modes">Modes :</h3>
         <div id="ac-mod">
@@ -194,8 +198,8 @@ $current_userid = $_SESSION['userid'];
             <p>Away</p>
           </div>
         </div>
-      </div>    
-      
+      </div>
+
       <div id="bulb-shade">
         <h3 id="shade">Shade : </h3>
         <div id="bulb-container">
@@ -279,12 +283,13 @@ $current_userid = $_SESSION['userid'];
       <button onclick="closePopup()"
         style="position: absolute; top: 10px; right: 10px; cursor: pointer;color:white;background-color: rgb(194, 60, 60);border-radius: 8px;">X</button>
       <h2>Add New Device</h2>
-      <form action="device_add.php" method="post" id="deviceForm">
+      <form action="device_add.php" method="post" id="deviceForm" onsubmit="return validateForm()">
         <label for="deviceName">Device Name :</label><br>
         <input class="input" type="text" id="deviceName" name="deviceName"><br><br>
 
         <label for="deviceType">Device Type :</label><br>
         <select id="deviceType" name="deviceType">
+          <option>Select a Device Type</option>
           <option value="Lights">Lights</option>
           <option value="Doors">Doors</option>
           <option value="Fans">Fans</option>
@@ -312,6 +317,7 @@ $current_userid = $_SESSION['userid'];
 
           // Check if there are rows returned
           if ($result->num_rows > 0) {
+            echo '<option>Select a Room</option>';
             // Output data of each row
             while ($row = $result->fetch_assoc()) {
               // Output option element for each room

@@ -26,6 +26,29 @@ function closePopup() {
   document.getElementById('popup').style.display = 'none';
 }
 
+function validateForm() {
+  var deviceName = document.getElementById("deviceName").value;
+  var deviceType = document.getElementById("deviceType").value;
+  var existingRoom = document.getElementById("existingRoom").value;
+
+  if (deviceName.trim() == "") {
+      alert("Please enter device name.");
+      return false;
+  }
+
+  if (deviceType.trim() == "Select a Device Type") {
+      alert("Please select device type.");
+      return false;
+  }
+
+  if (existingRoom.trim() == "Select a Room") {
+      alert("Please select existing room.");
+      return false;
+  }
+
+  return true;
+}
+
 // Function to update the total number of devices
 function updateDeviceCount() {
   var deviceCount = document.querySelectorAll('.devicedetails').length;
@@ -230,6 +253,23 @@ document.getElementById('tab').addEventListener('click', function (event) {
     DeviceDetailsClick(event.target);
   }
 });
+
+// Add event listener to the document body
+document.body.addEventListener('click', function (event) {
+  // Check if the click did not occur on a devicedetails element
+  if (!event.target.classList.contains('devicedetails') && !event.target.closest('#set')) {
+    // Call the closeDeviceSettings function when a click occurs outside devicedetails elements
+    closeDeviceSettings();
+  }
+});
+
+
+// Function to close the popup
+function closeDeviceSettings() {
+  document.getElementById('pic').style.display = 'block';
+  document.getElementById('set').style.display = 'none';
+}
+
 // Function to handle click on devicedetails
 function DeviceDetailsClick(deviceDetails) {
   document.getElementById('pic').style.display = 'none';
@@ -423,10 +463,10 @@ function DeviceDetailsClick(deviceDetails) {
           }
         } else if (deviceType === 'Ac') {
           settings.Temperature = document.getElementById('myRange3').value;
-          settings.Mode = document.querySelector('.mo.selected-modes').id;
+          settings.Mode = document.querySelector('.mode.selected-modes').id;
         } else if (deviceType === 'Geyser') {
           settings.Temperature = document.getElementById('myRange4').value;
-          settings.Mode = document.querySelector('.mo.selected-modes').id;
+          settings.Mode = document.querySelector('.mode.selected-mode').id;
         } else if (deviceType === 'Doors') {
           settings.Mode = document.querySelector('.mo.selected-modes').id;
           settings['Lock Status'] = document.querySelector('.lo.selected-lock').id;
@@ -459,12 +499,6 @@ function DeviceDetailsClick(deviceDetails) {
 
   xhr.open("GET", "get_device_details.php?deviceId=" + deviceId, true);
   xhr.send();
-}
-
-// Function to close the popup
-function closeDeviceSettings() {
-  document.getElementById('pic').style.display = 'block';
-  document.getElementById('set').style.display = 'none';
 }
 
 const bulbs = document.querySelectorAll('.bulb');
@@ -780,4 +814,3 @@ function updateSliderColor(slider) {
   var trackColor = "linear-gradient(to right, #1D084B " + (gradientStop * trackWidth) + "px, #d3d3d3 " + (gradientStop * trackWidth) + "px)";
   slider.style.background = trackColor;
 }
-
