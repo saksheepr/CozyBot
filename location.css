@@ -1,0 +1,189 @@
+body {
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0 auto; /* Center the body horizontally */
+  font-family: 'candara', sans-serif;
+  background-color: #DCF2F1;
+  text-align: center; /* Center the content inside the body */
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px;
+  text-align: left; /* Reset text alignment for container content */
+  display: inline-block; /* Make the container behave like a block element */
+}
+
+/* Navigation Styles */
+#nav_shrink {
+  height: 695px;
+  width: 50px;
+  background-image: linear-gradient(to right, #5b5bac, #23438C);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Profile Icon Styles */
+.icon {
+  height: 20px;
+}
+
+#profile_s {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+/* Heading Styles */
+#heading {
+  font-size:28px;
+  text-align: center;
+  margin-bottom: -20px;
+
+}
+
+/* Container Styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Center align everything within the container */
+}
+
+/* Form Styles */
+form {
+  display: block; /* Change 'none' to 'block' to make the form initially visible */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #DCF2F1;
+  padding: 40px;
+  border: 2px solid navy;
+  border-radius: 20px;
+  z-index: 1000;
+  width: 400px;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+}
+
+input[type="text"] {
+  width: 95%;
+  padding: 10px;
+  border: 0.5px solid grey;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+  outline: none;
+}
+
+button[type="submit"] {
+  border: none;
+  color: black;
+  font-weight: bolder;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+  font-family: candara;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Location Result Styles */
+#locationResult {
+  margin-bottom: 20px;
+}
+
+/* Map Styles */
+#map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin-bottom: 20px;  
+  position: relative; /* Add this line */
+}
+
+#map {
+  margin: 50px auto;
+  width: 80%; /* Adjust width as needed */
+  height: 80%; /* Adjust height as needed */
+}
+
+
+/* Button Styles */
+#displayAllMembersBtn {
+  border: none;
+  color: black;
+  font-weight: bolder;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+  font-family: candara;
+}
+
+#displayAllMembersBtn:hover {
+  transform: scale(1.1);
+}
+
+#setHomeLocationBtn {
+  border: none;
+  color: black;
+  font-weight: bolder;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+  font-family: candara;
+}
+
+#setHomeLocationBtn:hover {
+  transform: scale(1.1);
+}
+
+#backButton {
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+#formContent {
+  position: relative;
+}
+
+#backButton {
+  position: absolute;
+
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+

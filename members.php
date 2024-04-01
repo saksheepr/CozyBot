@@ -114,7 +114,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <td><?php echo $row['Status']; ?></td>
                   <td>
                     <img src="delete.png" width="30px" alt="Delete" onclick="confirmDelete(<?php echo $row['MemberID']; ?>)">
-                    <a href="location.php"><img src="locationpin.png" width="30px" alt="Delete"></a>
+                    <a href="#" onclick="updateLocation(<?php echo $row['MemberID']; ?>)"> <!-- Modify this line -->
+    <img src="locationpin.png" width="30px" alt="Update Location">
+</a>
+
                   </td>
                 </tr>   
               <?php endwhile; ?>
@@ -195,6 +198,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 element.style.height = '20px';
             });
         });
+
+        function updateLocation(memberID) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                sendLocation(memberID, latitude, longitude);
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+//updates location in database
+    function sendLocation(memberID, latitude, longitude) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "update_location.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                if (xhr.responseText.trim() === "success") {
+                    alert("Location updated successfully.");
+                    // Optionally, you can update the UI or perform any other action upon successful update
+                } else {
+                    alert("Error updating location: " + xhr.responseText);
+                }
+            }
+        };
+        xhr.send("memberid=" + memberID + "&latitude=" + latitude + "&longitude=" + longitude);
+    }
+
     </script>
 </body>
 
