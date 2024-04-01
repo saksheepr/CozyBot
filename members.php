@@ -126,10 +126,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php else: ?>
             <p>No members added.</p>
         <?php endif; ?>
-
         <div class="container">
-            <button id="addMemberBtn" onclick="togglePopup()">Add Member</button>
-        </div>
+        <button id="addMemberBtn" onclick="togglePopup()">Add Member</button>
+        <a href="location.php">
+            <button id="checkLocationBtn">Check Location</button>
+        </a>
+    </div>
 
         <div id="popupForm" style="display: none;">
             <img src="close.png" width=20px height=20px id="closeButton" onclick="togglePopup()">
@@ -146,10 +148,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <option value="home">Home</option>
                     <option value="away">Away</option>
                 </select><br><br>
-
-                <div class="container">
-                    <button type="submit">Add New User</button>
-                </div>
+                    
+              
             </form>
         </div>
     </div>

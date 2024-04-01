@@ -80,12 +80,29 @@ tr {
 tr:nth-child(even) {
     background-color: #eeeeee;
 }
-
-.container {
-    display: flex;
-    justify-content:center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+td img{
+    transition: transform 0.3s ease; /* Add smooth transition effect */
 }
+td img:hover{
+    transform: scale(1.4);
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Center align everything within the container */
+}
+
+.container #addMemberBtn {
+    margin-right: 10px; /* Add margin to the right of the "Add Member" button */
+}
+
+.container #checkLocationBtn {
+    margin-left: 10px; /* Add margin to the left of the "Check Location" button */
+}
+
+
+
 
 
 #addMemberBtn {
@@ -108,6 +125,29 @@ tr:nth-child(even) {
     transform: scale(1.1);
 
 }
+
+#checkLocationBtn{
+    border: none;
+    color: black;
+    font-weight: bolder;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    background: linear-gradient(to right, #7DCFE9, #ADBFFD, #4AE0D3);
+    font-size: 20px;
+    font-family: candara;
+}
+
+#checkLocationBtn:hover {
+    transform: scale(1.1);
+
+}
+
 
 
 
