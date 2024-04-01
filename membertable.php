@@ -15,14 +15,17 @@ if ($conn->connect_error) {
 }
 
 // SQL query to create the table
-$sql = "CREATE TABLE members(
+$sql = "CREATE TABLE Members (
     MemberID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     MemberName VARCHAR(255) NOT NULL,
     Role VARCHAR(100),
     STATUS ENUM('Home', 'Away'),
     UserId INT,
+    Longitude DECIMAL(10, 8),
+    Latitude DECIMAL(10, 8), 
     FOREIGN KEY (UserId) REFERENCES User(UserId)
-)";
+);
+";
 
 // Execute query
 if ($conn->query($sql) === TRUE) {
