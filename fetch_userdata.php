@@ -23,7 +23,7 @@ if(isset($_SESSION['userid'])) {
 }
 
 // Fetch user details based on user ID
-$stmt = $conn->prepare("SELECT username, firstname, lastname, email, password FROM user WHERE userid = ?");
+$stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, password FROM user WHERE userid = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -34,6 +34,7 @@ if ($result->num_rows > 0) {
     $username = $row['username'];
     $firstname = $row['firstname'];
     $lastname = $row['lastname'];
+    $phoneno = $row['phoneno'];
     $email = $row['email'];
     $password = $row['password'];
 } else {
@@ -97,6 +98,10 @@ $conn->close();
                 <div class="form-group">
                     <label for="lastname">Last Name:</label>
                     <input type="text" name="lastname" id="lastname" placeholder="Enter Last Name" value="<?php echo $lastname; ?>">
+                </div>
+                    <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" name="phone" id="phone" placeholder="Enter Phone" value="<?php echo $phoneno; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
