@@ -76,7 +76,7 @@ $current_userid = $_SESSION['userid'];
     <div id="nav_expand">
         <span class="icon" id="expand" style="font-size:30px;cursor:pointer;color: navy;display: inline;"
             onclick="openNav()">&#9776;</span>
-        <a href="User_Profile.html">
+        <a href="fetch_userdata.php">
             <div id="profile">
                 <?php
                 // Fetch the user's profile image from the database
