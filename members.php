@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div id="nav_shrink">
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
-        <a href="User_Profile.html">
+        <a href="fetch_userdata.php">
             <?php
             $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
             $result = $conn->query($sql);

@@ -369,7 +369,7 @@ $current_userid = $_SESSION['userid'];
         <div class="member">
             <div id="heading">
                 <h3 id="t1">Members</h3>
-                <div id="disarm"><a href="Members.html">View All</a></div>
+                <div id="disarm"><a href="members.php">View All</a></div>
             </div>
 
             <div id="circle">
