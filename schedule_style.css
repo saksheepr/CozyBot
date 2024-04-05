@@ -39,16 +39,24 @@ body {
     overflow-y: auto; 
     max-height: 700px;
 }
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    background-image: linear-gradient(to right,#1D084B, #212167, #23438C); 
+            -webkit-text-fill-color: transparent; 
+            -webkit-background-clip: text; 
+            background-clip: text;
+    font-size: 40px;
+}
 .scform{
     position: absolute;
-    top: 120px;
     left:80px;
     background-color: #DCF2F1;
-    padding: 40px;
+    padding: 30px;
     border: 2px solid navy;
     border-radius: 20px;
     width: 400px;
-    height: 460px;
+    height: 500px;
 }
 label {
     color: #212167;
@@ -62,7 +70,7 @@ select {
     width: 150px;
     margin: 8px;
     border-radius: 20px;
-    border: 1px solid #23438C;
+    border: 2px solid #23438C;
     height: 25px;
     color: #212167;
 }
@@ -84,9 +92,28 @@ select {
 
 .input {
     border-radius: 20px;
-    height: 25px;
+    height: 22px;
     margin: 8px;
     border: 2px solid #23438C;
     background-color: white;
     width: 200px;
+}
+#days{
+    display: flex;
+    flex-direction: row;
+    width :300px;
+    justify-content: space-around;
+    margin: 10px;
+}
+.day{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #c5fcf8;
+    text-align: center;
+    border: 1px solid #23438C;
+}
+.day:hover{
+    background-color: #4AE0D3;
+    cursor: pointer;
 }

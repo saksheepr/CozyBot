@@ -30,7 +30,7 @@ $current_userid = $_SESSION['userid'];
 <body>
     <div id="nav_shrink">
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
-        <a href="User_Profile.html">
+        <a href="fetch_userdata.php">
             <?php
             // SQL query to select the UserImage from the User table
             $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
@@ -71,17 +71,28 @@ $current_userid = $_SESSION['userid'];
         </a>
     </div>
     <div id="content">
+        <h1>Scheduling</h1>
         <div class="scform">
             <h2>Create a New Scene</h2>
             <form action="" method="post" id="sceneForm">
-                <label for="sceneName">Scene Name :</label><br>
+                <label for="sceneName">Scene Name :</label>
                 <input class="input" type="text" id="sceneName" name="sceneName"><br>
 
-                <label for="RoomName">Choose Room :</label><br>
+                <label for="RoomName">Choose Device Type :</label>
+                <select id="devices">
+                    <option>All Devices</option>
+                    <option>Lights</option>
+                    <option>Doors</option>
+                    <option>Fans</option>
+                    <option>Thermostat</option>
+                    <option>Ac</option>
+                    <option>Geyser</option>
+                </select><br>
+
+                <label for="RoomName">Choose Room :</label>
                 <select id="RoomName" name="RoomName">
                     <?php
                     $sql = "SELECT RoomName FROM Room WHERE userid = ?";
-
                     // Prepare the statement
                     $stmt = $conn->prepare($sql);
 
@@ -97,7 +108,7 @@ $current_userid = $_SESSION['userid'];
                     // Check if there are rows returned
                     if ($result->num_rows > 0) {
                         // Output data of each row
-                        echo '<option>Select a Room</option>';
+                        echo '<option value= "">Select a Room</option>';
                         while ($row = $result->fetch_assoc()) {
                             // Output option element for each room
                             echo '<option value="' . $row['RoomName'] . '">' . $row['RoomName'] . '</option>';
@@ -111,8 +122,32 @@ $current_userid = $_SESSION['userid'];
                     ?>
                 </select><br>
 
-                <label for="DeviceName">Choose Device :</label><br>
+                <label for="DeviceName">Choose Device :</label>
                 <select id="DeviceName" name="DeviceName"></select><br>
+
+                <label for="SettingsName">Choose Settings :</label>
+                <select id="SettingsName" name="SettingsName"></select><br>
+
+                <label for="SettingsName">Settings Value :</label>
+                <select id="SettingsValue" name="SettingsValue"></select><br>
+
+                <label for="timeInput">Select Start Time :</label>
+                <input class="input" type="time" id="stime" name="stime">
+                <br>
+                <label for="timeInput">Select End Time :</label>
+                <input class="input" type="time" id="etime" name="etime"><br>
+
+                <label for="ndays">Repeat :</label><br>
+                <div id="days">
+                    <div class="day" id="monday">M</div>
+                    <div class="day" id="tuesday">T</div>
+                    <div class="day" id="wednesday">W</div>
+                    <div class="day" id="thursday">T</div>
+                    <div class="day" id="friday">F</div>
+                    <div class="day" id="saturday">S</div>
+                    <div class="day" id="sunday">S</div>
+                </div>
+
 
                 <button class="button" type="submit">Submit</button>
             </form>

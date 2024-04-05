@@ -33,7 +33,7 @@ $current_userid = $_SESSION['userid'];
     <div id="nav_shrink" style="display:none">
         <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;"
             onclick="closeNav()">&#9776;</span>
-        <a href="User_Profile.html">
+        <a href="fetch_userdata.php">
             <?php
             // SQL query to select the UserImage from the User table
             $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
@@ -76,7 +76,7 @@ $current_userid = $_SESSION['userid'];
     <div id="nav_expand">
         <span class="icon" id="expand" style="font-size:30px;cursor:pointer;color: navy;display: inline;"
             onclick="openNav()">&#9776;</span>
-        <a href="User_Profile.html">
+        <a href="fetch_userdata.php">
             <div id="profile">
                 <?php
                 // Fetch the user's profile image from the database
@@ -185,6 +185,7 @@ $current_userid = $_SESSION['userid'];
 
                 // Check if there are rows returned
                 if ($result->num_rows > 0) {
+                    echo '<option>Choose a Room</option>';
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         // Output option element for each room
@@ -372,7 +373,7 @@ $current_userid = $_SESSION['userid'];
         <div class="member">
             <div id="heading">
                 <h3 id="t1">Members</h3>
-                <div id="disarm"><a href="Members.html">View All</a></div>
+                <div id="disarm"><a href="members.php">View All</a></div>
             </div>
 
             <div id="circle">

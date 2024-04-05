@@ -30,7 +30,7 @@ $current_userid = $_SESSION['userid'];
 <body>
   <div id="nav_shrink">
     <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
-    <a href="User_Profile.html">
+    <a href="fetch_userdata.php">
       <?php
       // SQL query to select the UserImage from the User table
       $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";

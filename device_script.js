@@ -463,7 +463,7 @@ function DeviceDetailsClick(deviceDetails) {
           }
         } else if (deviceType === 'Ac') {
           settings.Temperature = document.getElementById('myRange3').value;
-          settings.Mode = document.querySelector('.mode.selected-modes').id;
+          settings.Mode = document.querySelector('.mo.selected-modes').id;
         } else if (deviceType === 'Geyser') {
           settings.Temperature = document.getElementById('myRange4').value;
           settings.Mode = document.querySelector('.mode.selected-mode').id;
