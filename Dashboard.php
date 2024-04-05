@@ -69,6 +69,7 @@ $current_userid = $_SESSION['userid'];
         <a href="members.php">
             <img class="icon" src="members.png" title="Members">
         </a>
+        <img class="icon" src="bell.png" onclick="openPopup()" title="Notifications">
         <a href="logout.php">
             <img class="icon" src="logout.png">
         </a>

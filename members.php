@@ -77,12 +77,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
         </a>
-        <a href="Dashboard.php"><img class="icon" src="dashboard_icon.png"></a>
-        <img class="icon" src="schedule.png">
-        <a href="Rooms.php"><img class="icon" src="rooms.png"></a>
-        <a href="Devices.php"><img class="icon" src="device.png"></a>
-        <a href="members.php"><img class="icon" src="members.png"></a>
-        <img class="icon" src="logout.png">
+        <a href="Dashboard.php">
+            <img class="icon" src="dashboard_icon.png" title="Dashboard">
+        </a>
+        <a href="Scheduling.php">
+            <img class="icon" src="schedule.png" title="Scheduling">
+        </a>
+        <a href="Rooms.php">
+            <img class="icon" src="rooms.png" title="Rooms">
+        </a>
+        <a href="Devices.php">
+            <img class="icon" src="device.png" title="Devices">
+        </a>
+        <a href="members.php">
+            <img class="icon" src="members.png" title="Members">
+        </a>
+        <a href="logout.php">
+            <img class="icon" src="logout.png">
+        </a>
     </div>
 
     <div class="userTable">

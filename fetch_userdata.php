@@ -3,7 +3,7 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "cozybot";
 
 // Create connection
@@ -23,7 +23,7 @@ if(isset($_SESSION['userid'])) {
 }
 
 // Fetch user details based on user ID
-$stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, profile_picture FROM user WHERE userid = ?");
+$stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, UserImage FROM user WHERE userid = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -31,18 +31,17 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     // Fetch user details
     $row = $result->fetch_assoc();
-    $profile = $row['profile_picture'];
     $username = $row['username'];
     $firstname = $row['firstname'];
     $lastname = $row['lastname'];
     $phoneno = $row['phoneno'];
     $email = $row['email'];
+    $userImage=$row['UserImage'];
 } else {
     echo "User not found.";
     exit; // Exit script if user is not found
 }
 
-$stmt->close();
 
 // Update user details if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -100,8 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-$conn->close();
+$current_userid = $_SESSION['userid'];
 ?>
 
 
@@ -119,29 +117,52 @@ $conn->close();
     <main>
         <div id="nav_shrink">
             <span class="icon" id="shrink" style="font-size:30px;cursor:pointer;color: white;">&#9776;</span>
-            <img id="profile_s" src="profile.png" alt="Profile Picture">
+            <a href="fetch_userdata.php">
+            <?php
+            // SQL query to select the UserImage from the User table
+            $sql = "SELECT UserImage FROM User WHERE UserID = $current_userid";
+
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    $userImage = $row["UserImage"];
+                    // Now you have the UserImage, you can use it as needed
+                    // For example, if you want to display it in an img tag:
+                    echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
+                }
+            } else {
+                echo "0 results";
+            }
+
+            ?>
+        </a>
             <a href="Dashboard.php">
-                <img class="icon" src="dashboard_icon.png">
-            </a>
-            <img class="icon" src="schedule.png">
-            <a href="Rooms.php">
-                <img class="icon" src="rooms.png">
-            </a>
-            <a href="Devices.php">
-                <img class="icon" src="device.png">
-            </a>
-            <a href="members.php">
-                <img class="icon" src="members.png">
-            </a>
-            <a href="logout.php">
-                <img class="icon" src="logout.png">
-            </a>
+            <img class="icon" src="dashboard_icon.png" title="Dashboard">
+        </a>
+        <a href="Scheduling.php">
+            <img class="icon" src="schedule.png" title="Scheduling">
+        </a>
+        <a href="Rooms.php">
+            <img class="icon" src="rooms.png" title="Rooms">
+        </a>
+        <a href="Devices.php">
+            <img class="icon" src="device.png" title="Devices">
+        </a>
+        <a href="members.php">
+            <img class="icon" src="members.png" title="Members">
+        </a>
+        <img class="icon" src="bell.png" onclick="openPopup()" title="Notifications">
+        <a href="logout.php">
+            <img class="icon" src="logout.png">
+        </a>
 
         </div>
         <script src="room_script.js"></script>
         <div class="profile-container">
             <div class="avatar-container">
-                <img src="<?php echo $profile;?>" alt="Profile Picture" class="avatar" id="avatar">
+                <img src="<?php echo $userImage;?>" alt="Profile Picture" class="avatar" id="avatar">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                     <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
                     <button type="submit" name="submit">Upload Profile Picture</button>

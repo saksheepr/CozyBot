@@ -319,64 +319,105 @@ fetchScheduleDetails();
 function fetchScheduleDetails() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          var schedules = JSON.parse(xhr.responseText);
-          displaySchedules(schedules);
-        } else {
-          console.error('Error fetching device data: ' + xhr.status);
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var schedules = JSON.parse(xhr.responseText);
+                displaySchedules(schedules);
+            } else {
+                console.error('Error fetching device data: ' + xhr.status);
+            }
         }
-      }
     };
-  
+
     // Construct the URL for fetching device data
     var url = 'fetch_schedule_details.php';
     xhr.open('GET', url, true);
     xhr.send();
-  }
+}
 
+// Define the updateScheduleStatus function outside of displaySchedules
+function updateScheduleStatus(scheduleID, newStatus) {
+    // Create new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Prepare and send POST request to update_schedule_status.php
+    xhr.open('POST', 'update_schedule_status.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.status === 'success') {
+                    console.log('Schedule status updated successfully');
+                } else {
+                    console.error('Failed to update schedule status:', response.message);
+                }
+            } else {
+                console.error('Error updating schedule status:', xhr.status);
+            }
+        }
+    };
+    var requestData = JSON.stringify({ scheduleID: scheduleID, newStatus: newStatus });
+    xhr.send(requestData);
+}
+
+// Define displaySchedules function
 function displaySchedules(schedules) {
-    console.log("Schedule :",schedules);
+    console.log("Schedule :", schedules);
     var tabContainer = document.getElementById('existingschedules');
     if (tabContainer) {
-      tabContainer.innerHTML = ''; // Clear existing content
-      schedules.forEach(function (schedule) {
-        var scheduleDiv = document.createElement('div');
-        scheduleDiv.classList.add('schedule');
-        scheduleDiv.setAttribute('schedule-id', schedule.ScheduleID);
-  
-        // Create div for schedule name and toggle switch
-        var nameDiv = document.createElement('div');
-        nameDiv.id = 'name';
-        var scheduleName = document.createElement('p');
-        scheduleName.textContent = schedule.ScheduleName;
-        var toggleSwitch = document.createElement('label');
-        toggleSwitch.classList.add('switch');
-        var toggleInput = document.createElement('input');
-        toggleInput.type = 'checkbox';
-        var toggleSpan = document.createElement('span');
-        toggleSpan.classList.add('slider', 'round');
-  
-        // Append elements to nameDiv
-        toggleSwitch.appendChild(toggleInput);
-        toggleSwitch.appendChild(toggleSpan);
-        nameDiv.appendChild(scheduleName);
-        nameDiv.appendChild(toggleSwitch);
-  
-        // Create img element for icon
-        var iconImg = document.createElement('img');
-        iconImg.classList.add('icons');
-        iconImg.src = 'sch1.png'; // Assuming the icon source is available in the JSON or predefined
-  
-        // Append nameDiv and iconImg to scheduleDiv
-        scheduleDiv.appendChild(nameDiv);
-        scheduleDiv.appendChild(iconImg);
-  
-        // Append scheduleDiv to tabContainer
-        tabContainer.appendChild(scheduleDiv);
-      });
+        tabContainer.innerHTML = ''; // Clear existing content
+        schedules.forEach(function (schedule) {
+            var scheduleDiv = document.createElement('div');
+            scheduleDiv.classList.add('schedule');
+            scheduleDiv.setAttribute('schedule-id', schedule.ScheduleID);
+
+            // Create div for schedule name and toggle switch
+            var nameDiv = document.createElement('div');
+            nameDiv.id = 'name';
+            var scheduleName = document.createElement('p');
+            scheduleName.textContent = schedule.ScheduleName;
+            var toggleSwitch = document.createElement('label');
+            toggleSwitch.classList.add('switch');
+            var toggleInput = document.createElement('input');
+            toggleInput.type = 'checkbox';
+
+            // Set the checked attribute based on the schedule status
+            toggleInput.checked = (schedule.Status === 'On');
+
+            // Add event listener to the toggleInput
+            toggleInput.addEventListener('change', function () {
+                // Get the schedule ID from the parent element's attribute
+                var scheduleID = scheduleDiv.getAttribute('schedule-id');
+
+                // Get the new status based on the toggleInput's checked state
+                var newStatus = toggleInput.checked ? 'On' : 'Off';
+                // Call the updateScheduleStatus function
+                updateScheduleStatus(scheduleID, newStatus);
+            });
+
+            var toggleSpan = document.createElement('span');
+            toggleSpan.classList.add('slider', 'round');
+
+            // Append elements to nameDiv
+            toggleSwitch.appendChild(toggleInput);
+            toggleSwitch.appendChild(toggleSpan);
+            nameDiv.appendChild(scheduleName);
+            nameDiv.appendChild(toggleSwitch);
+
+            // Create img element for icon
+            var iconImg = document.createElement('img');
+            iconImg.classList.add('icons');
+            iconImg.src = 'sch1.png'; // Assuming the icon source is available in the JSON or predefined
+
+            // Append nameDiv and iconImg to scheduleDiv
+            scheduleDiv.appendChild(nameDiv);
+            scheduleDiv.appendChild(iconImg);
+
+            // Append scheduleDiv to tabContainer
+            tabContainer.appendChild(scheduleDiv);
+        });
     } else {
-      console.error("tab div not found");
+        console.error("tab div not found");
     }
-  }
-  
+}
