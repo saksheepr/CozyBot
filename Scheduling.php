@@ -74,9 +74,9 @@ $current_userid = $_SESSION['userid'];
         <h1>Scheduling</h1>
         <div class="scform">
             <h2>Create a New Scene</h2>
-            <form action="" method="post" id="sceneForm">
-                <label for="sceneName">Scene Name :</label>
-                <input class="input" type="text" id="sceneName" name="sceneName"><br>
+            <form action="create_schedule.php" method="post" id="sceneForm">
+                <label for="ScheduleName">Schedule Name :</label>
+                <input class="input" type="text" id="ScheduleName" name="ScheduleName"><br>
 
                 <label for="RoomName">Choose Device Type :</label>
                 <select id="devices">
@@ -128,8 +128,9 @@ $current_userid = $_SESSION['userid'];
                 <label for="SettingsName">Choose Settings :</label>
                 <select id="SettingsName" name="SettingsName"></select><br>
 
-                <label for="SettingsName">Settings Value :</label>
-                <select id="SettingsValue" name="SettingsValue"></select><br>
+                <label for="SettingsValue">Settings Value :</label>
+                <select id="SettingsValue" name="SettingsValue"></select>
+                <br>
 
                 <label for="timeInput">Select Start Time :</label>
                 <input class="input" type="time" id="stime" name="stime">
@@ -137,20 +138,34 @@ $current_userid = $_SESSION['userid'];
                 <label for="timeInput">Select End Time :</label>
                 <input class="input" type="time" id="etime" name="etime"><br>
 
-                <label for="ndays">Repeat :</label><br>
                 <div id="days">
-                    <div class="day" id="monday">M</div>
-                    <div class="day" id="tuesday">T</div>
-                    <div class="day" id="wednesday">W</div>
-                    <div class="day" id="thursday">T</div>
-                    <div class="day" id="friday">F</div>
-                    <div class="day" id="saturday">S</div>
-                    <div class="day" id="sunday">S</div>
+                    <input type="checkbox" id="monday" name="days[]" value="monday">
+                    <label for="monday">M</label>
+
+                    <input type="checkbox" id="tuesday" name="days[]" value="tuesday">
+                    <label for="tuesday">T</label>
+
+                    <input type="checkbox" id="wednesday" name="days[]" value="wednesday">
+                    <label for="wednesday">W</label>
+
+                    <input type="checkbox" id="thursday" name="days[]" value="thursday">
+                    <label for="thursday">T</label>
+
+                    <input type="checkbox" id="friday" name="days[]" value="friday">
+                    <label for="friday">F</label>
+
+                    <input type="checkbox" id="saturday" name="days[]" value="saturday">
+                    <label for="saturday">S</label>
+
+                    <input type="checkbox" id="sunday" name="days[]" value="sunday">
+                    <label for="sunday">S</label>
                 </div>
 
 
                 <button class="button" type="submit">Submit</button>
             </form>
+        </div>
+        <div id="existingschedules">
         </div>
 
     </div>

@@ -148,8 +148,8 @@ $current_userid = $_SESSION['userid'];
                     <p class="options">Members</p>
                 </a>
             </div>
-            <div class="menuitems" id="members">               
-                <img class="icon" src="members.png" onclick="openPopup()">
+            <div class="menuitems" id="bell">               
+                <img class="icon" src="bell.png" onclick="openPopup()">
                 <p class="options" onclick="openPopup()">Notifications</p>
             </div>
             <div class="menuitems" id="logout">

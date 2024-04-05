@@ -50,7 +50,7 @@ h1{
 }
 .scform{
     position: absolute;
-    left:80px;
+    left:140px;
     background-color: #DCF2F1;
     padding: 30px;
     border: 2px solid navy;
@@ -116,4 +116,119 @@ select {
 .day:hover{
     background-color: #4AE0D3;
     cursor: pointer;
+}
+.selected {
+    background-color: #4AE0D3;
+    border: 1px solid #23438C;
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929);
+}
+/* Hide the default checkboxes */
+#days input[type="checkbox"] {
+    display: none;
+}
+
+/* Style for custom checkbox */
+#days input[type="checkbox"] + label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Make it round */
+    border: 1px solid #000; /* Add border */
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+/* Style for checked custom checkbox */
+#days input[type="checkbox"]:checked + label {
+    background-color:  #4AE0D3; /* Change background color when checked */
+    border: 1px solid #23438C;
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929);
+}
+
+#existingschedules{
+    width: 750px;
+    height: 500px;
+    background-color: #23438C;
+    position: relative;
+    left: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 20px;
+}
+.schedule{
+    width: 250px;
+    height: 150px;
+    background-color: #DCF2F1;
+    border-radius: 10px;
+}
+#name{
+    padding: 10px;
+    display: flex;
+    width: 220px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.icons{
+    height: 50px;
+    position: relative;
+    left: 100px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #d3d3d3;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 1px;
+    content: "Off";
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-image: linear-gradient(to right, #1D084B, #212167, #23438C);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 4px rgb(54, 10, 90);
+}
+
+input:checked+.slider:before {
+    content: "On";
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
