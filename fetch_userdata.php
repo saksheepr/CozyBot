@@ -1,5 +1,6 @@
 <?php
 session_start(); // Start session to access session variables
+session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
@@ -8,7 +9,13 @@ $dbname = "cozybot";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -16,7 +23,13 @@ if ($conn->connect_error) {
 
 // Assuming $user_id is retrieved from the session
 if(isset($_SESSION['userid'])) {
+// Assuming $user_id is retrieved from the session
+if(isset($_SESSION['userid'])) {
     $user_id = $_SESSION['userid'];
+} else {
+    echo "User ID not found in session.";
+    exit; // Exit script if user ID is not found in session
+}
 } else {
     echo "User ID not found in session.";
     exit; // Exit script if user ID is not found in session
