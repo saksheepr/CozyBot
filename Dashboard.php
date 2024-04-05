@@ -148,6 +148,10 @@ $current_userid = $_SESSION['userid'];
                     <p class="options">Members</p>
                 </a>
             </div>
+            <div class="menuitems" id="members">               
+                <img class="icon" src="members.png" onclick="openPopup()">
+                <p class="options" onclick="openPopup()">Notifications</p>
+            </div>
             <div class="menuitems" id="logout">
                 <a href="logout.php">
                     <img class="icon" src="logout.png">
@@ -388,6 +392,36 @@ $current_userid = $_SESSION['userid'];
         </div>
 
     </div>
+
+    <div class="popup" id="popup">
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>Message</th>
+                    <th>Created At</th>
+                    <th>Action</th> <!-- Added Action column -->
+                </tr>
+            </thead>
+            <tbody id="notification-list"></tbody>
+        </table>
+        <div class="button-container">
+        <button onclick="closePopup()">Close</button>
+    </div>
+    </div>
+
+
+    <script>
+    function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
+
 
 
     <script src="dash.js?v=<?php echo time(); ?>"></script>

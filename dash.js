@@ -93,3 +93,58 @@ document.getElementById("displayedImage").addEventListener("click", function() {
     window.open(newPageUrl, "_self");
 });
 
+
+function openPopup() {
+    document.getElementById('popup').style.display = 'block';
+    fetchNotifications();
+}
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+function fetchNotifications() {
+    fetch('get_notifications.php')
+        .then(response => response.json())
+        .then(data => {
+            const notificationList = document.getElementById('notification-list');
+            notificationList.innerHTML = ''; // Clear previous notifications
+            data.forEach(notification => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${notification.NotificationID}</td>
+                    <td>${notification.Message}</td>
+                    <td>${notification.CreatedAt}</td>
+                    <td><img src="delete.png" width="20px" height="20px" alt="Remove" class="remove-icon" onclick="removeNotification(${notification.NotificationID}, this)"></td>
+                `;
+                notificationList.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching notifications:', error));
+}
+
+function removeNotification(notificationID, button) {
+    const confirmation = confirm("Are you sure you want to remove this notification?");
+    if (confirmation) {
+        fetch('remove_notification.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ notificationID })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const notificationRow = button.closest('tr');
+                notificationRow.classList.add('remove-animation');
+                notificationRow.addEventListener('animationend', () => {
+                    notificationRow.remove(); // Remove the row from the table after animation
+                });
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => console.error('Error removing notification:', error));
+    }
+}
