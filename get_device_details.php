@@ -24,7 +24,7 @@ $current_userid = $_SESSION['userid'];
 $deviceId = $_GET['deviceId'];
 
 // Query to fetch device details
-$sql = "SELECT DeviceName, DeviceType, DeviceStatus, RoomName
+$sql = "SELECT DeviceId,DeviceName, DeviceType, DeviceStatus, RoomName
         FROM Device
         INNER JOIN Room ON Device.RoomID = Room.RoomID
         WHERE DeviceID = $deviceId AND Device.UserID = $current_userid";

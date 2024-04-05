@@ -77,11 +77,17 @@ document.getElementById("room").addEventListener("change", function() {
     var selectedOption = this.value;
     var imageSrc = '';
 
-    // Get the data-image attribute of the selected option
-    var selectedOptionImage = this.options[this.selectedIndex].getAttribute("data-image");
+    // Check if the selected option is the default one
+    if (selectedOption === "Choose a Room") {
+        // Set the image source to the default picture
+        imageSrc = "room.jpg";
+    } else {
+        // Get the data-image attribute of the selected option
+        imageSrc = this.options[this.selectedIndex].getAttribute("data-image");
+    }
 
     // Update the image source
-    document.getElementById("displayedImage").src = selectedOptionImage;
+    document.getElementById("displayedImage").src = imageSrc;
 });
 
 // Add event listener to the displayed image

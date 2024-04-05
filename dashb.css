@@ -175,9 +175,13 @@ h3{
     margin-top: 10px;
     margin-bottom: 20px;
 }
+a{
+    text-decoration: none;
+    color: #212167;
+}
 a:hover {
-    text-decoration: underline;
-    color: white;
+    text-decoration: none;
+    color:#5b5bac;
 }
 .de {
     display: flex;
@@ -215,7 +219,6 @@ a:hover {
     align-items: flex-end;
     height: 250px;
     width: 400px;
-    border: 1px solid #ccc;
     background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
     border-radius: 10px; /* Add border-radius if needed */
     box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
@@ -246,7 +249,6 @@ a:hover {
     position: absolute;
     top: 410px; /* Adjust the distance below the rooms_image */
     left: 500px; /* Adjust the horizontal position */
-    border: 1px solid #ccc;
     background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
     border-radius: 10px; /* Add border-radius if needed */
     box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
@@ -362,7 +364,6 @@ a:hover {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    border: 1px solid #ccc;
     background-color: aliceblue;
     border-radius: 10px; /* Add border-radius if needed */
     box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
@@ -373,7 +374,6 @@ a:hover {
     left:950px;
     height: 220px;
     width: 300px;
-    border: 1px solid #ccc;
     background-color: aliceblue;
     border-radius: 10px; /* Add border-radius if needed */
     box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
@@ -388,7 +388,6 @@ a:hover {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
-    border: 1px solid #ccc;
     background-color: aliceblue;
     border-radius: 10px; /* Add border-radius if needed */
     box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
@@ -405,7 +404,6 @@ a:hover {
     border-radius: 50%;
     background-color: #1D084B;
     overflow: hidden;
-    border: 1px solid #ccc; 
     box-shadow: 0 0 10px rgba(16, 107, 140, 0.929);
 }
 .mem img {
