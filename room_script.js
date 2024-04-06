@@ -213,4 +213,3 @@ function uncheckRoomCheckboxes() {
       checkbox.checked = false;
     });
   }
-
