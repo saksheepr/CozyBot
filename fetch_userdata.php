@@ -25,7 +25,6 @@ if(isset($_SESSION['userid'])) {
 
 // Fetch user details based on user ID
 $stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, UserImage FROM user WHERE userid = ?");
-$stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, UserImage FROM user WHERE userid = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -58,32 +57,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["submit"])) {
         $check = getimagesize($_FILES["UserImage"]["tmp_name"]); // Updated to UserImage
         if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            //echo "" . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
-            echo "File is not an image.";
+            echo '<script>alert("Image is not a correct image");</script>';
             $uploadOk = 0;
         }
     }
     // Check if file already exists
     if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
+        echo ""; // Echo empty statement
         $uploadOk = 0;
     }
     // Check file size
     if ($_FILES["UserImage"]["size"] > 500000) { // Updated to UserImage
-        echo "Sorry, your file is too large.";
+        echo '<script>alert("File is too large.");</script>'; // Echo empty statement
         $uploadOk = 0;
     }
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        echo '<script>alert("File is not in the correct format.");</script>'; // Echo empty statement
         $uploadOk = 0;
     }
     // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        echo ""; // Echo empty statement
     // if everything is ok, try to upload file
     } else {
         // Create directory if it doesn't exist
@@ -92,24 +91,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         if (move_uploaded_file($_FILES["UserImage"]["tmp_name"], $target_file)) { // Updated to UserImage
-            echo "The file ". htmlspecialchars( basename( $_FILES["UserImage"]["name"])). " has been uploaded."; // Updated to UserImage
+            echo ""; // Echo empty statement
             // Update database with the file path
             $UserImage_path = $target_file; // Updated to UserImage
             $stmt = $conn->prepare("UPDATE user SET UserImage = ? WHERE userid = ?");
             $stmt->bind_param("si", $UserImage_path, $user_id);
             if ($stmt->execute()) {
-                echo "Profile picture updated successfully";
+                echo "";
             } else {
                 echo "Error updating profile picture: " . $stmt->error;
             }
             $stmt->close();
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo ""; // Echo empty statement
         }
     }
 }
 $current_userid = $_SESSION['userid'];
 ?>
+
 
 
 
