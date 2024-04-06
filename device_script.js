@@ -270,7 +270,7 @@ document.body.addEventListener('click', function (event) {
 function closeDeviceSettings() {
   document.getElementById('pic').style.display = 'block';
   document.getElementById('set').style.display = 'none';
-  window.location.reload();
+  
 }
 
 // Function to handle click on devicedetails
