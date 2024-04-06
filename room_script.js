@@ -73,11 +73,11 @@ function displayRooms(rooms) {
 
         // Set the room image source
         img.onerror = function() {
-            // Fallback if image fails to load
-            img.src = "default_image.jpg"; // Assuming "default_image.jpg" is a placeholder image
+            
+            img.src = "room.jpg"; 
             console.error("Failed to load image for room ID:", roomId);
         };
-        img.src = room.RoomImage ? room.RoomImage : "default_image.jpg"; // Assuming "default_image.jpg" is a placeholder image
+        img.src = room.RoomImage ? room.RoomImage : "room.jpg";
 
         var text = document.createElement("p");
         text.textContent = room.RoomName;
