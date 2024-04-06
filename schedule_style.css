@@ -147,6 +147,8 @@ select {
 }
 
 #existingschedules{
+    overflow-y: scroll;
+    border-radius: 20px;
     width: 750px;
     height: 500px;
     background-color: #23438C;
