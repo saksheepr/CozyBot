@@ -3,7 +3,7 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "cozybot";
 
 // Create connection
@@ -23,7 +23,7 @@ if(isset($_SESSION['userid'])) {
 }
 
 // Fetch user details based on user ID
-$stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, profile_picture FROM user WHERE userid = ?");
+$stmt = $conn->prepare("SELECT username, firstname, lastname, phoneno, email, UserImage FROM user WHERE userid = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -31,7 +31,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     // Fetch user details
     $row = $result->fetch_assoc();
-    $profile = $row['profile_picture'];
+    $profile = $row['UserImage']; // Updated to UserImage
     $username = $row['username'];
     $firstname = $row['firstname'];
     $lastname = $row['lastname'];
@@ -47,13 +47,14 @@ $stmt->close();
 // Update user details if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle profile picture upload
-    $target_dir = "C:/_xampp/htdocs/";;
-    $target_file = $target_dir . basename($_FILES["profile_picture"]["name"]);
+    $target_dir = "profile_pictures/"; // Directory name changed
+    $target_file = $target_dir . basename($_FILES["UserImage"]["name"]); // Updated to UserImage
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["profile_picture"]["tmp_name"]);
+        $check = getimagesize($_FILES["UserImage"]["tmp_name"]); // Updated to UserImage
         if($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $uploadOk = 0;
     }
     // Check file size
-    if ($_FILES["profile_picture"]["size"] > 500000) {
+    if ($_FILES["UserImage"]["size"] > 500000) { // Updated to UserImage
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
@@ -83,12 +84,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
     } else {
-        if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
-            echo "The file ". htmlspecialchars( basename( $_FILES["profile_picture"]["name"])). " has been uploaded.";
+        // Create directory if it doesn't exist
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir, 0777, true); // Directory creation
+        }
+        
+        if (move_uploaded_file($_FILES["UserImage"]["tmp_name"], $target_file)) { // Updated to UserImage
+            echo "The file ". htmlspecialchars( basename( $_FILES["UserImage"]["name"])). " has been uploaded."; // Updated to UserImage
             // Update database with the file path
-            $profile_picture_path = "/profile_pictures/" . basename($_FILES["profile_picture"]["name"]);
-            $stmt = $conn->prepare("UPDATE user SET profile_picture = ? WHERE userid = ?");
-            $stmt->bind_param("si", $profile_picture_path, $user_id);
+            $UserImage_path = $target_file; // Updated to UserImage
+            $stmt = $conn->prepare("UPDATE user SET UserImage = ? WHERE userid = ?");
+            $stmt->bind_param("si", $UserImage_path, $user_id);
             if ($stmt->execute()) {
                 echo "Profile picture updated successfully";
             } else {
@@ -103,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
 
 
 
@@ -143,7 +150,7 @@ $conn->close();
             <div class="avatar-container">
                 <img src="<?php echo $profile;?>" alt="Profile Picture" class="avatar" id="avatar">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-                    <input type="file" name="profile_picture" id="profile_picture" accept="image/*">
+                    <input type="file" name="UserImage" id="UserImage" accept="image/*">
                     <button type="submit" name="submit">Upload Profile Picture</button>
                 </form>
             </div>
