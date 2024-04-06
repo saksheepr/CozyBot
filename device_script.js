@@ -260,6 +260,8 @@ document.body.addEventListener('click', function (event) {
   if (!event.target.classList.contains('devicedetails') && !event.target.closest('#set')) {
     // Call the closeDeviceSettings function when a click occurs outside devicedetails elements
     closeDeviceSettings();
+
+
   }
 });
 
@@ -268,6 +270,7 @@ document.body.addEventListener('click', function (event) {
 function closeDeviceSettings() {
   document.getElementById('pic').style.display = 'block';
   document.getElementById('set').style.display = 'none';
+  window.location.reload();
 }
 
 // Function to handle click on devicedetails
@@ -439,6 +442,7 @@ function DeviceDetailsClick(deviceDetails) {
 
       document.getElementById('save').addEventListener('click', function () {
         saveChanges(deviceId, deviceType);
+        location.reload();
       });
       function saveChanges(deviceId, deviceType) {
         var settings = {};

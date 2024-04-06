@@ -37,16 +37,13 @@ $username = $_POST['username'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
-$password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Hash the password
-$access_control = $_POST['access_control'];
 
 // Prepare and bind
-$stmt = $conn->prepare("UPDATE user SET username=?, firstname=?, lastname=?, email=?, password=? WHERE userid=?");
-$stmt->bind_param("sssssi", $username, $firstname, $lastname, $email, $password, $user_id);
+$stmt = $conn->prepare("UPDATE user SET username=?, firstname=?, lastname=?, email=? WHERE userid=?");
+$stmt->bind_param("ssssi", $username, $firstname, $lastname, $email, $user_id);
 $stmt->execute();
 
 echo "Updated successfully";
 
 $stmt->close();
 $conn->close();
-

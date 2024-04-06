@@ -41,8 +41,6 @@ $current_userid = $_SESSION['userid'];
                 // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     $userImage = $row["UserImage"];
-                    // Now you have the UserImage, you can use it as needed
-                    // For example, if you want to display it in an img tag:
                     echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
                 }
             } else {
