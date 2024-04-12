@@ -49,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Management</title>
+    <link rel="icon" href="home.png" type="image/x-icon" />
     <link rel="stylesheet" href="memberstyle.css">
 </head>
 
