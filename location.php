@@ -50,6 +50,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check Location</title>
     <link rel="stylesheet" href="location.css">
+    <link rel="icon" href="home.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
         #map {
