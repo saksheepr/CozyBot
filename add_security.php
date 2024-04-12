@@ -1,43 +1,49 @@
 <?php
-// add_security.php
-
-// Start the session
 session_start();
 
-// Include database connection
-include_once "db_connection.php";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "CozyBot";
 
-// Check if the request is a POST request and if the action parameter is set
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["action"] == "addSecurity") {
-    // Check if the user is logged in
-    if (!isset($_SESSION['userid'])) {
-        echo json_encode(array("status" => "error", "message" => "User is not logged in."));
-        exit;
-    }
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Get the current user ID
-    $currentUserId = $_SESSION['userid'];
-
-    // Prepare and execute the SQL query to insert security for the main door
-    $insertDeviceQuery = "INSERT INTO device(DeviceName, DeviceType, DeviceStatus, UserID) VALUES ('Main Door', 'Doors', 'On', $currentUserId)";
-
-    if ($conn->query($insertDeviceQuery) === TRUE) {
-        // Insert settings for the main door
-        $deviceID = $conn->insert_id; // Get the ID of the inserted device
-        $insertSettingsQuery = "INSERT INTO devicesettings (SettingID, DeviceID, UserID, SettingName, SettingValue) VALUES (NULL, $deviceID, $currentUserId, 'Mode', 'stay')";
-
-        if ($conn->query($insertSettingsQuery) === TRUE) {
-            echo json_encode(array("status" => "success", "message" => "Security added to Main Door."));
-        } else {
-            echo json_encode(array("status" => "error", "message" => "Failed to add settings for Main Door."));
-        }
-    } else {
-        echo json_encode(array("status" => "error", "message" => "Failed to add security for Main Door."));
-    }
-
-    // Close the database connection
-    $conn->close();
-} else {
-    // If the action parameter is not set or if it's not a POST request, return an error
-    echo json_encode(array("status" => "error", "message" => "Invalid request."));
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+
+$currentUserId = $_SESSION['userid'];
+
+// Insert data into Device table
+$deviceName = 'Main Gate';
+$deviceType = 'Doors';
+$deviceStatus = 'On';
+
+$sqlDevice = "INSERT INTO Device (DeviceName, DeviceType, DeviceStatus, UserID) 
+              VALUES ('$deviceName', '$deviceType', '$deviceStatus', $currentUserId)";
+
+if ($conn->query($sqlDevice) === TRUE) {
+    // Insertion into Device table successful, now get the last inserted DeviceID
+    $deviceId = $conn->insert_id;
+
+    // Insert data into DeviceSettings table
+    $settingName = 'Mode';
+    $settingValue = 'stay'; // Default mode
+    $sqlSettings = "INSERT INTO DeviceSettings (DeviceID, UserID, SettingName, SettingValue) 
+                    VALUES ($deviceId, $currentUserId, '$settingName', '$settingValue')";
+    
+    if ($conn->query($sqlSettings) === TRUE) {
+        // Insertion into DeviceSettings table successful
+        echo json_encode(array("status" => "success"));
+    } else {
+        // Failed to insert into DeviceSettings table
+        echo json_encode(array("status" => "error", "message" => "Failed to insert into DeviceSettings table"));
+    }
+} else {
+    // Failed to insert into Device table
+    echo json_encode(array("status" => "error", "message" => "Failed to insert into Device table"));
+}
+
+$conn->close();

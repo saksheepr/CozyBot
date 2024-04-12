@@ -14,7 +14,6 @@ function adjustContentWidth() {
     var contentWidth = windowWidth - navWidth;
     document.getElementById("content").style.width = contentWidth + "px";
 }
-
 function AddSecurity(){
     document.getElementById("mod").style = "visibility: visible";
     document.getElementById("gate").style = "visibility: hidden";
@@ -24,16 +23,18 @@ function AddSecurity(){
     // Execute the SQL query via AJAX
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log("Security added to Main Door");
-        } else if (this.readyState == 4 && this.status != 200) {
-            console.error("Failed to add security:", xhr.responseText);
-            // Optionally, provide error feedback to the user
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Insertion successful, do something if needed
+                console.log('Data inserted successfully');
+            } else {
+                console.error('Failed to insert data:', xhr.status);
+            }
         }
     };
-    xhr.open("POST", "add_security.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("action=addSecurity");
+    xhr.open('POST', 'add_security.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
 }
 
 // Adjust content width when the window is resized

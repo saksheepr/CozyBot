@@ -16,6 +16,33 @@ $currentusername = $_SESSION['username'];
 $currentname = $_SESSION['firstname'];
 $current_userid = $_SESSION['userid'];
 
+// Check if a device named "Main Gate" exists for the current user
+$mainGateExists = false; // Initialize to false by default
+
+$sqlCheckDevice = "SELECT COUNT(*) AS count FROM Device WHERE DeviceName = 'Main Gate' AND UserID = $current_userid";
+$result = $conn->query($sqlCheckDevice);
+
+if ($result && $result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $mainGateExists = ($row['count'] > 0);
+    // Fetch device settings data for Main Gate device
+    $sqlDeviceSettings = "SELECT SettingValue FROM DeviceSettings 
+                     INNER JOIN Device ON DeviceSettings.DeviceID = Device.DeviceID 
+                     WHERE Device.DeviceName = 'Main Gate' AND Device.UserID = $current_userid";
+    $resultSettings = $conn->query($sqlDeviceSettings);
+
+    // Initialize an array to store the setting values
+    $settingsData = '';
+
+    // Check if settings data is found
+    if ($resultSettings && $resultSettings->num_rows > 0) {
+        // Fetch each row of settings data
+        while ($rowSettings = $resultSettings->fetch_assoc()) {
+            // Store the setting value in the array
+            $settingsData = $rowSettings['SettingValue'];
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -149,7 +176,7 @@ $current_userid = $_SESSION['userid'];
                     <p class="options">Members</p>
                 </a>
             </div>
-            <div class="menuitems" id="bell">               
+            <div class="menuitems" id="bell">
                 <img class="icon" src="bell.png" onclick="openPopup()">
                 <p class="options" onclick="openPopup()">Notifications</p>
             </div>
@@ -396,7 +423,7 @@ $current_userid = $_SESSION['userid'];
     </div>
 
     <div class="popup" id="popup">
-    
+
         <table>
             <thead>
                 <tr>
@@ -409,24 +436,83 @@ $current_userid = $_SESSION['userid'];
             <tbody id="notification-list"></tbody>
         </table>
         <div class="button-container">
-        <button onclick="closePopup()">Close</button>
+            <button onclick="closePopup()">Close</button>
+        </div>
     </div>
-    </div>
-
-
-    <script>
-    function openPopup() {
-        document.getElementById('popup').style.display = 'block';
-    }
-
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
-    }
-</script>
-
-
 
     <script src="dash.js?v=<?php echo time(); ?>"></script>
+    <script>
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+    <script>
+        function showSecurityMode() {
+            document.getElementById("mod").style.visibility = "visible";
+            document.getElementById("gate").style.visibility = "hidden";
+            document.getElementById("secure").style.visibility = "visible";
+            document.getElementById("unsecure").style.visibility = "hidden";
+        }
+        <?php if ($mainGateExists): ?>
+            showSecurityMode();
+        <?php endif; ?>
+        // Get the array of setting values from PHP
+        const settingsData = <?php echo json_encode($settingsData); ?>;
+        console.log("Data", settingsData);
+
+        // Select the correct mode based on the setting value
+        const mode = document.querySelectorAll('.mo');
+
+        // Loop through each mode
+        mode.forEach((mo) => {
+            // Check if the setting data matches the ID of the mode
+            if (settingsData.includes(mo.id)) {
+                // Add 'selected-modes' class to the mode
+                mo.classList.add('selected-modes');
+            } else {
+                // If the mode does not match the setting data, remove the 'selected-modes' class
+                mo.classList.remove('selected-modes');
+            }
+        });
+
+        // Add click event listener to each mode
+        mode.forEach((mo) => {
+            mo.addEventListener('click', () => {
+                // Remove 'selected-modes' class from all modes
+                mode.forEach(m => m.classList.remove('selected-modes'));
+                // Add 'selected-modes' class to the clicked mode
+                mo.classList.add('selected-modes');
+
+                // Get the selected mode's ID
+                const selectedModeId = mo.id;
+
+                // Send an AJAX request to update the devicesettings table
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'update_devicesettings.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log('Device setting updated successfully');
+                        } else {
+                            console.error('Error updating device setting:', xhr.status);
+                        }
+                    }
+                };
+                // Prepare the data to be sent in the request
+                const requestData = JSON.stringify({ mode: selectedModeId });
+
+                // Send the request
+                xhr.send(requestData);
+            });
+        });
+
+
+    </script
 </body>
 
 </html>

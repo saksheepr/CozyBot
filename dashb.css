@@ -620,7 +620,11 @@ tr:hover {
     transform: scale(1.1);
 
 }
-
+.selected-modes {
+    background-color: #44beaa;
+    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929);
+    border-radius: 10px;
+}
 
 
 
