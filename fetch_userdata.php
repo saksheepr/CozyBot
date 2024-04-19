@@ -3,8 +3,7 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "";
-$password = "";
+$password = "root";
 $dbname = "cozybot";
 
 // Create connection
@@ -107,11 +106,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+//Update Password
+
+if(isset($_POST['update_password'])){
+    $new_password = $_POST['new_password'];
+    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+    //Update Password In Database
+    $stmt = $conn->prepare("UPDATE user SET password = ? WHERE userid = ?");
+    $stmt->bind_param("si", $hashed_password, $user_id);
+    if($stmt->execute()){
+        echo "Password Updated Successfully!";
+    } else {
+        echo "Error Updating Password: " . $stmt->error;
+    }
+    $stmt->close();
+}
+
 $current_userid = $_SESSION['userid'];
 ?>
 
 
-
+<!----->
 
 
 <!DOCTYPE html>
@@ -138,8 +155,7 @@ $current_userid = $_SESSION['userid'];
                 // Output data of each row
                 while ($row = $result->fetch_assoc()) {
                     $userImage = $row["UserImage"];
-                    // Now you have the UserImage, you can use it as needed
-                    // For example, if you want to display it in an img tag:
+                    // UserImage
                     echo '<img id="profile_s" src="' . $userImage . '" alt="Profile Picture" title="User_Profile">';
                 }
             } else {
@@ -205,23 +221,22 @@ $current_userid = $_SESSION['userid'];
                     <button type="button" id="change-password-btn">Change Password</button>
                     <button type="submit">Save Changes</button>
                 </form>
-                <form id="change-password-form" style="display: none;">
+                <form id="change-password-form" action="update_table.php" method="POST" style="display: none">
                     <div class="form-group">
                         <label for="current-password">Current Password:</label>
-                        <input type="password" name="current-password" id="current-password" placeholder="Enter Current Password">
+                        <input type="password" name="current-password" id="current-password" placeholder="Enter Current Password" required>
                     </div>
-                    <div class="form-group" id="new-password-group" style="display: none;">
+                    <div class="form-group">
                         <label for="new-password">New Password:</label>
-                        <input type="password" name="new-password" id="new-password" placeholder="Enter New Password">
+                        <input type="password" name="new-password" id="new-password" placeholder="Enter New Password" required>
                     </div>
-                    <div class="form-group" id="confirm-password-group" style="display: none;">
+                    <div class="form-group">
                         <label for="confirm-password">Confirm New Password:</label>
-                        <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm New Password">
+                        <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm New Password" required>
                     </div>
                     <button type="button" id="cancel-password-btn">Cancel</button>
-                    <button type="submit" id="save-password-btn" style="display: none;">Save Password</button>
+                    <button type="submit" name="update_password">Save Password</button>
                 </form>
-            </form>
             </form>
         </div>
     </main>
