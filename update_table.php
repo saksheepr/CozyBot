@@ -3,8 +3,8 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "Cozybot";
+$password = "root";
+$dbname = "cozybot";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,7 +15,6 @@ if ($conn->connect_error) {
 }
 
 // Assuming $user_id is retrieved from the database or some other authentication method
-// Example: Retrieving user_id based on username
 $username = $_POST['username'];
 $stmt = $conn->prepare("SELECT userid FROM user WHERE username = ?");
 $stmt->bind_param("s", $username);
@@ -42,6 +41,23 @@ $email = $_POST['email'];
 $stmt = $conn->prepare("UPDATE user SET username=?, firstname=?, lastname=?, email=? WHERE userid=?");
 $stmt->bind_param("ssssi", $username, $firstname, $lastname, $email, $user_id);
 $stmt->execute();
+
+//Check if Password is Updated
+if(isset($_POST['update_password'])){
+  $new_password = $_POST['$new_password'];
+  $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+  //Update Password In Database
+  $stmt = $conn->prepare("UPDATE user SET password = ? WHERE userid = ?");
+  if($stmt->execute()){
+    echo 'Password Updated Successfully!';
+  } else {
+    echo 'Error Updating Password' . $stmt-error;
+  }
+  $stmt->close();
+} else {
+  echo "no Form Submitted";
+}
 
 echo "Updated successfully";
 
