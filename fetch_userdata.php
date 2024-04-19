@@ -3,7 +3,7 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "cozybot";
 
 // Create connection

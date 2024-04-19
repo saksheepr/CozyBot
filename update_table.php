@@ -3,7 +3,7 @@ session_start(); // Start session to access session variables
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $dbname = "cozybot";
 
 // Create connection
@@ -52,7 +52,7 @@ if(isset($_POST['update_password'])){
   if($stmt->execute()){
     echo 'Password Updated Successfully!';
   } else {
-    echo 'Error Updating Password' . $stmt-error;
+    echo 'Error Updating Password' . $stmt->error;
   }
   $stmt->close();
 } else {
