@@ -213,48 +213,43 @@ a:hover {
     margin: 0px;
 }
 
-.bar-graph {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
+#graphContainer{
+    display: block;
+    box-sizing: border-box;
+    border-radius: 10px; 
+    box-shadow: 0 0 5px rgba(16, 107, 140, 0.929);
     height: 250px;
     width: 400px;
-    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
-    border-radius: 10px; /* Add border-radius if needed */
-    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
     position: absolute;
-    top: 410px; /* Adjust the distance below the rooms_image */
-    left: 50px; /* Adjust the horizontal position */
-    margin-bottom: 20px;
+    top: 410px;
+    left:50px;
 }
-  
-.bar {
-    width: 12%; /* Adjust the width of bars */
-    text-align: center;
-    color: #fff;
-    transition: height 0.5s ease-in-out;
-    border-radius: 10px;
-    margin: 0 2%; /* Add margin for spacing between bars */
-}
-
-.bar::before {
-    content: attr(data-label);
+#myChart{
     display: block;
-    margin-bottom: 5px;
+    box-sizing: border-box;
+    height: 200px;
+    width: 400px;
+    position: relative;
+    top: 30px;
 }
-
-.line-graph {
-    width: 400px; /* Adjust the width of the line graph as needed */
-    height: 250px; /* Adjust the height of the line graph as needed */
+#graphContainer2{
+    display: block;
+    box-sizing: border-box;
+    border-radius: 10px; 
+    box-shadow: 0 0 5px rgba(16, 107, 140, 0.929);
+    height: 250px;
+    width: 410px;
     position: absolute;
-    top: 410px; /* Adjust the distance below the rooms_image */
-    left: 500px; /* Adjust the horizontal position */
-    background-image: linear-gradient(to right,#1D084B, #212167, #23438C);
-    border-radius: 10px; /* Add border-radius if needed */
-    box-shadow: 0 0 10px rgba(16, 107, 140, 0.929); /* Add box-shadow for better visualization */
+    top: 410px;
+    left:500px;
 }
-.label{
-    fill: white;
+#myChart2{
+    display: block;
+    box-sizing: border-box;
+    height: 200px;
+    width: 400px;
+    position: relative;
+    top: 30px;
 }
 
 .view {

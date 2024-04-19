@@ -155,3 +155,12 @@ function removeNotification(notificationID, button) {
         .catch(error => console.error('Error removing notification:', error));
     }
 }
+
+// Function to redirect to the desired page
+function redirectToPage() {
+    window.location.href = "TimeConsumption.php";
+}
+// Function to redirect to the desired page
+function redirectPage() {
+    window.location.href = "EnergyConsumption.php";
+}

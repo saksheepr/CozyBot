@@ -13,12 +13,13 @@ if ($conn->connect_error) {
 }
 
 // SQL query to create table
-$sql = "CREATE TABLE DeviceConsumption (
+$sql = "CREATE TABLE TimeConsumption (
     ConsumptionID INT PRIMARY KEY AUTO_INCREMENT,
     DeviceID INT,
     UserID INT,
     StartTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    EndTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    EndTime DATETIME,
+    DurationMinutes DECIMAL(10,2),
     ConsumedUnits DECIMAL(10,2),
     FOREIGN KEY (UserID) REFERENCES User(UserID),
     FOREIGN KEY (DeviceID) REFERENCES Device(DeviceID) ON DELETE CASCADE)";

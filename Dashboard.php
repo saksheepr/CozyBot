@@ -54,6 +54,7 @@ if ($result && $result->num_rows > 0) {
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="dashb.css?v=<?php echo time(); ?>">
     <link rel="icon" href="home.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -316,13 +317,84 @@ if ($result && $result->num_rows > 0) {
             </div>
         </div>
         <h3 id="t">Time Usage of Smart Devices</h3>
-        <div class="bar-graph">
-            <div class="bar" style="height: 80%; background-color: #007bff;" data-label="Smart Lights"></div>
-            <div class="bar" style="height: 60%; background-color: #28a745;" data-label="Smart Thermostat"></div>
-            <div class="bar" style="height: 40%; background-color: #ffc107;" data-label="Smart Lock"></div>
-            <div class="bar" style="height: 70%; background-color: #dc3545;" data-label="Smart Speaker"></div>
-            <div class="bar" style="height: 90%; background-color: #6c757d;" data-label="Smart TV"></div>
-        </div>
+        <!-- Container for the graph -->
+    <div id="graphContainer" onclick="redirectToPage()">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script>
+        // Fetch data from the server using AJAX
+        function fetchData() {
+            // Make an AJAX request to your PHP script
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Parse the JSON response
+                    var data = JSON.parse(this.responseText);
+                    // Call function to draw chart
+                    drawChart(data);
+                }
+            };
+            xhttp.open("GET", "fetch_data.php", true);
+            xhttp.send();
+        }
+
+        // Function to draw the chart using Chart.js
+        function drawChart(data) {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Time Consumption',
+                        data: data.values,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.6)',
+                            'rgba(54, 162, 235, 0.6)',
+                            'rgba(255, 206, 86, 0.6)',
+                            'rgba(75, 192, 192, 0.6)',
+                            'rgba(153, 102, 255, 0.6)',
+                            'rgba(255, 159, 64, 0.6)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Time Consumption'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Devices'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Fetch data when the page loads
+        window.onload = function() {
+            fetchData();
+            fetchData2();
+        };
+    </script>
         <p style="position: absolute;left:750px;top:370px;background: linear-gradient(to right,#1D084B, #212167, #23438C); -webkit-text-fill-color: transparent; 
         -webkit-background-clip: text; 
         background-clip: text;">Power Saving Mode</p>
@@ -333,44 +405,69 @@ if ($result && $result->num_rows > 0) {
                 <span class="slider round"></span>
             </label>
         </div>
-        <div class="line-graph">
-            <svg viewBox="0 0 650 400">
-                <!-- X and Y axes -->
-                <line x1="50" y1="350" x2="550" y2="350" stroke="#ccc" />
-                <line x1="50" y1="50" x2="50" y2="350" stroke="#ccc" />
-
-                <!-- Y-axis labels with percentages -->
-                <text x="20" y="355" class="label">100%</text>
-                <text x="20" y="305" class="label">75%</text>
-                <text x="20" y="255" class="label">50%</text>
-                <text x="20" y="205" class="label">25%</text>
-                <text x="20" y="155" class="label">0%</text>
-
-                <!-- Data points with labels (months) and white stroke -->
-                <circle cx="50" cy="350" r="4" class="point" stroke="#fff" />
-                <text x="45" y="380" class="label">January</text>
-
-                <circle cx="150" cy="300" r="4" class="point" stroke="#fff" />
-                <text x="140" y="380" class="label">February</text>
-
-                <circle cx="250" cy="250" r="4" class="point" stroke="#fff" />
-                <text x="240" y="380" class="label">March</text>
-
-                <circle cx="350" cy="200" r="4" class="point" stroke="#fff" />
-                <text x="340" y="380" class="label">April</text>
-
-                <circle cx="450" cy="150" r="4" class="point" stroke="#fff" />
-                <text x="440" y="380" class="label">May</text>
-
-                <circle cx="550" cy="100" r="4" class="point" stroke="#fff" />
-                <text x="540" y="380" class="label">June</text>
-
-                <!-- Curved line touching the last point -->
-                <path d="M50,350 C150,300 250,250 350,200 C450,150 550,100 550,100" fill="none" stroke="#ffffff"
-                    stroke-width="2" />
-            </svg>
-
+        <div id="graphContainer2">
+        <canvas id="myChart2" onclick="redirectPage()"></canvas>
         </div>
+        <script>
+        function fetchData2() {
+            // Make an AJAX request to your PHP script
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Parse the JSON response
+                    var data2 = JSON.parse(this.responseText);
+                    // Call function to draw chart
+                    drawChart2(data2);
+                }
+            };
+            xhttp.open("GET", "energy_fetch.php", true);
+            xhttp.send();
+        }
+
+        // Function to draw the chart using Chart.js
+        function drawChart2(data2) {
+            var ctx = document.getElementById('myChart2').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data2.labels,
+                    datasets: [{
+                        label: 'Energy Consumption',
+                        data: data2.values,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Energy Consumption'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Devices'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Fetch data when the page loads
+        window.onload = function() {
+            fetchData();
+            fetchData2();
+        };
+    </script>
+        
+        
+        
         <div class="security">
             <div id="arm1">
                 <h3 id="t1">Security</h3>

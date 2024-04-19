@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 if (!isset($_SESSION['userid'])) {
     die("User is not logged in.");
 }
-
+date_default_timezone_set("Asia/Kolkata");
 // Fetch schedules based on current time and day
 $currentDay = date('l'); // Get the current day
 $currentTime = date('H:i:s'); // Get the current time

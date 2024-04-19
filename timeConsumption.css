@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw; 
+    overflow: hidden;  
+    background-color: #DCF2F1;
+}
+#nav_shrink{
+    height: 695px;
+    width: 50px;
+    background-image: linear-gradient(to right,#5b5bac,#23438C);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.icon{
+    height:20px;
+    z-index: 999;
+}
+
+#profile_s{
+    height: 35px;
+    width:35px;
+    border-radius: 50%;
+}
+#logout {
+    margin-top: 70px;
+}
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    background-image: linear-gradient(to right,#1D084B, #212167, #23438C); 
+            -webkit-text-fill-color: transparent; 
+            -webkit-background-clip: text; 
+            background-clip: text;
+    font-size: 40px;
+}
+
+#graphContainer{
+    display: block;
+    box-sizing: border-box;
+    border-radius: 10px; 
+    box-shadow: 0 0 5px rgba(16, 107, 140, 0.929);
+    height: 450px;
+    width: 700px;
+    position: absolute;
+    top: 150px;
+    left: 400px;
+}
+#myChart{
+    display: block;
+    box-sizing: border-box;
+    height: 200px;
+    width: 400px;
+    position: relative;
+    top: 30px;
+}
+
+
+

@@ -260,8 +260,6 @@ document.body.addEventListener('click', function (event) {
   if (!event.target.classList.contains('devicedetails') && !event.target.closest('#set')) {
     // Call the closeDeviceSettings function when a click occurs outside devicedetails elements
     closeDeviceSettings();
-
-
   }
 });
 
@@ -493,7 +491,7 @@ function DeviceDetailsClick(deviceDetails) {
             }
           }
         };
-        xhr.send(JSON.stringify({ deviceId: deviceId, settings: settings, deviceStatus: deviceStatus }));
+        xhr.send(JSON.stringify({ deviceId: deviceId,deviceType:deviceType, settings: settings, deviceStatus: deviceStatus }));
       }
 
 
