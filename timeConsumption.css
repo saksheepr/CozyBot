@@ -43,13 +43,14 @@ h1{
 #graphContainer{
     display: block;
     box-sizing: border-box;
-    border-radius: 10px; 
+    border-radius: 20px; 
     box-shadow: 0 0 5px rgba(16, 107, 140, 0.929);
-    height: 450px;
-    width: 700px;
+    height: 500px;
+    width: 750px;
     position: absolute;
-    top: 150px;
+    top: 120px;
     left: 400px;
+    background-color: aliceblue;
 }
 #myChart{
     display: block;

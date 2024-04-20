@@ -185,7 +185,6 @@ $current_userid = $_SESSION['userid'];
         </a>
 
         </div>
-        <script src="room_script.js"></script>
         <div class="profile-container">
             <div class="avatar-container">
                 <img src="<?php echo $userImage;?>" alt="Profile Picture" class="avatar" id="avatar">

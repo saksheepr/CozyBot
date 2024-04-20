@@ -1,12 +1,12 @@
-function openNav(){
+function openNav() {
     document.getElementById("nav_shrink").style = "visibility: visible";
     document.getElementById("nav_expand").style = "visibility: hidden";
-    document.getElementById("content").style.left = "70px";    
+    document.getElementById("content").style.left = "70px";
 }
-function closeNav(){
+function closeNav() {
     document.getElementById("nav_shrink").style = "visibility: hidden";
     document.getElementById("nav_expand").style = "visibility: visible";
-    document.getElementById("content").style.left="220px";
+    document.getElementById("content").style.left = "220px";
 }
 function adjustContentWidth() {
     var navWidth = document.getElementById("nav").offsetWidth;
@@ -14,7 +14,7 @@ function adjustContentWidth() {
     var contentWidth = windowWidth - navWidth;
     document.getElementById("content").style.width = contentWidth + "px";
 }
-function AddSecurity(){
+function AddSecurity() {
     document.getElementById("mod").style = "visibility: visible";
     document.getElementById("gate").style = "visibility: hidden";
     document.getElementById("secure").style = "visibility: visible";
@@ -22,7 +22,7 @@ function AddSecurity(){
 
     // Execute the SQL query via AJAX
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 // Insertion successful, do something if needed
@@ -38,20 +38,20 @@ function AddSecurity(){
 }
 
 // Adjust content width when the window is resized
-window.onresize = function(event) {
+window.onresize = function (event) {
     adjustContentWidth();
 }
 var elements = document.querySelectorAll('.icon');
 
 // Iterate through each element and add the mouseover event listener
-elements.forEach(function(element) {
-    element.addEventListener('mouseover', function() {
+elements.forEach(function (element) {
+    element.addEventListener('mouseover', function () {
         element.style.filter = 'drop-shadow(0 0 0.75rem yellow)';
         element.style.height = '25px';
     });
 
     // Add mouseout event listener to revert the background color
-    element.addEventListener('mouseout', function() {
+    element.addEventListener('mouseout', function () {
         element.style.filter = '';
         element.style.height = '20px';
     });
@@ -59,22 +59,22 @@ elements.forEach(function(element) {
 var elements = document.querySelectorAll('.options');
 
 // Iterate through each element and add the mouseover event listener
-elements.forEach(function(element) {
-    element.addEventListener('mouseover', function() {
+elements.forEach(function (element) {
+    element.addEventListener('mouseover', function () {
         element.style.filter = 'drop-shadow(0 0 0.75rem yellow)';
         element.style.width = '90px';
         element.style.color = 'white';
     });
 
     // Add mouseout event listener to revert the background color
-    element.addEventListener('mouseout', function() {
+    element.addEventListener('mouseout', function () {
         element.style.filter = '';
         element.style.width = '80px';
         element.style.color = 'rgba(255, 255, 255, 0.719)';
     });
 });
 
-document.getElementById("room").addEventListener("change", function() {
+document.getElementById("room").addEventListener("change", function () {
     var selectedOption = this.value;
     var imageSrc = '';
 
@@ -92,7 +92,7 @@ document.getElementById("room").addEventListener("change", function() {
 });
 
 // Add event listener to the displayed image
-document.getElementById("displayedImage").addEventListener("click", function() {
+document.getElementById("displayedImage").addEventListener("click", function () {
     // Specify the URL of the page you want to open in a new tab/window
     var newPageUrl = "Rooms.php";
 
@@ -140,19 +140,19 @@ function removeNotification(notificationID, button) {
             },
             body: JSON.stringify({ notificationID })
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                const notificationRow = button.closest('tr');
-                notificationRow.classList.add('remove-animation');
-                notificationRow.addEventListener('animationend', () => {
-                    notificationRow.remove(); // Remove the row from the table after animation
-                });
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => console.error('Error removing notification:', error));
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const notificationRow = button.closest('tr');
+                    notificationRow.classList.add('remove-animation');
+                    notificationRow.addEventListener('animationend', () => {
+                        notificationRow.remove(); // Remove the row from the table after animation
+                    });
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error removing notification:', error));
     }
 }
 
@@ -164,3 +164,56 @@ function redirectToPage() {
 function redirectPage() {
     window.location.href = "EnergyConsumption.php";
 }
+
+const apiKey = "ef2287dc68e0b17620acb9467675eb24";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+const searchBox = document.querySelector('.search input');
+const searchBtn = document.querySelector('.search button');
+const weatherIcon = document.querySelector('.weather-icon');
+
+async function checkWeather(city) {
+    const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+    if (response.status == 404) {
+        document.querySelector('.error').style.display = "block";
+        document.querySelector('.weather').style.display = "none";
+    }
+    else {
+        var data = await response.json();
+        console.log(data);
+        document.querySelector('.city').innerHTML = data.name;
+        document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + "°C";
+        document.querySelector('.humidity').innerHTML = data.main.humidity + "%";
+        document.querySelector('.wind').innerHTML = data.wind.speed + " km/h";
+
+        if (data.weather[0].main == "Clouds") {
+            weatherIcon.src = 'clouds.png';
+        }
+        else if (data.weather[0].main == "Clear") {
+            weatherIcon.src = 'clear.png';
+        }
+        else if (data.weather[0].main == "Rain") {
+            weatherIcon.src = 'rain.png';
+        }
+        else if (data.weather[0].main == "Drizzle") {
+            weatherIcon.src = 'drizzle.png';
+        }
+        else if (data.weather[0].main == "Mist") {
+            weatherIcon.src = 'mist.png';
+        }
+
+        document.querySelector(".weather").style.display = "block";
+        document.querySelector(".error").style.display = "none";
+    }
+}
+
+searchBtn.addEventListener('click', () => {
+    checkWeather(searchBox.value);
+})
+
+function handleKeyPress(event) {
+    if (event.key == "Enter") {
+        checkWeather(searchBox.value);
+    }
+}
+document.addEventListener('keydown', handleKeyPress);

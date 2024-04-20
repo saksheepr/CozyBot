@@ -351,12 +351,12 @@ if ($result && $result->num_rows > 0) {
                         label: 'Time Consumption',
                         data: data.values,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.6)',
-                            'rgba(54, 162, 235, 0.6)',
-                            'rgba(255, 206, 86, 0.6)',
-                            'rgba(75, 192, 192, 0.6)',
-                            'rgba(153, 102, 255, 0.6)',
-                            'rgba(255, 159, 64, 0.6)'
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)',
+                            'rgba(255, 159, 64, 0.8)'
                         ],
                         borderColor: [
                             'rgba(255, 99, 132, 1)',
@@ -395,7 +395,7 @@ if ($result && $result->num_rows > 0) {
             fetchData2();
         };
     </script>
-        <p style="position: absolute;left:750px;top:370px;background: linear-gradient(to right,#1D084B, #212167, #23438C); -webkit-text-fill-color: transparent; 
+        <p style="position: absolute;left: 780px;top: 390px;background: linear-gradient(to right,#1D084B, #212167, #23438C); -webkit-text-fill-color: transparent; 
         -webkit-background-clip: text; 
         background-clip: text;">Power Saving Mode</p>
         <div class="view_energy">
@@ -434,7 +434,8 @@ if ($result && $result->num_rows > 0) {
                     datasets: [{
                         label: 'Energy Consumption',
                         data: data2.values,
-                        fill: false,
+                        fill: true,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
                     }]
@@ -486,37 +487,39 @@ if ($result && $result->num_rows > 0) {
         </div>
         <div class="weather">
             <h3 id="t2">Weather</h3>
-            <p style="color: black;display: inline-block;position: relative;top:25px;left: 60px;">Today</p>
-            <div class="weather-widget" id="weather-widget">
-                <img src="sun.png" alt="Weather Icon" class="weather-icon">
-                <span class="temperature">22°C</span>
-            </div>
-            <div class="weather-details">
-                Sunny, <span class="min-temp">18&deg;C</span> / <span class="max-temp">31&deg;C</span>
+            <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter City Name" spellcheck="false">
+            <button><img src="search.png" alt=""></button>
+        </div>
+        <div class="error">
+            <p>Invalid City Name</p>
+        </div>
+        <div class="weather1">
+            <img src="rain.png" class="weather-icon">
+            <h1 class="temp">22°C</h1>
+            <h3 class="city" id="city">New York</h3>
+            <div class="details">
+                <div class="col">
+                    <img src="humidity.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="wind.png">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="member">
-            <div id="heading">
-                <h3 id="t1">Members</h3>
-                <div id="disarm"><a href="members.php">View All</a></div>
-            </div>
-
-            <div id="circle">
-                <div class="mem">
-                    <img src="girl.png">
-                </div>
-                <div class="mem">
-                    <img src="man.png">
-                </div>
-                <div class="mem">
-                    <img src="boy.png">
-                </div>
-                <div class="mem">
-                    <img src="woman.png">
-                </div>
-            </div>
+    </div>
+            
         </div>
-
+        
     </div>
 
     <div class="popup" id="popup">

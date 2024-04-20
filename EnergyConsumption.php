@@ -101,7 +101,8 @@ $current_userid = $_SESSION['userid'];
                     datasets: [{
                         label: 'Energy Consumption',
                         data: values,
-                        fill: false,
+                        fill: true,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
                     }]
